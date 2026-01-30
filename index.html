@@ -1,0 +1,1240 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Transforma Tu Negocio | Landing Page</title>
+  <style>
+    /* ========== RESET & BASE ========== */
+    *, *::before, *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --primary: #2563eb;
+      --primary-dark: #1d4ed8;
+      --primary-light: #dbeafe;
+      --accent: #f59e0b;
+      --accent-dark: #d97706;
+      --dark: #0f172a;
+      --gray-900: #1e293b;
+      --gray-700: #334155;
+      --gray-500: #64748b;
+      --gray-300: #cbd5e1;
+      --gray-100: #f1f5f9;
+      --white: #ffffff;
+      --radius: 12px;
+      --shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
+      --shadow-lg: 0 12px 40px rgba(0, 0, 0, 0.12);
+      --transition: 0.3s ease;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      font-size: 16px;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
+        Ubuntu, Cantarell, 'Helvetica Neue', sans-serif;
+      color: var(--gray-700);
+      line-height: 1.6;
+      background: var(--white);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    /* ========== UTILITY ========== */
+    .container {
+      width: 100%;
+      max-width: 1140px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    .section {
+      padding: 96px 0;
+    }
+
+    .section-label {
+      display: inline-block;
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--primary);
+      background: var(--primary-light);
+      padding: 6px 16px;
+      border-radius: 100px;
+      margin-bottom: 16px;
+    }
+
+    .section-title {
+      font-size: 2.25rem;
+      font-weight: 800;
+      color: var(--dark);
+      line-height: 1.2;
+      margin-bottom: 16px;
+    }
+
+    .section-subtitle {
+      font-size: 1.125rem;
+      color: var(--gray-500);
+      max-width: 600px;
+      margin-bottom: 48px;
+    }
+
+    .text-center {
+      text-align: center;
+    }
+
+    .mx-auto {
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 16px 36px;
+      font-size: 1rem;
+      font-weight: 700;
+      border-radius: var(--radius);
+      border: none;
+      cursor: pointer;
+      transition: all var(--transition);
+      text-align: center;
+    }
+
+    .btn-primary {
+      background: var(--primary);
+      color: var(--white);
+      box-shadow: 0 4px 16px rgba(37, 99, 235, 0.35);
+    }
+
+    .btn-primary:hover {
+      background: var(--primary-dark);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 24px rgba(37, 99, 235, 0.45);
+    }
+
+    .btn-accent {
+      background: var(--accent);
+      color: var(--dark);
+      box-shadow: 0 4px 16px rgba(245, 158, 11, 0.35);
+    }
+
+    .btn-accent:hover {
+      background: var(--accent-dark);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 24px rgba(245, 158, 11, 0.45);
+    }
+
+    /* ========== HEADER / NAV ========== */
+    .header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1000;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--gray-100);
+      transition: box-shadow var(--transition);
+    }
+
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 72px;
+    }
+
+    .logo {
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: var(--dark);
+    }
+
+    .logo span {
+      color: var(--primary);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 0.95rem;
+      font-weight: 500;
+      color: var(--gray-700);
+      transition: color var(--transition);
+    }
+
+    .nav-links a:hover {
+      color: var(--primary);
+    }
+
+    .nav-cta {
+      padding: 10px 24px;
+      font-size: 0.9rem;
+      border-radius: 8px;
+      background: var(--primary);
+      color: var(--white) !important;
+      font-weight: 600;
+    }
+
+    .nav-cta:hover {
+      background: var(--primary-dark);
+    }
+
+    .menu-toggle {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      background: none;
+      border: none;
+      padding: 4px;
+    }
+
+    .menu-toggle span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--dark);
+      border-radius: 2px;
+      transition: var(--transition);
+    }
+
+    /* ========== HERO ========== */
+    .hero {
+      padding: 160px 0 96px;
+      background: linear-gradient(135deg, var(--gray-100) 0%, var(--white) 50%, var(--primary-light) 100%);
+      overflow: hidden;
+      position: relative;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -200px;
+      right: -200px;
+      width: 600px;
+      height: 600px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(37, 99, 235, 0.06) 0%, transparent 70%);
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: center;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--white);
+      border: 1px solid var(--gray-300);
+      border-radius: 100px;
+      padding: 6px 16px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--gray-700);
+      margin-bottom: 24px;
+      box-shadow: var(--shadow);
+    }
+
+    .hero-badge .dot {
+      width: 8px;
+      height: 8px;
+      background: #22c55e;
+      border-radius: 50%;
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.4; }
+    }
+
+    .hero h1 {
+      font-size: 3.25rem;
+      font-weight: 800;
+      color: var(--dark);
+      line-height: 1.1;
+      margin-bottom: 20px;
+    }
+
+    .hero h1 .highlight {
+      background: linear-gradient(135deg, var(--primary), #7c3aed);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      color: var(--gray-500);
+      margin-bottom: 36px;
+      max-width: 480px;
+      line-height: 1.7;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 16px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .hero-stats {
+      display: flex;
+      gap: 40px;
+      margin-top: 48px;
+      padding-top: 32px;
+      border-top: 1px solid var(--gray-300);
+    }
+
+    .hero-stat strong {
+      display: block;
+      font-size: 1.75rem;
+      font-weight: 800;
+      color: var(--dark);
+    }
+
+    .hero-stat span {
+      font-size: 0.85rem;
+      color: var(--gray-500);
+    }
+
+    .hero-visual {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .hero-card {
+      background: var(--white);
+      border-radius: 20px;
+      padding: 40px;
+      box-shadow: var(--shadow-lg);
+      border: 1px solid var(--gray-100);
+      width: 100%;
+      max-width: 440px;
+    }
+
+    .hero-card-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 24px;
+    }
+
+    .hero-card-icon {
+      width: 48px;
+      height: 48px;
+      background: var(--primary-light);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+    }
+
+    .hero-card-title {
+      font-weight: 700;
+      color: var(--dark);
+    }
+
+    .hero-card-sub {
+      font-size: 0.85rem;
+      color: var(--gray-500);
+    }
+
+    .hero-card-bar {
+      height: 8px;
+      background: var(--gray-100);
+      border-radius: 100px;
+      margin-bottom: 12px;
+      overflow: hidden;
+    }
+
+    .hero-card-bar-fill {
+      height: 100%;
+      border-radius: 100px;
+      background: linear-gradient(90deg, var(--primary), #7c3aed);
+    }
+
+    .hero-card-metrics {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-top: 24px;
+    }
+
+    .metric-box {
+      background: var(--gray-100);
+      border-radius: 12px;
+      padding: 16px;
+      text-align: center;
+    }
+
+    .metric-box strong {
+      display: block;
+      font-size: 1.5rem;
+      color: var(--primary);
+      font-weight: 800;
+    }
+
+    .metric-box span {
+      font-size: 0.8rem;
+      color: var(--gray-500);
+    }
+
+    /* ========== BENEFITS ========== */
+    .benefits {
+      background: var(--white);
+    }
+
+    .benefits-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 32px;
+    }
+
+    .benefit-card {
+      background: var(--white);
+      border: 1px solid var(--gray-100);
+      border-radius: var(--radius);
+      padding: 36px 28px;
+      transition: all var(--transition);
+    }
+
+    .benefit-card:hover {
+      border-color: var(--primary-light);
+      box-shadow: var(--shadow-lg);
+      transform: translateY(-4px);
+    }
+
+    .benefit-icon {
+      width: 56px;
+      height: 56px;
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      margin-bottom: 20px;
+      background: var(--primary-light);
+      color: var(--primary);
+    }
+
+    .benefit-card h3 {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--dark);
+      margin-bottom: 10px;
+    }
+
+    .benefit-card p {
+      font-size: 0.95rem;
+      color: var(--gray-500);
+      line-height: 1.6;
+    }
+
+    /* ========== SOCIAL PROOF ========== */
+    .social-proof {
+      background: var(--gray-100);
+    }
+
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+    }
+
+    .testimonial-card {
+      background: var(--white);
+      border-radius: var(--radius);
+      padding: 32px;
+      box-shadow: var(--shadow);
+      border: 1px solid transparent;
+      transition: all var(--transition);
+    }
+
+    .testimonial-card:hover {
+      border-color: var(--primary-light);
+    }
+
+    .testimonial-stars {
+      color: var(--accent);
+      font-size: 1rem;
+      margin-bottom: 16px;
+      letter-spacing: 2px;
+    }
+
+    .testimonial-card blockquote {
+      font-size: 0.95rem;
+      color: var(--gray-700);
+      line-height: 1.7;
+      margin-bottom: 20px;
+      font-style: italic;
+    }
+
+    .testimonial-author {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .testimonial-avatar {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: var(--primary-light);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      color: var(--primary);
+      font-size: 0.9rem;
+    }
+
+    .testimonial-name {
+      font-weight: 700;
+      color: var(--dark);
+      font-size: 0.9rem;
+    }
+
+    .testimonial-role {
+      font-size: 0.8rem;
+      color: var(--gray-500);
+    }
+
+    .trust-bar {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 48px;
+      margin-top: 56px;
+      padding-top: 40px;
+      border-top: 1px solid var(--gray-300);
+      flex-wrap: wrap;
+    }
+
+    .trust-item {
+      text-align: center;
+    }
+
+    .trust-item strong {
+      display: block;
+      font-size: 2rem;
+      font-weight: 800;
+      color: var(--dark);
+    }
+
+    .trust-item span {
+      font-size: 0.85rem;
+      color: var(--gray-500);
+    }
+
+    /* ========== HOW IT WORKS ========== */
+    .how-it-works {
+      background: var(--white);
+    }
+
+    .steps-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 32px;
+      position: relative;
+    }
+
+    .steps-grid::before {
+      content: '';
+      position: absolute;
+      top: 48px;
+      left: 15%;
+      right: 15%;
+      height: 2px;
+      background: linear-gradient(90deg, var(--primary-light), var(--primary), var(--primary-light));
+    }
+
+    .step-card {
+      text-align: center;
+      position: relative;
+    }
+
+    .step-number {
+      width: 72px;
+      height: 72px;
+      border-radius: 50%;
+      background: var(--primary);
+      color: var(--white);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      font-weight: 800;
+      margin: 0 auto 24px;
+      position: relative;
+      z-index: 1;
+      box-shadow: 0 4px 20px rgba(37, 99, 235, 0.3);
+    }
+
+    .step-card h3 {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--dark);
+      margin-bottom: 10px;
+    }
+
+    .step-card p {
+      font-size: 0.95rem;
+      color: var(--gray-500);
+      line-height: 1.6;
+      max-width: 280px;
+      margin: 0 auto;
+    }
+
+    /* ========== FORM / CTA SECTION ========== */
+    .cta-section {
+      background: linear-gradient(135deg, var(--dark) 0%, var(--gray-900) 100%);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cta-section::before {
+      content: '';
+      position: absolute;
+      top: -100px;
+      right: -100px;
+      width: 400px;
+      height: 400px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(37, 99, 235, 0.15) 0%, transparent 70%);
+    }
+
+    .cta-section::after {
+      content: '';
+      position: absolute;
+      bottom: -150px;
+      left: -100px;
+      width: 500px;
+      height: 500px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(124, 58, 237, 0.1) 0%, transparent 70%);
+    }
+
+    .cta-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    .cta-content h2 {
+      font-size: 2.5rem;
+      font-weight: 800;
+      color: var(--white);
+      line-height: 1.2;
+      margin-bottom: 16px;
+    }
+
+    .cta-content p {
+      font-size: 1.1rem;
+      color: var(--gray-300);
+      margin-bottom: 32px;
+      line-height: 1.7;
+    }
+
+    .cta-features {
+      list-style: none;
+    }
+
+    .cta-features li {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      color: var(--gray-300);
+      font-size: 0.95rem;
+      margin-bottom: 12px;
+    }
+
+    .cta-features li::before {
+      content: '✓';
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      background: rgba(37, 99, 235, 0.2);
+      color: var(--primary);
+      font-size: 0.75rem;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+
+    /* ---- GHL Form Container ---- */
+    .ghl-form-wrapper {
+      background: var(--white);
+      border-radius: 20px;
+      padding: 40px;
+      box-shadow: var(--shadow-lg);
+    }
+
+    .ghl-form-wrapper h3 {
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: var(--dark);
+      margin-bottom: 8px;
+      text-align: center;
+    }
+
+    .ghl-form-wrapper .form-sub {
+      font-size: 0.9rem;
+      color: var(--gray-500);
+      text-align: center;
+      margin-bottom: 28px;
+    }
+
+    .ghl-form-wrapper .form-group {
+      margin-bottom: 18px;
+    }
+
+    .ghl-form-wrapper label {
+      display: block;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--gray-700);
+      margin-bottom: 6px;
+    }
+
+    .ghl-form-wrapper input,
+    .ghl-form-wrapper select,
+    .ghl-form-wrapper textarea {
+      width: 100%;
+      padding: 12px 16px;
+      border: 1px solid var(--gray-300);
+      border-radius: 8px;
+      font-size: 0.95rem;
+      font-family: inherit;
+      color: var(--dark);
+      background: var(--white);
+      transition: border-color var(--transition), box-shadow var(--transition);
+    }
+
+    .ghl-form-wrapper input:focus,
+    .ghl-form-wrapper select:focus,
+    .ghl-form-wrapper textarea:focus {
+      outline: none;
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+    }
+
+    .ghl-form-wrapper textarea {
+      resize: vertical;
+      min-height: 80px;
+    }
+
+    .ghl-form-wrapper .btn-submit {
+      width: 100%;
+      padding: 14px;
+      font-size: 1rem;
+      font-weight: 700;
+      border: none;
+      border-radius: 8px;
+      background: var(--primary);
+      color: var(--white);
+      cursor: pointer;
+      transition: all var(--transition);
+      margin-top: 8px;
+    }
+
+    .ghl-form-wrapper .btn-submit:hover {
+      background: var(--primary-dark);
+      transform: translateY(-1px);
+      box-shadow: 0 4px 16px rgba(37, 99, 235, 0.35);
+    }
+
+    .form-note {
+      font-size: 0.78rem;
+      color: var(--gray-500);
+      text-align: center;
+      margin-top: 14px;
+    }
+
+    /* ========== FOOTER ========== */
+    .footer {
+      background: var(--dark);
+      padding: 40px 0;
+      text-align: center;
+    }
+
+    .footer p {
+      color: var(--gray-500);
+      font-size: 0.85rem;
+    }
+
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 24px;
+      margin-top: 16px;
+      list-style: none;
+    }
+
+    .footer-links a {
+      color: var(--gray-500);
+      font-size: 0.85rem;
+      transition: color var(--transition);
+    }
+
+    .footer-links a:hover {
+      color: var(--white);
+    }
+
+    /* ========== RESPONSIVE ========== */
+    @media (max-width: 1024px) {
+      .hero h1 {
+        font-size: 2.5rem;
+      }
+
+      .section-title {
+        font-size: 2rem;
+      }
+
+      .cta-content h2 {
+        font-size: 2rem;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .menu-toggle {
+        display: flex;
+      }
+
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: 72px;
+        left: 0;
+        right: 0;
+        background: var(--white);
+        flex-direction: column;
+        padding: 24px;
+        gap: 16px;
+        border-bottom: 1px solid var(--gray-100);
+        box-shadow: var(--shadow);
+      }
+
+      .nav-links.active {
+        display: flex;
+      }
+
+      .hero {
+        padding: 120px 0 64px;
+      }
+
+      .hero-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+
+      .hero h1 {
+        font-size: 2.25rem;
+      }
+
+      .hero-stats {
+        gap: 24px;
+      }
+
+      .hero-visual {
+        order: -1;
+      }
+
+      .hero-card {
+        max-width: 100%;
+      }
+
+      .benefits-grid,
+      .testimonials-grid,
+      .steps-grid {
+        grid-template-columns: 1fr;
+        gap: 24px;
+      }
+
+      .steps-grid::before {
+        display: none;
+      }
+
+      .cta-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+
+      .trust-bar {
+        gap: 24px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .section {
+        padding: 64px 0;
+      }
+
+      .hero h1 {
+        font-size: 1.85rem;
+      }
+
+      .hero p {
+        font-size: 1rem;
+      }
+
+      .hero-actions {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .hero-stats {
+        flex-direction: column;
+        gap: 16px;
+      }
+
+      .ghl-form-wrapper {
+        padding: 24px;
+      }
+
+      .section-title {
+        font-size: 1.65rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ========== HEADER ========== -->
+  <header class="header">
+    <div class="container header-inner">
+      <a href="#" class="logo">Tu<span>Marca</span></a>
+      <nav>
+        <button class="menu-toggle" onclick="document.querySelector('.nav-links').classList.toggle('active')" aria-label="Menu">
+          <span></span><span></span><span></span>
+        </button>
+        <ul class="nav-links">
+          <li><a href="#beneficios">Beneficios</a></li>
+          <li><a href="#testimonios">Testimonios</a></li>
+          <li><a href="#como-funciona">Proceso</a></li>
+          <li><a href="#contacto" class="nav-cta">Empezar Ahora</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ========== HERO ========== -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-grid">
+        <div class="hero-content">
+          <div class="hero-badge">
+            <span class="dot"></span>
+            Plazas limitadas disponibles
+          </div>
+          <h1>Impulsa tu negocio con <span class="highlight">resultados reales</span></h1>
+          <p>Automatiza procesos, capta mas clientes y escala tu empresa con la plataforma todo-en-uno que ya usan miles de negocios.</p>
+          <div class="hero-actions">
+            <a href="#contacto" class="btn btn-primary">Solicitar Demo Gratis</a>
+            <a href="#como-funciona" class="btn" style="color: var(--gray-700); font-weight: 600;">Ver como funciona &rarr;</a>
+          </div>
+          <div class="hero-stats">
+            <div class="hero-stat">
+              <strong>+2,500</strong>
+              <span>Clientes activos</span>
+            </div>
+            <div class="hero-stat">
+              <strong>98%</strong>
+              <span>Satisfaccion</span>
+            </div>
+            <div class="hero-stat">
+              <strong>3x</strong>
+              <span>Mas conversiones</span>
+            </div>
+          </div>
+        </div>
+        <div class="hero-visual">
+          <div class="hero-card">
+            <div class="hero-card-header">
+              <div class="hero-card-icon">&#9889;</div>
+              <div>
+                <div class="hero-card-title">Panel de Rendimiento</div>
+                <div class="hero-card-sub">Ultima actualizacion: hoy</div>
+              </div>
+            </div>
+            <div class="hero-card-bar">
+              <div class="hero-card-bar-fill" style="width: 78%"></div>
+            </div>
+            <div style="font-size: 0.8rem; color: var(--gray-500); margin-bottom: 8px;">Tasa de conversion: 78%</div>
+            <div class="hero-card-bar">
+              <div class="hero-card-bar-fill" style="width: 92%; background: linear-gradient(90deg, #22c55e, #16a34a);"></div>
+            </div>
+            <div style="font-size: 0.8rem; color: var(--gray-500);">Retencion de clientes: 92%</div>
+            <div class="hero-card-metrics">
+              <div class="metric-box">
+                <strong>$48K</strong>
+                <span>Ingresos / mes</span>
+              </div>
+              <div class="metric-box">
+                <strong>1,247</strong>
+                <span>Leads captados</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== BENEFITS ========== -->
+  <section class="section benefits" id="beneficios">
+    <div class="container">
+      <div class="text-center">
+        <span class="section-label">Beneficios</span>
+        <h2 class="section-title">Todo lo que necesitas para crecer</h2>
+        <p class="section-subtitle mx-auto">Herramientas integradas que trabajan juntas para que tu negocio funcione de forma automatica.</p>
+      </div>
+      <div class="benefits-grid">
+        <div class="benefit-card">
+          <div class="benefit-icon">&#128640;</div>
+          <h3>Captacion Automatica</h3>
+          <p>Embudos de venta, landing pages y formularios que convierten visitantes en clientes las 24 horas.</p>
+        </div>
+        <div class="benefit-card">
+          <div class="benefit-icon">&#128172;</div>
+          <h3>CRM Inteligente</h3>
+          <p>Gestiona todos tus contactos, oportunidades y seguimientos desde un solo lugar centralizado.</p>
+        </div>
+        <div class="benefit-card">
+          <div class="benefit-icon">&#128197;</div>
+          <h3>Agenda y Citas</h3>
+          <p>Sistema de reservas automatizado que elimina las idas y venidas para programar reuniones.</p>
+        </div>
+        <div class="benefit-card">
+          <div class="benefit-icon">&#128231;</div>
+          <h3>Email y SMS Marketing</h3>
+          <p>Campanas personalizadas con automatizaciones que nutren a tus leads hasta la conversion.</p>
+        </div>
+        <div class="benefit-card">
+          <div class="benefit-icon">&#128202;</div>
+          <h3>Reportes Detallados</h3>
+          <p>Metricas claras y dashboards en tiempo real para tomar decisiones basadas en datos.</p>
+        </div>
+        <div class="benefit-card">
+          <div class="benefit-icon">&#9889;</div>
+          <h3>Automatizaciones</h3>
+          <p>Flujos de trabajo que eliminan tareas repetitivas y liberan tu tiempo para lo importante.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== SOCIAL PROOF ========== -->
+  <section class="section social-proof" id="testimonios">
+    <div class="container">
+      <div class="text-center">
+        <span class="section-label">Testimonios</span>
+        <h2 class="section-title">Lo que dicen nuestros clientes</h2>
+        <p class="section-subtitle mx-auto">Historias reales de negocios que transformaron sus resultados con nuestra plataforma.</p>
+      </div>
+      <div class="testimonials-grid">
+        <div class="testimonial-card">
+          <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <blockquote>"En 3 meses triplicamos nuestros leads. La automatizacion del seguimiento fue un cambio total para nuestro equipo de ventas."</blockquote>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">MG</div>
+            <div>
+              <div class="testimonial-name">Maria Garcia</div>
+              <div class="testimonial-role">CEO, Digital Agency</div>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-card">
+          <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <blockquote>"Dejamos de perder clientes por falta de seguimiento. Ahora todo se gestiona automaticamente y los resultados hablan solos."</blockquote>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">CR</div>
+            <div>
+              <div class="testimonial-name">Carlos Rodriguez</div>
+              <div class="testimonial-role">Director, Consultora CR</div>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-card">
+          <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <blockquote>"La mejor inversion para mi negocio. Reducimos un 60% el tiempo en tareas administrativas y aumentamos la facturacion."</blockquote>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">AL</div>
+            <div>
+              <div class="testimonial-name">Ana Lopez</div>
+              <div class="testimonial-role">Fundadora, Estudio AL</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="trust-bar">
+        <div class="trust-item">
+          <strong>+2,500</strong>
+          <span>Negocios confian en nosotros</span>
+        </div>
+        <div class="trust-item">
+          <strong>+1M</strong>
+          <span>Leads generados</span>
+        </div>
+        <div class="trust-item">
+          <strong>4.9/5</strong>
+          <span>Valoracion promedio</span>
+        </div>
+        <div class="trust-item">
+          <strong>15+</strong>
+          <span>Paises</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== HOW IT WORKS ========== -->
+  <section class="section how-it-works" id="como-funciona">
+    <div class="container">
+      <div class="text-center">
+        <span class="section-label">Proceso</span>
+        <h2 class="section-title">Como funciona</h2>
+        <p class="section-subtitle mx-auto">Tres pasos simples para transformar tu negocio y empezar a ver resultados.</p>
+      </div>
+      <div class="steps-grid">
+        <div class="step-card">
+          <div class="step-number">1</div>
+          <h3>Agenda tu Demo</h3>
+          <p>Rellena el formulario y reserva una llamada gratuita con nuestro equipo de estrategia.</p>
+        </div>
+        <div class="step-card">
+          <div class="step-number">2</div>
+          <h3>Disenamos tu Plan</h3>
+          <p>Creamos una estrategia personalizada con los embudos y automatizaciones que tu negocio necesita.</p>
+        </div>
+        <div class="step-card">
+          <div class="step-number">3</div>
+          <h3>Escala tus Resultados</h3>
+          <p>Lanzamos, optimizamos y escalamos. Tu solo te enfocas en cerrar ventas y crecer.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== FORM / CTA ========== -->
+  <section class="section cta-section" id="contacto">
+    <div class="container">
+      <div class="cta-grid">
+        <div class="cta-content">
+          <span class="section-label" style="background: rgba(37,99,235,0.2); color: #93bbfd;">Empieza Hoy</span>
+          <h2>Lleva tu negocio al siguiente nivel</h2>
+          <p>Solicita tu demo gratuita y descubre como podemos ayudarte a automatizar, captar y convertir mas clientes.</p>
+          <ul class="cta-features">
+            <li>Demo personalizada sin compromiso</li>
+            <li>Configuracion inicial incluida</li>
+            <li>Soporte dedicado en espanol</li>
+            <li>Resultados desde la primera semana</li>
+          </ul>
+        </div>
+
+        <!-- GHL FORM CONTAINER -->
+        <!--
+          ==========================================================
+          INSTRUCCIONES PARA GOHIGHLEVEL:
+
+          Opcion 1 - Formulario nativo GHL:
+          Reemplaza el formulario HTML de abajo con el snippet
+          de formulario generado en GoHighLevel:
+          <iframe src="https://link.tudominio.com/widget/form/TU_FORM_ID"
+            style="width:100%;height:100%;border:none;"></iframe>
+
+          Opcion 2 - Mantener el formulario HTML:
+          Si prefieres usar este formulario, configura la accion
+          del form apuntando a tu webhook de GHL:
+          action="https://services.leadconnectorhq.com/hooks/TU_WEBHOOK_ID"
+
+          Los campos name= deben coincidir con los campos
+          personalizados de tu cuenta GHL:
+          - full_name  -> Nombre completo
+          - email      -> Correo electronico
+          - phone      -> Telefono
+          - message    -> Mensaje (campo personalizado)
+          ==========================================================
+        -->
+        <div class="ghl-form-wrapper">
+          <h3>Solicita tu Demo Gratis</h3>
+          <p class="form-sub">Completa el formulario y te contactamos en menos de 24h.</p>
+          <form method="POST" action="#">
+            <div class="form-group">
+              <label for="full_name">Nombre completo</label>
+              <input type="text" id="full_name" name="full_name" placeholder="Ej: Juan Perez" required>
+            </div>
+            <div class="form-group">
+              <label for="email">Correo electronico</label>
+              <input type="email" id="email" name="email" placeholder="juan@tuempresa.com" required>
+            </div>
+            <div class="form-group">
+              <label for="phone">Telefono</label>
+              <input type="tel" id="phone" name="phone" placeholder="+34 600 000 000">
+            </div>
+            <div class="form-group">
+              <label for="message">¿En que podemos ayudarte?</label>
+              <textarea id="message" name="message" placeholder="Cuentanos brevemente sobre tu negocio y objetivos..."></textarea>
+            </div>
+            <button type="submit" class="btn-submit">Solicitar Demo Gratuita</button>
+          </form>
+          <p class="form-note">&#128274; Tus datos estan seguros. No compartimos tu informacion con terceros.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== FOOTER ========== -->
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; 2026 TuMarca. Todos los derechos reservados.</p>
+      <ul class="footer-links">
+        <li><a href="#">Politica de Privacidad</a></li>
+        <li><a href="#">Terminos de Uso</a></li>
+        <li><a href="#">Contacto</a></li>
+      </ul>
+    </div>
+  </footer>
+
+</body>
+</html>
