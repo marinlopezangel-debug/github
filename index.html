@@ -3,1436 +3,503 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>TuMarca | Transforma Tu Negocio</title>
-  <style>
-    /* ===== RESET ===== */
-    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+  <title>Zeta Growth | Crecimiento rentable para startups y scale-ups</title>
+  <meta name="description" content="Agencia de growth marketing con modelo de éxito compartido. No pagamos por clics, pagamos por resultados. +550M€ generados para nuestros clientes.">
 
-    :root {
-      --bg: #050510;
-      --bg-2: #0a0a1a;
-      --bg-3: #0f0f24;
-      --surface: rgba(255, 255, 255, 0.04);
-      --surface-2: rgba(255, 255, 255, 0.07);
-      --border: rgba(255, 255, 255, 0.08);
-      --border-hover: rgba(255, 255, 255, 0.15);
-      --text: #e2e8f0;
-      --text-muted: #8892a4;
-      --text-dim: #5a6478;
-      --white: #ffffff;
-      --accent: #6366f1;
-      --accent-2: #818cf8;
-      --accent-glow: rgba(99, 102, 241, 0.25);
-      --cyan: #22d3ee;
-      --pink: #ec4899;
-      --green: #34d399;
-      --amber: #fbbf24;
-      --radius: 16px;
-      --radius-sm: 10px;
-      --transition: 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-    }
+  <!-- Open Graph -->
+  <meta property="og:title" content="Zeta Growth | Crecimiento sin quemar caja">
+  <meta property="og:description" content="Agencia de growth marketing con modelo de éxito compartido. Solo ganamos si tú ganas.">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="es_ES">
 
-    html { scroll-behavior: smooth; }
+  <!-- Canonical -->
+  <link rel="canonical" href="https://zetagrowth.com/">
 
-    body {
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Inter', Roboto, sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      line-height: 1.6;
-      overflow-x: hidden;
-      -webkit-font-smoothing: antialiased;
-    }
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="assets/images/logo-z.svg">
 
-    img { max-width: 100%; display: block; }
-    a { text-decoration: none; color: inherit; }
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
 
-    /* ===== SCROLL ANIMATIONS ===== */
-    .reveal {
-      opacity: 0;
-      transform: translateY(40px);
-      transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-    .reveal.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-    .reveal-delay-1 { transition-delay: 0.1s; }
-    .reveal-delay-2 { transition-delay: 0.2s; }
-    .reveal-delay-3 { transition-delay: 0.3s; }
-    .reveal-delay-4 { transition-delay: 0.4s; }
-    .reveal-delay-5 { transition-delay: 0.5s; }
+  <!-- Styles -->
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/sections.css">
+  <link rel="stylesheet" href="css/responsive.css">
 
-    /* ===== UTILITIES ===== */
-    .container { width: 100%; max-width: 1200px; margin: 0 auto; padding: 0 28px; }
-    .section { padding: 120px 0; position: relative; }
-    .text-center { text-align: center; }
-
-    .section-label {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      font-size: 0.75rem;
-      font-weight: 600;
-      letter-spacing: 3px;
-      text-transform: uppercase;
-      color: var(--accent-2);
-      border: 1px solid var(--border);
-      padding: 8px 20px;
-      border-radius: 100px;
-      margin-bottom: 20px;
-      background: var(--surface);
-      backdrop-filter: blur(10px);
-    }
-
-    .section-label::before {
-      content: '';
-      width: 6px; height: 6px;
-      border-radius: 50%;
-      background: var(--accent);
-      box-shadow: 0 0 10px var(--accent);
-    }
-
-    .section-title {
-      font-size: clamp(2rem, 5vw, 3.2rem);
-      font-weight: 800;
-      color: var(--white);
-      line-height: 1.1;
-      margin-bottom: 18px;
-      letter-spacing: -0.02em;
-    }
-
-    .section-subtitle {
-      font-size: 1.1rem;
-      color: var(--text-muted);
-      max-width: 560px;
-      margin-bottom: 56px;
-      line-height: 1.7;
-    }
-
-    .mx-auto { margin-left: auto; margin-right: auto; }
-
-    /* ===== GRADIENT MESH BG ===== */
-    .gradient-mesh {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      top: 0; left: 0;
-      overflow: hidden;
-      pointer-events: none;
-      z-index: 0;
-    }
-    .gradient-mesh .orb {
-      position: absolute;
-      border-radius: 50%;
-      filter: blur(100px);
-      opacity: 0.3;
-      animation: float 20s ease-in-out infinite;
-    }
-    .gradient-mesh .orb-1 {
-      width: 600px; height: 600px;
-      background: var(--accent);
-      top: -15%; right: -10%;
-      animation-delay: 0s;
-    }
-    .gradient-mesh .orb-2 {
-      width: 500px; height: 500px;
-      background: var(--pink);
-      bottom: -10%; left: -10%;
-      animation-delay: -7s;
-    }
-    .gradient-mesh .orb-3 {
-      width: 400px; height: 400px;
-      background: var(--cyan);
-      top: 40%; left: 50%;
-      animation-delay: -14s;
-    }
-
-    @keyframes float {
-      0%, 100% { transform: translate(0, 0) scale(1); }
-      25% { transform: translate(30px, -40px) scale(1.05); }
-      50% { transform: translate(-20px, 20px) scale(0.95); }
-      75% { transform: translate(15px, 30px) scale(1.02); }
-    }
-
-    /* ===== NOISE OVERLAY ===== */
-    body::after {
-      content: '';
-      position: fixed;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
-      pointer-events: none;
-      z-index: 9999;
-      opacity: 0.4;
-    }
-
-    /* ===== BUTTONS ===== */
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 14px 32px;
-      font-size: 0.95rem;
-      font-weight: 600;
-      border-radius: 12px;
-      border: none;
-      cursor: pointer;
-      transition: all var(--transition);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .btn-glow {
-      background: linear-gradient(135deg, var(--accent), #8b5cf6);
-      color: var(--white);
-      box-shadow: 0 0 30px var(--accent-glow), inset 0 1px 0 rgba(255,255,255,0.15);
-    }
-    .btn-glow:hover {
-      transform: translateY(-3px) scale(1.02);
-      box-shadow: 0 0 50px var(--accent-glow), 0 20px 40px rgba(99,102,241,0.2), inset 0 1px 0 rgba(255,255,255,0.15);
-    }
-    .btn-glow::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(135deg, transparent 40%, rgba(255,255,255,0.15) 50%, transparent 60%);
-      transform: translateX(-100%);
-      transition: transform 0.6s;
-    }
-    .btn-glow:hover::after { transform: translateX(100%); }
-
-    .btn-ghost {
-      background: var(--surface);
-      color: var(--text);
-      border: 1px solid var(--border);
-      backdrop-filter: blur(10px);
-    }
-    .btn-ghost:hover {
-      border-color: var(--border-hover);
-      background: var(--surface-2);
-      transform: translateY(-2px);
-    }
-
-    /* ===== HEADER ===== */
-    .header {
-      position: fixed;
-      top: 0; left: 0;
-      width: 100%;
-      z-index: 1000;
-      padding: 0 28px;
-      transition: all var(--transition);
-    }
-    .header.scrolled {
-      background: rgba(5, 5, 16, 0.8);
-      backdrop-filter: blur(20px) saturate(1.5);
-      border-bottom: 1px solid var(--border);
-    }
-    .header-inner {
-      max-width: 1200px;
-      margin: 0 auto;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      height: 76px;
-    }
-    .logo {
-      font-size: 1.4rem;
-      font-weight: 800;
-      color: var(--white);
-      letter-spacing: -0.02em;
-    }
-    .logo span {
-      background: linear-gradient(135deg, var(--accent), var(--cyan));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 36px;
-      list-style: none;
-    }
-    .nav-links a {
-      font-size: 0.88rem;
-      font-weight: 500;
-      color: var(--text-muted);
-      transition: color var(--transition);
-      position: relative;
-    }
-    .nav-links a::after {
-      content: '';
-      position: absolute;
-      bottom: -4px; left: 0;
-      width: 0; height: 2px;
-      background: var(--accent);
-      transition: width var(--transition);
-      border-radius: 2px;
-    }
-    .nav-links a:hover { color: var(--white); }
-    .nav-links a:hover::after { width: 100%; }
-
-    .nav-cta {
-      padding: 9px 22px !important;
-      border-radius: 10px;
-      background: linear-gradient(135deg, var(--accent), #8b5cf6) !important;
-      color: var(--white) !important;
-      font-weight: 600 !important;
-      box-shadow: 0 0 20px var(--accent-glow);
-      transition: all var(--transition) !important;
-    }
-    .nav-cta::after { display: none !important; }
-    .nav-cta:hover { transform: translateY(-2px); box-shadow: 0 0 30px var(--accent-glow); }
-
-    .menu-toggle {
-      display: none;
-      flex-direction: column;
-      gap: 5px;
-      cursor: pointer;
-      background: none;
-      border: none;
-      padding: 4px;
-    }
-    .menu-toggle span {
-      display: block;
-      width: 22px;
-      height: 2px;
-      background: var(--text);
-      border-radius: 2px;
-      transition: var(--transition);
-    }
-
-    /* ===== HERO ===== */
-    .hero {
-      padding: 180px 0 120px;
-      position: relative;
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      overflow: hidden;
-    }
-
-    .hero-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 80px;
-      align-items: center;
-      position: relative;
-      z-index: 1;
-    }
-
-    .hero-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 100px;
-      padding: 8px 20px;
-      font-size: 0.82rem;
-      font-weight: 600;
-      color: var(--text-muted);
-      margin-bottom: 28px;
-      backdrop-filter: blur(10px);
-    }
-    .hero-badge .dot {
-      width: 8px; height: 8px;
-      background: var(--green);
-      border-radius: 50%;
-      box-shadow: 0 0 10px var(--green);
-      animation: pulse 2s infinite;
-    }
-    @keyframes pulse {
-      0%, 100% { opacity: 1; box-shadow: 0 0 10px var(--green); }
-      50% { opacity: 0.5; box-shadow: 0 0 20px var(--green); }
-    }
-
-    .hero h1 {
-      font-size: clamp(2.5rem, 5.5vw, 4rem);
-      font-weight: 800;
-      color: var(--white);
-      line-height: 1.05;
-      margin-bottom: 24px;
-      letter-spacing: -0.03em;
-    }
-    .hero h1 .highlight {
-      background: linear-gradient(135deg, var(--accent-2), var(--cyan), var(--pink));
-      background-size: 200% 200%;
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      animation: gradient-shift 5s ease infinite;
-    }
-    @keyframes gradient-shift {
-      0%, 100% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-    }
-
-    .hero p {
-      font-size: 1.15rem;
-      color: var(--text-muted);
-      margin-bottom: 40px;
-      max-width: 460px;
-      line-height: 1.75;
-    }
-
-    .hero-actions {
-      display: flex;
-      gap: 14px;
-      align-items: center;
-      flex-wrap: wrap;
-    }
-
-    .hero-stats {
-      display: flex;
-      gap: 44px;
-      margin-top: 56px;
-      padding-top: 36px;
-      border-top: 1px solid var(--border);
-    }
-    .hero-stat strong {
-      display: block;
-      font-size: 1.8rem;
-      font-weight: 800;
-      color: var(--white);
-      letter-spacing: -0.02em;
-    }
-    .hero-stat span {
-      font-size: 0.82rem;
-      color: var(--text-dim);
-      font-weight: 500;
-    }
-
-    /* Hero 3D card */
-    .hero-visual {
-      perspective: 1200px;
-      display: flex;
-      justify-content: center;
-    }
-    .hero-card-3d {
-      transform-style: preserve-3d;
-      transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
-      will-change: transform;
-    }
-    .hero-card {
-      background: var(--surface);
-      backdrop-filter: blur(24px) saturate(1.4);
-      border: 1px solid var(--border);
-      border-radius: 24px;
-      padding: 36px;
-      width: 100%;
-      max-width: 460px;
-      position: relative;
-      overflow: hidden;
-    }
-    .hero-card::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 0;
-      width: 100%; height: 1px;
-      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.12), transparent);
-    }
-    .hero-card::after {
-      content: '';
-      position: absolute;
-      top: -50%; left: -50%;
-      width: 200%; height: 200%;
-      background: radial-gradient(circle at 30% 30%, rgba(99,102,241,0.08), transparent 60%);
-      pointer-events: none;
-    }
-    .hero-card-header {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      margin-bottom: 28px;
-      position: relative;
-      z-index: 1;
-    }
-    .hero-card-icon {
-      width: 48px; height: 48px;
-      border-radius: 14px;
-      background: linear-gradient(135deg, var(--accent), #8b5cf6);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.3rem;
-      box-shadow: 0 0 20px var(--accent-glow);
-    }
-    .hero-card-title {
-      font-weight: 700;
-      color: var(--white);
-      font-size: 1rem;
-    }
-    .hero-card-sub {
-      font-size: 0.8rem;
-      color: var(--text-dim);
-    }
-    .hero-card-bar {
-      height: 6px;
-      background: rgba(255,255,255,0.06);
-      border-radius: 100px;
-      margin-bottom: 10px;
-      overflow: hidden;
-      position: relative;
-      z-index: 1;
-    }
-    .hero-card-bar-fill {
-      height: 100%;
-      border-radius: 100px;
-      background: linear-gradient(90deg, var(--accent), var(--cyan));
-      box-shadow: 0 0 12px var(--accent-glow);
-      transition: width 1.5s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-    .bar-label {
-      font-size: 0.78rem;
-      color: var(--text-dim);
-      margin-bottom: 6px;
-      position: relative;
-      z-index: 1;
-    }
-    .hero-card-metrics {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 14px;
-      margin-top: 24px;
-      position: relative;
-      z-index: 1;
-    }
-    .metric-box {
-      background: rgba(255,255,255,0.03);
-      border: 1px solid var(--border);
-      border-radius: 14px;
-      padding: 18px;
-      text-align: center;
-      transition: all var(--transition);
-    }
-    .metric-box:hover {
-      border-color: var(--accent);
-      background: rgba(99,102,241,0.05);
-      box-shadow: 0 0 20px rgba(99,102,241,0.1);
-    }
-    .metric-box strong {
-      display: block;
-      font-size: 1.5rem;
-      font-weight: 800;
-      color: var(--white);
-      letter-spacing: -0.02em;
-    }
-    .metric-box span {
-      font-size: 0.75rem;
-      color: var(--text-dim);
-    }
-
-    /* ===== GRID LINE DECORATION ===== */
-    .grid-bg {
-      position: absolute;
-      inset: 0;
-      background-image:
-        linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
-      background-size: 60px 60px;
-      mask-image: radial-gradient(ellipse 60% 50% at 50% 50%, black, transparent);
-      pointer-events: none;
-    }
-
-    /* ===== BENEFITS ===== */
-    .benefits { background: var(--bg); }
-    .benefits-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 20px;
-    }
-    .benefit-card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 20px;
-      padding: 36px 28px;
-      transition: all var(--transition);
-      position: relative;
-      overflow: hidden;
-      cursor: default;
-    }
-    .benefit-card::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      background: radial-gradient(circle at 50% 0%, rgba(99,102,241,0.08), transparent 60%);
-      opacity: 0;
-      transition: opacity var(--transition);
-    }
-    .benefit-card:hover::before { opacity: 1; }
-    .benefit-card:hover {
-      border-color: var(--border-hover);
-      transform: translateY(-6px);
-      box-shadow: 0 24px 48px rgba(0,0,0,0.3);
-    }
-    .benefit-icon {
-      width: 52px; height: 52px;
-      border-radius: 14px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.4rem;
-      margin-bottom: 20px;
-      position: relative;
-      z-index: 1;
-    }
-    .benefit-icon.i1 { background: rgba(99,102,241,0.12); }
-    .benefit-icon.i2 { background: rgba(34,211,238,0.12); }
-    .benefit-icon.i3 { background: rgba(236,72,153,0.12); }
-    .benefit-icon.i4 { background: rgba(251,191,36,0.12); }
-    .benefit-icon.i5 { background: rgba(52,211,153,0.12); }
-    .benefit-icon.i6 { background: rgba(168,85,247,0.12); }
-    .benefit-card h3 {
-      font-size: 1.1rem;
-      font-weight: 700;
-      color: var(--white);
-      margin-bottom: 10px;
-      position: relative;
-      z-index: 1;
-    }
-    .benefit-card p {
-      font-size: 0.9rem;
-      color: var(--text-muted);
-      line-height: 1.65;
-      position: relative;
-      z-index: 1;
-    }
-
-    /* ===== SOCIAL PROOF ===== */
-    .social-proof {
-      background: var(--bg-2);
-      border-top: 1px solid var(--border);
-      border-bottom: 1px solid var(--border);
-    }
-    .testimonials-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 20px;
-    }
-    .testimonial-card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 20px;
-      padding: 32px;
-      transition: all var(--transition);
-      position: relative;
-    }
-    .testimonial-card::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 0;
-      width: 100%; height: 1px;
-      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.08), transparent);
-    }
-    .testimonial-card:hover {
-      border-color: var(--border-hover);
-      transform: translateY(-4px);
-      box-shadow: 0 20px 40px rgba(0,0,0,0.25);
-    }
-    .testimonial-stars {
-      font-size: 0.95rem;
-      margin-bottom: 18px;
-      letter-spacing: 3px;
-      color: var(--amber);
-    }
-    .testimonial-card blockquote {
-      font-size: 0.92rem;
-      color: var(--text);
-      line-height: 1.75;
-      margin-bottom: 24px;
-      font-style: normal;
-    }
-    .testimonial-author {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-    .testimonial-avatar {
-      width: 40px; height: 40px;
-      border-radius: 12px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: 700;
-      font-size: 0.82rem;
-      color: var(--white);
-    }
-    .testimonial-avatar.av1 { background: linear-gradient(135deg, var(--accent), #8b5cf6); }
-    .testimonial-avatar.av2 { background: linear-gradient(135deg, var(--cyan), #06b6d4); }
-    .testimonial-avatar.av3 { background: linear-gradient(135deg, var(--pink), #db2777); }
-    .testimonial-name {
-      font-weight: 700;
-      color: var(--white);
-      font-size: 0.88rem;
-    }
-    .testimonial-role {
-      font-size: 0.78rem;
-      color: var(--text-dim);
-    }
-
-    .trust-bar {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 56px;
-      margin-top: 64px;
-      padding-top: 48px;
-      border-top: 1px solid var(--border);
-      flex-wrap: wrap;
-    }
-    .trust-item { text-align: center; }
-    .trust-item strong {
-      display: block;
-      font-size: 2.2rem;
-      font-weight: 800;
-      letter-spacing: -0.02em;
-      background: linear-gradient(135deg, var(--white), var(--text-muted));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-    .trust-item span {
-      font-size: 0.82rem;
-      color: var(--text-dim);
-    }
-
-    /* ===== HOW IT WORKS ===== */
-    .how-it-works { background: var(--bg); }
-    .steps-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 24px;
-      position: relative;
-    }
-    .steps-grid::before {
-      content: '';
-      position: absolute;
-      top: 56px;
-      left: 16%;
-      right: 16%;
-      height: 2px;
-      background: linear-gradient(90deg, transparent, var(--accent), transparent);
-      opacity: 0.3;
-    }
-    .step-card {
-      text-align: center;
-      position: relative;
-      padding: 0 16px;
-    }
-    .step-number {
-      width: 72px; height: 72px;
-      border-radius: 22px;
-      background: var(--surface);
-      border: 1px solid var(--border);
-      color: var(--accent-2);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.6rem;
-      font-weight: 800;
-      margin: 0 auto 28px;
-      position: relative;
-      z-index: 1;
-      transition: all var(--transition);
-    }
-    .step-card:hover .step-number {
-      background: linear-gradient(135deg, var(--accent), #8b5cf6);
-      color: var(--white);
-      border-color: transparent;
-      box-shadow: 0 0 40px var(--accent-glow);
-      transform: scale(1.08) rotate(-3deg);
-    }
-    .step-card h3 {
-      font-size: 1.1rem;
-      font-weight: 700;
-      color: var(--white);
-      margin-bottom: 10px;
-    }
-    .step-card p {
-      font-size: 0.9rem;
-      color: var(--text-muted);
-      line-height: 1.65;
-      max-width: 280px;
-      margin: 0 auto;
-    }
-
-    /* ===== CTA / FORM ===== */
-    .cta-section {
-      background: var(--bg-2);
-      border-top: 1px solid var(--border);
-      position: relative;
-      overflow: hidden;
-    }
-    .cta-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 72px;
-      align-items: center;
-      position: relative;
-      z-index: 1;
-    }
-    .cta-content h2 {
-      font-size: clamp(2rem, 4vw, 2.8rem);
-      font-weight: 800;
-      color: var(--white);
-      line-height: 1.1;
-      margin-bottom: 18px;
-      letter-spacing: -0.02em;
-    }
-    .cta-content p {
-      font-size: 1.05rem;
-      color: var(--text-muted);
-      margin-bottom: 36px;
-      line-height: 1.7;
-    }
-    .cta-features { list-style: none; }
-    .cta-features li {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      color: var(--text-muted);
-      font-size: 0.92rem;
-      margin-bottom: 14px;
-    }
-    .cta-features li::before {
-      content: '';
-      width: 28px; height: 28px;
-      border-radius: 8px;
-      background: rgba(52,211,153,0.1);
-      border: 1px solid rgba(52,211,153,0.2);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-      background-image: url("data:image/svg+xml,%3Csvg width='14' height='14' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M20 6L9 17L4 12' stroke='%2334d399' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
-      background-repeat: no-repeat;
-      background-position: center;
-    }
-
-    /* GHL Form */
-    .ghl-form-wrapper {
-      background: var(--surface);
-      backdrop-filter: blur(24px);
-      border: 1px solid var(--border);
-      border-radius: 24px;
-      padding: 40px;
-      position: relative;
-      overflow: hidden;
-    }
-    .ghl-form-wrapper::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 0;
-      width: 100%; height: 1px;
-      background: linear-gradient(90deg, transparent, var(--accent), transparent);
-    }
-    .ghl-form-wrapper h3 {
-      font-size: 1.3rem;
-      font-weight: 700;
-      color: var(--white);
-      margin-bottom: 6px;
-      text-align: center;
-    }
-    .ghl-form-wrapper .form-sub {
-      font-size: 0.88rem;
-      color: var(--text-dim);
-      text-align: center;
-      margin-bottom: 28px;
-    }
-    .ghl-form-wrapper .form-group { margin-bottom: 16px; }
-    .ghl-form-wrapper label {
-      display: block;
-      font-size: 0.82rem;
-      font-weight: 600;
-      color: var(--text-muted);
-      margin-bottom: 6px;
-    }
-    .ghl-form-wrapper input,
-    .ghl-form-wrapper select,
-    .ghl-form-wrapper textarea {
-      width: 100%;
-      padding: 13px 16px;
-      border: 1px solid var(--border);
-      border-radius: var(--radius-sm);
-      font-size: 0.92rem;
-      font-family: inherit;
-      color: var(--white);
-      background: rgba(255,255,255,0.03);
-      transition: all var(--transition);
-    }
-    .ghl-form-wrapper input::placeholder,
-    .ghl-form-wrapper textarea::placeholder {
-      color: var(--text-dim);
-    }
-    .ghl-form-wrapper input:focus,
-    .ghl-form-wrapper select:focus,
-    .ghl-form-wrapper textarea:focus {
-      outline: none;
-      border-color: var(--accent);
-      box-shadow: 0 0 0 3px var(--accent-glow);
-      background: rgba(99,102,241,0.04);
-    }
-    .ghl-form-wrapper textarea {
-      resize: vertical;
-      min-height: 80px;
-    }
-    .ghl-form-wrapper .btn-submit {
-      width: 100%;
-      padding: 14px;
-      font-size: 1rem;
-      font-weight: 700;
-      border: none;
-      border-radius: var(--radius-sm);
-      background: linear-gradient(135deg, var(--accent), #8b5cf6);
-      color: var(--white);
-      cursor: pointer;
-      transition: all var(--transition);
-      margin-top: 8px;
-      box-shadow: 0 0 30px var(--accent-glow);
-      position: relative;
-      overflow: hidden;
-    }
-    .ghl-form-wrapper .btn-submit:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 0 50px var(--accent-glow), 0 16px 32px rgba(99,102,241,0.25);
-    }
-    .form-note {
-      font-size: 0.76rem;
-      color: var(--text-dim);
-      text-align: center;
-      margin-top: 16px;
-    }
-
-    /* ===== TEAM / ASI SOMOS ===== */
-    .team-section {
-      background: var(--bg);
-      border-top: 1px solid var(--border);
-      padding: 120px 0;
-      position: relative;
-      overflow: hidden;
-    }
-    .team-section .gradient-mesh .orb-1 {
-      background: var(--pink);
-      width: 500px; height: 500px;
-      top: -20%; left: -10%;
-    }
-    .team-section .gradient-mesh .orb-2 {
-      background: var(--accent);
-      width: 400px; height: 400px;
-      bottom: -20%; right: -10%;
-    }
-    .team-title {
-      font-size: clamp(2.5rem, 6vw, 5rem);
-      font-weight: 900;
-      text-align: center;
-      letter-spacing: -0.03em;
-      margin-bottom: 16px;
-      background: linear-gradient(135deg, var(--white), var(--accent-2), var(--cyan));
-      background-size: 200% 200%;
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      animation: gradient-shift 5s ease infinite;
-      position: relative;
-      z-index: 1;
-    }
-    .team-subtitle {
-      text-align: center;
-      font-size: 1.1rem;
-      color: var(--text-muted);
-      margin-bottom: 56px;
-      position: relative;
-      z-index: 1;
-    }
-    .team-image-wrapper {
-      position: relative;
-      z-index: 1;
-      max-width: 900px;
-      margin: 0 auto;
-      border-radius: 24px;
-      overflow: hidden;
-      border: 1px solid var(--border);
-      box-shadow: 0 32px 64px rgba(0,0,0,0.4), 0 0 80px rgba(99,102,241,0.1);
-      transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-    .team-image-wrapper:hover {
-      transform: scale(1.02) translateY(-4px);
-      box-shadow: 0 40px 80px rgba(0,0,0,0.5), 0 0 120px rgba(99,102,241,0.15);
-    }
-    .team-image-wrapper img {
-      width: 100%;
-      display: block;
-    }
-
-    /* ===== FOOTER ===== */
-    .footer {
-      background: var(--bg);
-      border-top: 1px solid var(--border);
-      padding: 48px 0;
-      text-align: center;
-    }
-    .footer p {
-      color: var(--text-dim);
-      font-size: 0.82rem;
-    }
-    .footer-links {
-      display: flex;
-      justify-content: center;
-      gap: 28px;
-      margin-top: 16px;
-      list-style: none;
-    }
-    .footer-links a {
-      color: var(--text-dim);
-      font-size: 0.82rem;
-      transition: color var(--transition);
-    }
-    .footer-links a:hover { color: var(--accent-2); }
-
-    /* ===== RESPONSIVE ===== */
-    @media (max-width: 1024px) {
-      .hero h1 { font-size: 2.8rem; }
-      .section-title { font-size: 2.2rem; }
-      .cta-content h2 { font-size: 2.2rem; }
-    }
-
-    @media (max-width: 768px) {
-      .menu-toggle { display: flex; }
-      .nav-links {
-        display: none;
-        position: absolute;
-        top: 76px; left: 0; right: 0;
-        background: rgba(5,5,16,0.95);
-        backdrop-filter: blur(20px);
-        flex-direction: column;
-        padding: 28px;
-        gap: 18px;
-        border-bottom: 1px solid var(--border);
-      }
-      .nav-links.active { display: flex; }
-      .nav-links a::after { display: none; }
-
-      .hero { padding: 140px 0 80px; min-height: auto; }
-      .hero-grid {
-        grid-template-columns: 1fr;
-        gap: 48px;
-      }
-      .hero h1 { font-size: 2.4rem; }
-      .hero-stats { gap: 28px; }
-      .hero-visual { order: -1; }
-      .hero-card { max-width: 100%; }
-
-      .benefits-grid,
-      .testimonials-grid,
-      .steps-grid {
-        grid-template-columns: 1fr;
-        gap: 16px;
-      }
-      .steps-grid::before { display: none; }
-
-      .cta-grid {
-        grid-template-columns: 1fr;
-        gap: 48px;
-      }
-
-      .trust-bar { gap: 28px; }
-      .team-title { font-size: 2.5rem; }
-    }
-
-    @media (max-width: 480px) {
-      .section { padding: 80px 0; }
-      .hero h1 { font-size: 2rem; }
-      .hero p { font-size: 1rem; }
-      .hero-actions { flex-direction: column; align-items: stretch; }
-      .hero-stats { flex-direction: column; gap: 20px; }
-      .ghl-form-wrapper { padding: 28px 20px; }
-      .team-section { padding: 80px 0; }
-      .team-title { font-size: 2rem; }
-    }
-  </style>
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Zeta Growth",
+    "description": "Agencia de growth marketing con modelo de éxito compartido",
+    "url": "https://zetagrowth.com",
+    "logo": "https://zetagrowth.com/assets/images/logo-z.svg",
+    "sameAs": [
+      "https://linkedin.com/company/zetagrowth",
+      "https://twitter.com/zetagrowth"
+    ],
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "contactType": "sales",
+      "email": "hola@zetagrowth.com"
+    }
+  }
+  </script>
 </head>
 <body>
 
-  <!-- ===== HEADER ===== -->
-  <header class="header" id="header">
-    <div class="header-inner">
-      <a href="#" class="logo">Tu<span>Marca</span></a>
-      <nav>
-        <button class="menu-toggle" onclick="document.querySelector('.nav-links').classList.toggle('active')" aria-label="Menu">
-          <span></span><span></span><span></span>
-        </button>
-        <ul class="nav-links">
-          <li><a href="#beneficios">Beneficios</a></li>
-          <li><a href="#testimonios">Testimonios</a></li>
-          <li><a href="#como-funciona">Proceso</a></li>
-          <li><a href="#contacto" class="nav-cta">Empezar Ahora</a></li>
-        </ul>
-      </nav>
-    </div>
-  </header>
+  <!-- ==================== NAVBAR ==================== -->
+  <nav class="navbar" role="navigation" aria-label="Navegación principal">
+    <div class="container navbar__inner">
+      <a href="#" class="navbar__logo" aria-label="Zeta Growth - Inicio">
+        <span class="navbar__logo-icon">Z</span>
+        <span>Zeta Growth</span>
+      </a>
 
-  <!-- ===== HERO ===== -->
-  <section class="hero">
-    <div class="gradient-mesh">
-      <div class="orb orb-1"></div>
-      <div class="orb orb-2"></div>
-      <div class="orb orb-3"></div>
+      <div class="navbar__menu" role="menubar">
+        <a href="#proceso" role="menuitem">Proceso</a>
+        <a href="#resultados" role="menuitem">Resultados</a>
+        <a href="#modelo" role="menuitem">Modelo</a>
+        <a href="#contacto" role="menuitem">Pricing</a>
+      </div>
+
+      <div class="navbar__cta">
+        <a href="#contacto" class="btn btn-primary">Agendar llamada</a>
+      </div>
+
+      <button class="navbar__hamburger" aria-label="Abrir menú" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
     </div>
-    <div class="grid-bg"></div>
-    <div class="container">
-      <div class="hero-grid">
-        <div class="hero-content">
-          <div class="hero-badge reveal">
-            <span class="dot"></span>
-            Plazas limitadas disponibles
+
+    <div class="navbar__mobile-menu" role="menu" aria-hidden="true">
+      <a href="#proceso" role="menuitem">Proceso</a>
+      <a href="#resultados" role="menuitem">Resultados</a>
+      <a href="#modelo" role="menuitem">Modelo</a>
+      <a href="#contacto" role="menuitem">Pricing</a>
+      <a href="#contacto" class="btn btn-primary">Agendar llamada</a>
+    </div>
+  </nav>
+
+  <main>
+
+    <!-- ==================== HERO ==================== -->
+    <section class="hero" id="inicio">
+      <div class="container">
+        <div class="hero__badge fade-in-up">
+          <span class="badge badge-pulse">+550M€ generados para nuestros clientes</span>
+        </div>
+
+        <h1 class="hero__title fade-in-up">No pagamos por clics.<br>Pagamos por resultados.</h1>
+
+        <p class="hero__subtitle fade-in-up">Crecimiento rentable para startups y scale-ups que quieren escalar sin quemar caja.</p>
+
+        <div class="hero__buttons fade-in-up">
+          <a href="#contacto" class="btn btn-primary">Agendar llamada de diagnóstico</a>
+          <a href="#resultados" class="btn btn-secondary">Ver casos de éxito</a>
+        </div>
+
+        <div class="orbital fade-in-up">
+          <div class="orbital__rings">
+            <div class="orbital__ring orbital__ring--1"></div>
+            <div class="orbital__ring orbital__ring--2"></div>
+            <div class="orbital__ring orbital__ring--3"></div>
           </div>
-          <h1 class="reveal reveal-delay-1">Impulsa tu negocio con <span class="highlight">resultados reales</span></h1>
-          <p class="reveal reveal-delay-2">Automatiza procesos, capta mas clientes y escala tu empresa con la plataforma todo-en-uno que ya usan miles de negocios.</p>
-          <div class="hero-actions reveal reveal-delay-3">
-            <a href="#contacto" class="btn btn-glow">Solicitar Demo Gratis</a>
-            <a href="#como-funciona" class="btn btn-ghost">Ver como funciona &rarr;</a>
+          <div class="orbital__center">
+            <span class="orbital__center-text">Z</span>
           </div>
-          <div class="hero-stats reveal reveal-delay-4">
-            <div class="hero-stat">
-              <strong>+2,500</strong>
-              <span>Clientes activos</span>
-            </div>
-            <div class="hero-stat">
-              <strong>98%</strong>
-              <span>Satisfaccion</span>
-            </div>
-            <div class="hero-stat">
-              <strong>3x</strong>
-              <span>Mas conversiones</span>
-            </div>
+          <div class="orbital__metrics">
+            <span class="orbital__metric orbital__metric--1">-32% CAC</span>
+            <span class="orbital__metric orbital__metric--2">2x crecimiento</span>
+            <span class="orbital__metric orbital__metric--3">Top 1000</span>
           </div>
         </div>
-        <div class="hero-visual reveal reveal-delay-2">
-          <div class="hero-card-3d" id="heroCard">
-            <div class="hero-card">
-              <div class="hero-card-header">
-                <div class="hero-card-icon">&#9889;</div>
-                <div>
-                  <div class="hero-card-title">Panel de Rendimiento</div>
-                  <div class="hero-card-sub">Actualizado en tiempo real</div>
-                </div>
+      </div>
+    </section>
+
+    <!-- ==================== PROBLEMS ==================== -->
+    <section class="problems" id="problemas">
+      <div class="container">
+        <h2 class="section-title fade-in-up">Por qué las agencias tradicionales<br>te están haciendo perder dinero</h2>
+
+        <div class="problems__grid">
+
+          <div class="card problems__card fade-in-up">
+            <div class="icon-circle" aria-hidden="true">
+              <span style="filter: brightness(0) invert(1);">⏳</span>
+            </div>
+            <span class="badge">Problema #1</span>
+            <h3 class="problems__card-title">Cobran por horas, no por resultados</h3>
+            <p class="problems__card-text">Facturas que crecen, métricas que no. Las agencias tradicionales optimizan para horas facturables, no para tu EBITDA.</p>
+          </div>
+
+          <div class="card problems__card fade-in-up">
+            <div class="icon-circle" aria-hidden="true">
+              <span style="filter: brightness(0) invert(1);">📊</span>
+            </div>
+            <span class="badge">Problema #2</span>
+            <h3 class="problems__card-title">Vanity metrics que no mueven la aguja</h3>
+            <p class="problems__card-text">Impresiones, alcance, engagement. Todo muy bonito, pero tu cuenta bancaria sigue igual. Necesitas leads cualificados y revenue.</p>
+          </div>
+
+          <div class="card problems__card fade-in-up">
+            <div class="icon-circle" aria-hidden="true">
+              <span style="filter: brightness(0) invert(1);">🔄</span>
+            </div>
+            <span class="badge">Problema #3</span>
+            <h3 class="problems__card-title">Contratos largos que te atan</h3>
+            <p class="problems__card-text">Mínimo 6-12 meses de permanencia. Si no funciona, estás atrapado. Nosotros trabajamos mes a mes: resultados o nos vamos.</p>
+          </div>
+
+        </div>
+
+        <div class="problems__cta fade-in-up">
+          <a href="#proceso" class="btn btn-text">Descubre nuestra metodología →</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== PROCESS / METHODOLOGY ==================== -->
+    <section class="process" id="proceso">
+      <div class="container">
+        <h2 class="section-title fade-in-up">Cómo te ayudamos a crecer<br>sin quemar caja</h2>
+
+        <div class="timeline fade-in-up">
+
+          <!-- Step 1 -->
+          <div class="timeline__step">
+            <div class="timeline__step-header">
+              <div class="icon-circle" aria-hidden="true">
+                <span style="filter: brightness(0) invert(1);">🔍</span>
               </div>
-              <div class="bar-label">Tasa de conversion &mdash; 78%</div>
-              <div class="hero-card-bar">
-                <div class="hero-card-bar-fill" style="width: 78%"></div>
+              <span class="badge">Semana 0</span>
+            </div>
+            <h3 class="timeline__step-title">Auditoría gratuita</h3>
+            <ul class="timeline__step-list">
+              <li>Analizamos tu funnel completo</li>
+              <li>Identificamos fugas de conversión</li>
+              <li>Calculamos tu potencial real</li>
+            </ul>
+            <span class="timeline__deliverable">Report de 30+ métricas críticas</span>
+          </div>
+
+          <div class="timeline__connector" aria-hidden="true"></div>
+
+          <!-- Step 2 -->
+          <div class="timeline__step">
+            <div class="timeline__step-header">
+              <div class="icon-circle" aria-hidden="true">
+                <span style="filter: brightness(0) invert(1);">🎯</span>
               </div>
-              <div class="bar-label">Retencion de clientes &mdash; 92%</div>
-              <div class="hero-card-bar">
-                <div class="hero-card-bar-fill" style="width: 92%; background: linear-gradient(90deg, var(--green), var(--cyan));"></div>
+              <span class="badge">Semana 1-2</span>
+            </div>
+            <h3 class="timeline__step-title">Estrategia custom</h3>
+            <ul class="timeline__step-list">
+              <li>Definimos KPIs norte</li>
+              <li>Plan de experimentación</li>
+              <li>Quick wins + long-term bets</li>
+            </ul>
+            <span class="timeline__deliverable">Roadmap 90 días</span>
+          </div>
+
+          <div class="timeline__connector" aria-hidden="true"></div>
+
+          <!-- Step 3 -->
+          <div class="timeline__step">
+            <div class="timeline__step-header">
+              <div class="icon-circle" aria-hidden="true">
+                <span style="filter: brightness(0) invert(1);">⚡</span>
               </div>
-              <div class="hero-card-metrics">
-                <div class="metric-box">
-                  <strong>$48K</strong>
-                  <span>Ingresos / mes</span>
-                </div>
-                <div class="metric-box">
-                  <strong>1,247</strong>
-                  <span>Leads captados</span>
-                </div>
+              <span class="badge">Mes 1-3</span>
+            </div>
+            <h3 class="timeline__step-title">Ejecución técnica</h3>
+            <ul class="timeline__step-list">
+              <li>Implementación de experimentos</li>
+              <li>Optimización continua</li>
+              <li>A/B testing científico</li>
+            </ul>
+            <span class="timeline__deliverable">Dashboard en vivo</span>
+          </div>
+
+          <div class="timeline__connector" aria-hidden="true"></div>
+
+          <!-- Step 4 -->
+          <div class="timeline__step">
+            <div class="timeline__step-header">
+              <div class="icon-circle" aria-hidden="true">
+                <span style="filter: brightness(0) invert(1);">📈</span>
+              </div>
+              <span class="badge">Mes 3+</span>
+            </div>
+            <h3 class="timeline__step-title">Escala eficiente</h3>
+            <ul class="timeline__step-list">
+              <li>Duplicamos lo que funciona</li>
+              <li>Eliminamos desperdicios</li>
+              <li>Automatización</li>
+            </ul>
+            <span class="timeline__deliverable">Crecimiento sostenible</span>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== MODEL ==================== -->
+    <section class="model" id="modelo">
+      <div class="container">
+        <h2 class="section-title fade-in-up">Por qué nuestro modelo te conviene<br>(y nos obliga a dar resultados)</h2>
+
+        <div class="model__grid">
+
+          <div class="card model__card fade-in-up">
+            <div class="model__card-header">
+              <div class="icon-circle" aria-hidden="true">
+                <span style="filter: brightness(0) invert(1);">⚡</span>
+              </div>
+            </div>
+            <div class="model__card-badge">
+              <span class="badge">Eficiencia</span>
+            </div>
+            <h3 class="model__card-subtitle">que impulsa crecimiento</h3>
+            <div class="divider"></div>
+            <ul class="model__card-bullets">
+              <li>Maximizamos cada recurso para escalar con precisión, sin desperdicios, desde el modelo startup.</li>
+              <li>Nuestro modelo es claro: solo ganamos si tú ganas.</li>
+            </ul>
+            <div class="flow-diagram">
+              <div class="flow-node">
+                <div class="flow-node__circle">Z</div>
+              </div>
+              <div class="flow-connector">
+                <div class="flow-connector__line"></div>
+                <div class="flow-connector__icon">€</div>
+              </div>
+              <div class="flow-node">
+                <div class="flow-node__circle">Cliente</div>
               </div>
             </div>
           </div>
-        </div>
-      </div>
-    </div>
-  </section>
 
-  <!-- ===== BENEFITS ===== -->
-  <section class="section benefits" id="beneficios">
-    <div class="grid-bg"></div>
-    <div class="container">
-      <div class="text-center">
-        <span class="section-label reveal">Beneficios</span>
-        <h2 class="section-title reveal reveal-delay-1">Todo lo que necesitas<br>para crecer</h2>
-        <p class="section-subtitle mx-auto reveal reveal-delay-2">Herramientas integradas que trabajan juntas para que tu negocio funcione de forma automatica.</p>
-      </div>
-      <div class="benefits-grid">
-        <div class="benefit-card reveal">
-          <div class="benefit-icon i1">&#128640;</div>
-          <h3>Captacion Automatica</h3>
-          <p>Embudos de venta, landing pages y formularios que convierten visitantes en clientes las 24 horas.</p>
-        </div>
-        <div class="benefit-card reveal reveal-delay-1">
-          <div class="benefit-icon i2">&#128172;</div>
-          <h3>CRM Inteligente</h3>
-          <p>Gestiona todos tus contactos, oportunidades y seguimientos desde un solo lugar centralizado.</p>
-        </div>
-        <div class="benefit-card reveal reveal-delay-2">
-          <div class="benefit-icon i3">&#128197;</div>
-          <h3>Agenda y Citas</h3>
-          <p>Sistema de reservas automatizado que elimina las idas y venidas para programar reuniones.</p>
-        </div>
-        <div class="benefit-card reveal reveal-delay-1">
-          <div class="benefit-icon i4">&#128231;</div>
-          <h3>Email y SMS Marketing</h3>
-          <p>Campanas personalizadas con automatizaciones que nutren a tus leads hasta la conversion.</p>
-        </div>
-        <div class="benefit-card reveal reveal-delay-2">
-          <div class="benefit-icon i5">&#128202;</div>
-          <h3>Reportes Detallados</h3>
-          <p>Metricas claras y dashboards en tiempo real para tomar decisiones basadas en datos.</p>
-        </div>
-        <div class="benefit-card reveal reveal-delay-3">
-          <div class="benefit-icon i6">&#9889;</div>
-          <h3>Automatizaciones</h3>
-          <p>Flujos de trabajo que eliminan tareas repetitivas y liberan tu tiempo para lo importante.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== SOCIAL PROOF ===== -->
-  <section class="section social-proof" id="testimonios">
-    <div class="container">
-      <div class="text-center">
-        <span class="section-label reveal">Testimonios</span>
-        <h2 class="section-title reveal reveal-delay-1">Lo que dicen nuestros<br>clientes</h2>
-        <p class="section-subtitle mx-auto reveal reveal-delay-2">Historias reales de negocios que transformaron sus resultados con nuestra plataforma.</p>
-      </div>
-      <div class="testimonials-grid">
-        <div class="testimonial-card reveal">
-          <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-          <blockquote>&ldquo;En 3 meses triplicamos nuestros leads. La automatizacion del seguimiento fue un cambio total para nuestro equipo de ventas.&rdquo;</blockquote>
-          <div class="testimonial-author">
-            <div class="testimonial-avatar av1">MG</div>
-            <div>
-              <div class="testimonial-name">Maria Garcia</div>
-              <div class="testimonial-role">CEO, Digital Agency</div>
+          <div class="card model__card fade-in-up">
+            <div class="model__card-header">
+              <div class="icon-circle" aria-hidden="true">
+                <span style="filter: brightness(0) invert(1);">💼</span>
+              </div>
+            </div>
+            <div class="model__card-badge">
+              <span class="badge">Invertimos</span>
+            </div>
+            <h3 class="model__card-subtitle">para lograr resultados</h3>
+            <div class="divider"></div>
+            <ul class="model__card-bullets">
+              <li>Con EBITDA positivo, buscamos crecimiento rentable y sostenible.</li>
+              <li>Reducimos riesgos eliminando barreras y pagos adelantados.</li>
+            </ul>
+            <div class="flow-diagram">
+              <div class="flow-node">
+                <div class="flow-node__circle">Z</div>
+              </div>
+              <div class="flow-connector">
+                <div class="flow-connector__line"></div>
+                <div class="flow-connector__icon">👤</div>
+              </div>
+              <div class="flow-node">
+                <div class="flow-node__circle">Ebitda</div>
+              </div>
             </div>
           </div>
+
         </div>
-        <div class="testimonial-card reveal reveal-delay-1">
-          <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-          <blockquote>&ldquo;Dejamos de perder clientes por falta de seguimiento. Ahora todo se gestiona automaticamente y los resultados hablan solos.&rdquo;</blockquote>
-          <div class="testimonial-author">
-            <div class="testimonial-avatar av2">CR</div>
-            <div>
-              <div class="testimonial-name">Carlos Rodriguez</div>
-              <div class="testimonial-role">Director, Consultora CR</div>
+      </div>
+    </section>
+
+    <!-- ==================== RESULTS ==================== -->
+    <section class="results" id="resultados">
+      <div class="container">
+        <h2 class="section-title fade-in-up">Números que hablan por sí solos</h2>
+
+        <div class="results__orbital fade-in-up">
+
+          <!-- Center element (desktop only) -->
+          <div class="results__center">
+            <div class="results__center-logo">
+              <span>Z</span>
             </div>
+            <div class="results__center-rings">
+              <div class="results__center-ring results__center-ring--1"></div>
+              <div class="results__center-ring results__center-ring--2"></div>
+              <div class="results__center-ring results__center-ring--3"></div>
+            </div>
+            <div class="results__center-line"></div>
           </div>
-        </div>
-        <div class="testimonial-card reveal reveal-delay-2">
-          <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-          <blockquote>&ldquo;La mejor inversion para mi negocio. Reducimos un 60% el tiempo en tareas administrativas y aumentamos la facturacion.&rdquo;</blockquote>
-          <div class="testimonial-author">
-            <div class="testimonial-avatar av3">AL</div>
-            <div>
-              <div class="testimonial-name">Ana Lopez</div>
-              <div class="testimonial-role">Fundadora, Estudio AL</div>
+
+          <!-- Metrics -->
+          <div class="results__metrics-grid">
+
+            <div class="results__metric-card">
+              <div class="icon-circle icon-circle--sm" aria-hidden="true">
+                <span style="filter: brightness(0) invert(1);">🎯</span>
+              </div>
+              <span class="badge results__metric-badge">-32%</span>
+              <p class="results__metric-text">de reducción de CAC para nuestros clientes.</p>
             </div>
+
+            <div class="results__metric-card">
+              <div class="icon-circle icon-circle--sm" aria-hidden="true">
+                <span style="filter: brightness(0) invert(1);">▶</span>
+              </div>
+              <span class="badge results__metric-badge">2x crecimiento</span>
+              <p class="results__metric-text">Duplicamos el crecimiento de nuestros clientes cada año.</p>
+            </div>
+
+            <div class="results__metric-card">
+              <div class="icon-circle icon-circle--sm" aria-hidden="true">
+                <span style="filter: brightness(0) invert(1);">📑</span>
+              </div>
+              <span class="badge results__metric-badge">+550M€</span>
+              <p class="results__metric-text">en ventas generadas para nuestros clientes.</p>
+            </div>
+
+            <div class="results__metric-card">
+              <div class="icon-circle icon-circle--sm" aria-hidden="true">
+                <span style="filter: brightness(0) invert(1);">◀◀</span>
+              </div>
+              <span class="badge results__metric-badge">Top 1000</span>
+              <p class="results__metric-text">Fastest Growing Companies.</p>
+            </div>
+
           </div>
+
+        </div>
+
+        <div class="results__cta fade-in-up">
+          <a href="#contacto" class="btn btn-primary">Contáctanos</a>
         </div>
       </div>
-      <div class="trust-bar reveal">
-        <div class="trust-item">
-          <strong>+2,500</strong>
-          <span>Negocios confian en nosotros</span>
-        </div>
-        <div class="trust-item">
-          <strong>+1M</strong>
-          <span>Leads generados</span>
-        </div>
-        <div class="trust-item">
-          <strong>4.9/5</strong>
-          <span>Valoracion promedio</span>
-        </div>
-        <div class="trust-item">
-          <strong>15+</strong>
-          <span>Paises</span>
-        </div>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- ===== HOW IT WORKS ===== -->
-  <section class="section how-it-works" id="como-funciona">
-    <div class="grid-bg"></div>
-    <div class="container">
-      <div class="text-center">
-        <span class="section-label reveal">Proceso</span>
-        <h2 class="section-title reveal reveal-delay-1">Como funciona</h2>
-        <p class="section-subtitle mx-auto reveal reveal-delay-2">Tres pasos simples para transformar tu negocio y empezar a ver resultados.</p>
-      </div>
-      <div class="steps-grid">
-        <div class="step-card reveal">
-          <div class="step-number">1</div>
-          <h3>Agenda tu Demo</h3>
-          <p>Rellena el formulario y reserva una llamada gratuita con nuestro equipo de estrategia.</p>
-        </div>
-        <div class="step-card reveal reveal-delay-1">
-          <div class="step-number">2</div>
-          <h3>Disenamos tu Plan</h3>
-          <p>Creamos una estrategia personalizada con los embudos y automatizaciones que tu negocio necesita.</p>
-        </div>
-        <div class="step-card reveal reveal-delay-2">
-          <div class="step-number">3</div>
-          <h3>Escala tus Resultados</h3>
-          <p>Lanzamos, optimizamos y escalamos. Tu solo te enfocas en cerrar ventas y crecer.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== FORM / CTA ===== -->
-  <section class="section cta-section" id="contacto">
-    <div class="gradient-mesh">
-      <div class="orb orb-1" style="width:400px;height:400px;top:-20%;right:0;background:var(--accent);"></div>
-      <div class="orb orb-2" style="width:350px;height:350px;bottom:-15%;left:10%;background:var(--pink);"></div>
-    </div>
-    <div class="container">
-      <div class="cta-grid">
-        <div class="cta-content reveal">
-          <span class="section-label">Empieza Hoy</span>
-          <h2>Lleva tu negocio al<br>siguiente nivel</h2>
-          <p>Solicita tu demo gratuita y descubre como podemos ayudarte a automatizar, captar y convertir mas clientes.</p>
-          <ul class="cta-features">
-            <li>Demo personalizada sin compromiso</li>
-            <li>Configuracion inicial incluida</li>
-            <li>Soporte dedicado en espanol</li>
-            <li>Resultados desde la primera semana</li>
-          </ul>
+    <!-- ==================== CTA / FORM ==================== -->
+    <section class="cta-section" id="contacto">
+      <div class="container">
+        <div class="cta-section__header fade-in-up">
+          <h2 class="section-title">¿Listo para crecer sin quemar caja?</h2>
+          <p class="section-subtitle">Agenda una llamada de diagnóstico gratuita (30 min). Sin compromiso, sin pitch de ventas. Solo análisis honesto de tu situación.</p>
         </div>
 
-        <!-- GHL FORM CONTAINER -->
-        <!--
-          ==========================================================
-          INSTRUCCIONES PARA GOHIGHLEVEL:
-
-          Opcion 1 - Formulario nativo GHL:
-          Reemplaza el formulario HTML de abajo con el snippet
-          de formulario generado en GoHighLevel:
-          <iframe src="https://link.tudominio.com/widget/form/TU_FORM_ID"
-            style="width:100%;height:100%;border:none;"></iframe>
-
-          Opcion 2 - Mantener el formulario HTML:
-          Si prefieres usar este formulario, configura la accion
-          del form apuntando a tu webhook de GHL:
-          action="https://services.leadconnectorhq.com/hooks/TU_WEBHOOK_ID"
-
-          Los campos name= deben coincidir con los campos
-          personalizados de tu cuenta GHL:
-          - full_name  -> Nombre completo
-          - email      -> Correo electronico
-          - phone      -> Telefono
-          - message    -> Mensaje (campo personalizado)
-          ==========================================================
-        -->
-        <div class="ghl-form-wrapper reveal reveal-delay-2">
-          <h3>Solicita tu Demo Gratis</h3>
-          <p class="form-sub">Completa el formulario y te contactamos en menos de 24h.</p>
-          <form method="POST" action="#">
+        <div class="cta-section__form-wrapper fade-in-up">
+          <form class="cta-section__form" id="contact-form" novalidate>
             <div class="form-group">
-              <label for="full_name">Nombre completo</label>
-              <input type="text" id="full_name" name="full_name" placeholder="Ej: Juan Perez" required>
+              <label for="name" class="form-label">Nombre completo *</label>
+              <input type="text" id="name" name="name" class="form-input" placeholder="Tu nombre completo" required>
             </div>
+
             <div class="form-group">
-              <label for="email">Correo electronico</label>
-              <input type="email" id="email" name="email" placeholder="juan@tuempresa.com" required>
+              <label for="email" class="form-label">Email corporativo *</label>
+              <input type="email" id="email" name="email" class="form-input" placeholder="nombre@empresa.com" required>
             </div>
+
             <div class="form-group">
-              <label for="phone">Telefono</label>
-              <input type="tel" id="phone" name="phone" placeholder="+34 600 000 000">
+              <label for="url" class="form-label">URL de tu startup/empresa *</label>
+              <input type="url" id="url" name="url" class="form-input" placeholder="https://tuempresa.com" required>
             </div>
+
             <div class="form-group">
-              <label for="message">&iquest;En que podemos ayudarte?</label>
-              <textarea id="message" name="message" placeholder="Cuentanos brevemente sobre tu negocio y objetivos..."></textarea>
+              <label for="revenue" class="form-label">Facturación anual aproximada *</label>
+              <select id="revenue" name="revenue" class="form-select" required>
+                <option value="" disabled selected>Selecciona un rango</option>
+                <option value="<100k">&lt; 100k €</option>
+                <option value="100k-500k">100k - 500k €</option>
+                <option value="500k-2M">500k - 2M €</option>
+                <option value="2M-5M">2M - 5M €</option>
+                <option value="+5M">+5M €</option>
+              </select>
             </div>
-            <button type="submit" class="btn-submit">Solicitar Demo Gratuita</button>
+
+            <div class="form-group">
+              <label class="form-checkbox">
+                <input type="checkbox" name="consent" required>
+                <span>Acepto recibir análisis y propuesta personalizada</span>
+              </label>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Agendar diagnóstico gratuito</button>
           </form>
-          <p class="form-note">&#128274; Tus datos estan seguros. No compartimos tu informacion con terceros.</p>
+
+          <div class="cta-section__trust">
+            <span class="cta-section__trust-item">
+              <span aria-hidden="true">🔒</span> Tus datos están seguros
+            </span>
+            <span class="cta-section__trust-item">
+              <span aria-hidden="true">⚡</span> Respuesta en menos de 24h
+            </span>
+            <span class="cta-section__trust-item">
+              <span aria-hidden="true">✓</span> Sin permanencia ni letra pequeña
+            </span>
+          </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- ===== ASI SOMOS ===== -->
-  <section class="team-section">
-    <div class="gradient-mesh">
-      <div class="orb orb-1"></div>
-      <div class="orb orb-2"></div>
-    </div>
-    <div class="grid-bg"></div>
+  </main>
+
+  <!-- ==================== FOOTER ==================== -->
+  <footer class="footer" role="contentinfo">
     <div class="container">
-      <h2 class="team-title reveal">ASI SOMOS</h2>
-      <p class="team-subtitle reveal reveal-delay-1">Las personas detras de tu crecimiento</p>
-      <div class="team-image-wrapper reveal reveal-delay-2">
-        <img src="https://storage.googleapis.com/msgsndr/MIpKkQyIlHX14E5YDjLW/media/697c72081fd827bbe0d6452f.png" alt="Nuestro equipo - Asi Somos">
+      <div class="footer__grid">
+
+        <div class="footer__brand">
+          <div class="footer__logo">
+            <span class="footer__logo-icon">Z</span>
+            <span>Zeta Growth</span>
+          </div>
+          <p class="footer__brand-tagline">Eficiencia que impulsa crecimiento</p>
+        </div>
+
+        <div class="footer__legal">
+          <h4 class="footer__heading">Legal</h4>
+          <div class="footer__links">
+            <a href="#">Aviso legal</a>
+            <a href="#">Política de privacidad</a>
+            <a href="#">Cookies</a>
+          </div>
+        </div>
+
+        <div class="footer__social">
+          <h4 class="footer__heading">Síguenos</h4>
+          <div class="footer__links">
+            <a href="#" aria-label="LinkedIn" target="_blank" rel="noopener">LinkedIn</a>
+            <a href="#" aria-label="Twitter / X" target="_blank" rel="noopener">Twitter / X</a>
+            <a href="mailto:hola@zetagrowth.com">hola@zetagrowth.com</a>
+          </div>
+        </div>
+
       </div>
-    </div>
-  </section>
 
-  <!-- ===== FOOTER ===== -->
-  <footer class="footer">
-    <div class="container">
-      <p>&copy; 2026 TuMarca. Todos los derechos reservados.</p>
-      <ul class="footer-links">
-        <li><a href="#">Politica de Privacidad</a></li>
-        <li><a href="#">Terminos de Uso</a></li>
-        <li><a href="#">Contacto</a></li>
-      </ul>
+      <div class="footer__bottom">
+        <p>&copy; 2026 Zeta Growth. Todos los derechos reservados.</p>
+      </div>
     </div>
   </footer>
 
-  <!-- ===== SCRIPTS (inline, no external libs) ===== -->
-  <script>
-    // Scroll reveal
-    const revealEls = document.querySelectorAll('.reveal');
-    const revealObserver = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-        }
-      });
-    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
-    revealEls.forEach(el => revealObserver.observe(el));
+  <!-- ==================== THANK YOU MODAL ==================== -->
+  <div class="thank-you" id="thank-you" role="dialog" aria-hidden="true" aria-labelledby="thank-you-title">
+    <div class="thank-you__content">
+      <div class="thank-you__icon" aria-hidden="true">✓</div>
+      <h3 class="thank-you__title" id="thank-you-title">¡Solicitud recibida!</h3>
+      <p class="thank-you__text">Nos pondremos en contacto contigo en menos de 24 horas para agendar tu diagnóstico gratuito.</p>
+      <button class="btn btn-primary" id="thank-you-close">Entendido</button>
+    </div>
+  </div>
 
-    // Header scroll effect
-    const header = document.getElementById('header');
-    window.addEventListener('scroll', () => {
-      header.classList.toggle('scrolled', window.scrollY > 40);
-    }, { passive: true });
-
-    // 3D tilt on hero card
-    const heroCard = document.getElementById('heroCard');
-    if (heroCard) {
-      const card = heroCard.closest('.hero-visual');
-      card.addEventListener('mousemove', (e) => {
-        const rect = card.getBoundingClientRect();
-        const x = (e.clientX - rect.left) / rect.width - 0.5;
-        const y = (e.clientY - rect.top) / rect.height - 0.5;
-        heroCard.style.transform =
-          `rotateY(${x * 16}deg) rotateX(${-y * 16}deg) scale3d(1.02,1.02,1.02)`;
-      });
-      card.addEventListener('mouseleave', () => {
-        heroCard.style.transform = 'rotateY(0deg) rotateX(0deg) scale3d(1,1,1)';
-      });
-    }
-
-    // Animate bars on scroll
-    const bars = document.querySelectorAll('.hero-card-bar-fill');
-    const barObserver = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          const w = entry.target.style.width;
-          entry.target.style.width = '0%';
-          requestAnimationFrame(() => {
-            requestAnimationFrame(() => {
-              entry.target.style.width = w;
-            });
-          });
-        }
-      });
-    }, { threshold: 0.5 });
-    bars.forEach(b => barObserver.observe(b));
-  </script>
-
+  <!-- Scripts -->
+  <script src="js/animations.js"></script>
+  <script src="js/main.js"></script>
 </body>
 </html>

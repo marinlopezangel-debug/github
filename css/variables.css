@@ -1,0 +1,89 @@
+/* ==============================================
+   ZETA GROWTH - CSS Variables
+   ============================================== */
+
+:root {
+  /* Colors */
+  --yellow-primary: #D4FF00;
+  --yellow-secondary: #E5FF33;
+  --black-primary: #1A1A1A;
+  --black-secondary: #2D2D2D;
+  --gray-light: #E8E8E8;
+  --gray-medium: #6B7280;
+  --white: #FFFFFF;
+
+  /* Typography */
+  --font-display: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+
+  /* Font Sizes - Mobile first */
+  --text-hero: 42px;
+  --text-h2: 32px;
+  --text-h3: 24px;
+  --text-h4: 20px;
+  --text-body-large: 18px;
+  --text-body: 16px;
+  --text-small: 14px;
+  --text-xs: 12px;
+
+  /* Font Weights */
+  --weight-black: 900;
+  --weight-bold: 700;
+  --weight-semibold: 600;
+  --weight-medium: 500;
+  --weight-regular: 400;
+
+  /* Spacing */
+  --space-xs: 8px;
+  --space-sm: 16px;
+  --space-md: 24px;
+  --space-lg: 48px;
+  --space-xl: 80px;
+  --space-2xl: 80px;
+
+  /* Border Radius */
+  --radius-sm: 12px;
+  --radius-md: 16px;
+  --radius-lg: 24px;
+  --radius-xl: 32px;
+  --radius-full: 9999px;
+
+  /* Shadows */
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.04);
+  --shadow-md: 0 4px 24px rgba(0, 0, 0, 0.06);
+  --shadow-lg: 0 12px 48px rgba(0, 0, 0, 0.12);
+
+  /* Transitions */
+  --transition-fast: 0.2s ease;
+  --transition-normal: 0.3s ease;
+  --transition-slow: 0.5s ease;
+
+  /* Layout */
+  --container-max: 1280px;
+  --container-padding: 20px;
+}
+
+/* Tablet */
+@media (min-width: 768px) {
+  :root {
+    --text-hero: 56px;
+    --text-h2: 40px;
+    --text-h3: 28px;
+    --text-h4: 22px;
+    --space-2xl: 100px;
+    --container-padding: 32px;
+  }
+}
+
+/* Desktop */
+@media (min-width: 1024px) {
+  :root {
+    --text-hero: 72px;
+    --text-h2: 48px;
+    --text-h3: 32px;
+    --text-h4: 24px;
+    --text-body-large: 20px;
+    --space-2xl: 120px;
+    --container-padding: 40px;
+  }
+}
