@@ -1,0 +1,1275 @@
+/* ============================================================
+   BUSINESS LAB — Landing Page Styles
+   Concept: "Arquitectura Sistémica"
+   ============================================================ */
+
+/* ===== RESET & BASE ===== */
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --primary: #0A1628;
+  --accent: #00D4AA;
+  --accent-dark: #00B892;
+  --bg: #FAFAFA;
+  --bg-alt: #F0F0F0;
+  --text: #1A1A1A;
+  --text-muted: #6B7280;
+  --white: #FFFFFF;
+  --red: #DC2626;
+  --border: #E5E7EB;
+  --border-hover: #D1D5DB;
+  --radius: 12px;
+  --radius-sm: 8px;
+  --transition: 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  --font-heading: 'Space Grotesk', sans-serif;
+  --font-body: 'Inter', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+}
+
+body {
+  font-family: var(--font-body);
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+ul {
+  list-style: none;
+}
+
+/* ===== UTILITIES ===== */
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* ===== SCROLL ANIMATIONS ===== */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.reveal-delay-1 { transition-delay: 0.1s; }
+.reveal-delay-2 { transition-delay: 0.2s; }
+.reveal-delay-3 { transition-delay: 0.3s; }
+
+/* ===== SECTION TITLES ===== */
+.section-title {
+  font-family: var(--font-heading);
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 700;
+  color: var(--primary);
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+  margin-bottom: 56px;
+}
+
+/* ===== CTA BUTTON ===== */
+.cta-button {
+  display: inline-block;
+  padding: 16px 40px;
+  background: var(--accent);
+  color: var(--primary);
+  font-family: var(--font-heading);
+  font-size: 1rem;
+  font-weight: 600;
+  border-radius: var(--radius);
+  border: none;
+  cursor: pointer;
+  transition: transform var(--transition), box-shadow var(--transition);
+}
+
+.cta-button:hover {
+  transform: scale(1.04);
+  box-shadow: 0 8px 30px rgba(0, 212, 170, 0.3);
+}
+
+.cta-button:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
+.cta-button-large {
+  padding: 20px 52px;
+  font-size: 1.1rem;
+}
+
+/* ===== LINK ARROW ===== */
+.link-arrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--accent-dark);
+  transition: gap var(--transition);
+}
+
+.link-arrow:hover {
+  gap: 12px;
+}
+
+.link-arrow span {
+  transition: transform var(--transition);
+}
+
+.link-arrow:hover span {
+  transform: translateX(4px);
+}
+
+/* ============================================================
+   1. HEADER / NAV
+   ============================================================ */
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  transition: background var(--transition), box-shadow var(--transition), backdrop-filter var(--transition);
+}
+
+.header.scrolled {
+  background: rgba(250, 250, 250, 0.9);
+  backdrop-filter: blur(16px);
+  box-shadow: 0 1px 0 var(--border);
+}
+
+.header-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 72px;
+  padding: 0 24px;
+}
+
+.logo {
+  font-family: var(--font-heading);
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--primary);
+  letter-spacing: 0.04em;
+}
+
+.logo span {
+  color: var(--accent-dark);
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 36px;
+}
+
+.nav-links a {
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--text-muted);
+  position: relative;
+  transition: color var(--transition);
+}
+
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0;
+  height: 1.5px;
+  background: var(--accent);
+  transition: width var(--transition);
+}
+
+.nav-links a:hover {
+  color: var(--primary);
+}
+
+.nav-links a:hover::after {
+  width: 100%;
+}
+
+.nav-cta {
+  padding: 10px 24px !important;
+  background: var(--primary) !important;
+  color: var(--white) !important;
+  border-radius: var(--radius-sm);
+  font-weight: 600 !important;
+  transition: background var(--transition), transform var(--transition) !important;
+}
+
+.nav-cta::after {
+  display: none !important;
+}
+
+.nav-cta:hover {
+  background: #0F1D35 !important;
+  transform: translateY(-1px);
+}
+
+.menu-toggle {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 6px;
+}
+
+.menu-toggle span {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background: var(--primary);
+  border-radius: 2px;
+  transition: var(--transition);
+}
+
+.menu-toggle.active span:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+
+.menu-toggle.active span:nth-child(2) {
+  opacity: 0;
+}
+
+.menu-toggle.active span:nth-child(3) {
+  transform: rotate(-45deg) translate(5px, -5px);
+}
+
+/* ============================================================
+   2. HERO
+   ============================================================ */
+#hero {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 120px 24px 80px;
+  position: relative;
+  background: var(--white);
+}
+
+#hero h1 {
+  font-family: var(--font-heading);
+  font-size: clamp(2.5rem, 6vw, 5rem);
+  font-weight: 700;
+  color: var(--primary);
+  line-height: 1.08;
+  letter-spacing: -0.03em;
+  max-width: 860px;
+  margin-bottom: 32px;
+}
+
+.rotating-word {
+  color: var(--accent-dark);
+  display: inline-block;
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.rotating-word.fade-out {
+  opacity: 0;
+  transform: translateY(8px);
+}
+
+.hero-subtitle {
+  font-family: var(--font-mono);
+  font-size: clamp(0.9rem, 1.5vw, 1.05rem);
+  color: var(--text-muted);
+  line-height: 1.8;
+  margin-bottom: 48px;
+  letter-spacing: 0.01em;
+}
+
+.scroll-indicator {
+  position: absolute;
+  bottom: 32px;
+  left: 50%;
+  transform: translateX(-50%);
+  transition: opacity 0.5s ease;
+}
+
+.scroll-arrow {
+  font-size: 1.5rem;
+  color: var(--text-muted);
+  animation: bounce 2s infinite;
+  display: block;
+}
+
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+  40% { transform: translateY(-8px); }
+  60% { transform: translateY(-4px); }
+}
+
+/* ============================================================
+   3. LOGOS CLIENTES
+   ============================================================ */
+#logos-clientes {
+  padding: 40px 0;
+  overflow: hidden;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  background: var(--white);
+}
+
+.logos-track {
+  display: flex;
+  width: max-content;
+  animation: scroll-logos 30s linear infinite;
+}
+
+.logos-slide {
+  display: flex;
+  gap: 0;
+  flex-shrink: 0;
+}
+
+.logo-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 180px;
+  height: 48px;
+  flex-shrink: 0;
+  opacity: 0.3;
+  transition: opacity var(--transition);
+  padding: 0 20px;
+}
+
+.logo-item:hover {
+  opacity: 1;
+}
+
+.logo-item span {
+  font-family: var(--font-heading);
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  letter-spacing: 0.08em;
+  white-space: nowrap;
+}
+
+@keyframes scroll-logos {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* ============================================================
+   4. SÍNTOMAS / DOLOR
+   ============================================================ */
+#sintomas {
+  padding: 120px 0;
+  background: var(--white);
+}
+
+.sintomas-header {
+  margin-bottom: 56px;
+}
+
+.sintomas-header h2 {
+  font-family: var(--font-heading);
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 700;
+  color: var(--primary);
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+}
+
+.sintomas-carousel {
+  position: relative;
+  overflow: hidden;
+}
+
+.sintomas-track {
+  display: flex;
+  gap: 24px;
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  cursor: grab;
+  user-select: none;
+}
+
+.sintomas-track.dragging {
+  cursor: grabbing;
+  transition: none;
+}
+
+.sintoma-card {
+  flex: 0 0 calc(50% - 12px);
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 40px 36px;
+  transition: transform var(--transition), box-shadow var(--transition);
+}
+
+.sintoma-card:hover {
+  transform: translateY(-4px) scale(1.01);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.06);
+}
+
+.sintoma-bullet {
+  display: block;
+  font-size: 2rem;
+  color: var(--accent);
+  line-height: 1;
+  margin-bottom: 16px;
+}
+
+.sintoma-card h3 {
+  font-family: var(--font-heading);
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--primary);
+  margin-bottom: 12px;
+}
+
+.sintoma-card p {
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  line-height: 1.7;
+}
+
+.carousel-dots {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 36px;
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  border: 1.5px solid var(--border-hover);
+  background: transparent;
+  cursor: pointer;
+  transition: all var(--transition);
+  padding: 0;
+}
+
+.dot.active {
+  background: var(--accent);
+  border-color: var(--accent);
+  transform: scale(1.2);
+}
+
+/* ============================================================
+   5. DIFERENCIACIÓN
+   ============================================================ */
+#diferenciacion {
+  padding: 120px 0;
+  background: var(--primary);
+  color: var(--white);
+}
+
+#diferenciacion h2 {
+  font-family: var(--font-heading);
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  margin-bottom: 64px;
+  text-align: center;
+}
+
+.comparativa {
+  max-width: 800px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  gap: 0;
+}
+
+.comparativa-col {
+  padding: 20px 0;
+  text-align: center;
+}
+
+.comparativa-col h3 {
+  font-family: var(--font-heading);
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.5);
+  padding-bottom: 16px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.comparativa-old {
+  grid-column: 1;
+}
+
+.comparativa-new {
+  grid-column: 3;
+}
+
+.comparativa-row {
+  display: contents;
+}
+
+.comparativa-cell {
+  padding: 20px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  font-size: 1.05rem;
+  display: flex;
+  align-items: center;
+  transition: background var(--transition);
+}
+
+.comparativa-cell.old {
+  justify-content: center;
+  text-align: center;
+  color: rgba(255, 255, 255, 0.4);
+  padding-right: 16px;
+}
+
+.comparativa-cell.new {
+  justify-content: center;
+  text-align: center;
+  color: var(--accent);
+  font-weight: 600;
+  padding-left: 16px;
+}
+
+.comparativa-arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px 24px;
+  color: rgba(255, 255, 255, 0.2);
+  font-size: 1.2rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.comparativa-row:hover .comparativa-cell.old {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.comparativa-row:hover .comparativa-arrow {
+  color: var(--accent);
+}
+
+.comparativa-row:hover .comparativa-cell.new {
+  color: var(--white);
+}
+
+/* ============================================================
+   6. CÓMO TRABAJAMOS (Timeline)
+   ============================================================ */
+#metodologia {
+  padding: 120px 0;
+  background: var(--bg);
+}
+
+.timeline {
+  position: relative;
+  display: flex;
+  gap: 40px;
+  padding-top: 20px;
+}
+
+.timeline-line {
+  position: absolute;
+  top: 48px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--border);
+}
+
+.timeline-line::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 33%;
+  height: 100%;
+  background: var(--accent);
+  transition: width 1s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.timeline-phase {
+  flex: 1;
+  position: relative;
+}
+
+.phase-number {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: var(--bg);
+  border: 2px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 28px;
+  position: relative;
+  z-index: 1;
+  transition: border-color var(--transition), background var(--transition);
+}
+
+.phase-number span {
+  font-family: var(--font-mono);
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--primary);
+}
+
+.timeline-phase:hover .phase-number {
+  border-color: var(--accent);
+  background: var(--white);
+}
+
+.phase-content h3 {
+  font-family: var(--font-heading);
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--primary);
+  margin-bottom: 16px;
+}
+
+.phase-period {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--accent-dark);
+  margin-left: 8px;
+}
+
+.phase-content p {
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  line-height: 1.7;
+  margin-bottom: 4px;
+}
+
+/* ============================================================
+   7. QUÉ INSTALAMOS (Grid 2x2)
+   ============================================================ */
+#que-instalamos {
+  padding: 120px 0;
+  background: var(--white);
+}
+
+.bloques-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  margin-bottom: 40px;
+}
+
+.bloque-card {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 40px 36px;
+  transition: transform var(--transition), box-shadow var(--transition), background var(--transition);
+}
+
+.bloque-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.06);
+  background: var(--white);
+}
+
+.bloque-tag {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--accent-dark);
+  letter-spacing: 0.05em;
+  margin-bottom: 16px;
+}
+
+.bloque-card h3 {
+  font-family: var(--font-heading);
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--primary);
+  margin-bottom: 12px;
+  text-transform: uppercase;
+  letter-spacing: -0.01em;
+}
+
+.bloque-card p {
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  line-height: 1.7;
+}
+
+.bloques-link {
+  text-align: center;
+}
+
+/* ============================================================
+   8. CASO DESTACADO
+   ============================================================ */
+#caso-destacado {
+  padding: 120px 0;
+  background: var(--bg);
+}
+
+.caso-wrapper {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 64px;
+  align-items: center;
+}
+
+.caso-screenshot {
+  position: relative;
+}
+
+.caso-placeholder {
+  background: var(--primary);
+  border-radius: var(--radius);
+  aspect-ratio: 16 / 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 20px 60px rgba(10, 22, 40, 0.12);
+}
+
+.caso-placeholder span {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.3);
+}
+
+.caso-content h2 {
+  font-family: var(--font-heading);
+  font-size: clamp(1.8rem, 3.5vw, 2.5rem);
+  font-weight: 700;
+  color: var(--primary);
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  margin-bottom: 16px;
+}
+
+.caso-meta {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  margin-bottom: 24px;
+}
+
+/* ============================================================
+   9. SERVICIOS
+   ============================================================ */
+#servicios {
+  padding: 120px 0;
+  background: var(--white);
+}
+
+.servicios-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.servicio-card {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 40px 32px;
+  display: flex;
+  flex-direction: column;
+  transition: transform var(--transition), box-shadow var(--transition);
+}
+
+.servicio-card:hover {
+  transform: translateY(-6px) scale(1.01);
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.08);
+}
+
+.servicio-card h3 {
+  font-family: var(--font-heading);
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--primary);
+  margin-bottom: 12px;
+  text-transform: uppercase;
+  letter-spacing: -0.01em;
+}
+
+.servicio-card p {
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  line-height: 1.7;
+  margin-bottom: 24px;
+  flex-grow: 1;
+}
+
+/* ============================================================
+   10. PARA QUIÉN ES
+   ============================================================ */
+#para-quien {
+  padding: 120px 0;
+  background: var(--bg);
+}
+
+.para-quien-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+}
+
+.para-quien-col {
+  padding: 48px 40px;
+  border-radius: var(--radius);
+}
+
+.es-para-ti {
+  background: var(--white);
+  border: 1px solid var(--border);
+}
+
+.no-es-para-ti {
+  background: var(--white);
+  border: 1px solid var(--border);
+}
+
+.para-quien-col h3 {
+  font-family: var(--font-heading);
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--primary);
+  margin-bottom: 28px;
+}
+
+.para-quien-col ul {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.para-quien-col li {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  font-size: 1rem;
+  color: var(--text);
+  line-height: 1.5;
+}
+
+.check {
+  color: var(--accent-dark);
+  font-weight: 700;
+  font-size: 1.2rem;
+  flex-shrink: 0;
+  line-height: 1.3;
+}
+
+.cross {
+  color: var(--red);
+  font-weight: 700;
+  font-size: 1.3rem;
+  flex-shrink: 0;
+  line-height: 1.2;
+}
+
+/* ============================================================
+   11. FAQ (Accordion)
+   ============================================================ */
+#recursos {
+  padding: 120px 0;
+  background: var(--white);
+}
+
+.faq-list {
+  max-width: 760px;
+  margin: 0 auto;
+}
+
+.faq-item {
+  border-bottom: 1px solid var(--border);
+}
+
+.faq-question {
+  width: 100%;
+  background: none;
+  border: none;
+  padding: 28px 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  font-family: var(--font-heading);
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--primary);
+  text-align: left;
+  transition: color var(--transition);
+}
+
+.faq-question:hover {
+  color: var(--accent-dark);
+}
+
+.faq-icon {
+  font-size: 1.5rem;
+  font-weight: 300;
+  color: var(--text-muted);
+  transition: transform var(--transition);
+  flex-shrink: 0;
+  margin-left: 16px;
+}
+
+.faq-item.open .faq-icon {
+  transform: rotate(45deg);
+}
+
+.faq-answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s cubic-bezier(0.16, 1, 0.3, 1), padding 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.faq-item.open .faq-answer {
+  max-height: 300px;
+}
+
+.faq-answer p {
+  padding: 0 0 28px;
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  line-height: 1.75;
+  max-width: 640px;
+}
+
+.faq-question:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* ============================================================
+   12. CTA FINAL
+   ============================================================ */
+#contacto {
+  padding: 120px 0;
+  background: var(--bg);
+}
+
+.cta-final {
+  text-align: center;
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 80px 40px;
+}
+
+.cta-final h2 {
+  font-family: var(--font-heading);
+  font-size: clamp(2rem, 4vw, 2.8rem);
+  font-weight: 700;
+  color: var(--primary);
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  margin-bottom: 20px;
+}
+
+.cta-final p {
+  font-size: 1.05rem;
+  color: var(--text-muted);
+  line-height: 1.7;
+  margin-bottom: 40px;
+}
+
+/* ============================================================
+   13. FOOTER
+   ============================================================ */
+#footer {
+  padding: 64px 0 48px;
+  background: var(--white);
+  border-top: 1px solid var(--border);
+  text-align: center;
+}
+
+.footer-brand {
+  margin-bottom: 28px;
+}
+
+.footer-logo {
+  font-family: var(--font-heading);
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--primary);
+  letter-spacing: 0.04em;
+  display: block;
+  margin-bottom: 6px;
+}
+
+.footer-brand p {
+  font-size: 0.88rem;
+  color: var(--text-muted);
+}
+
+.footer-nav {
+  display: flex;
+  justify-content: center;
+  gap: 32px;
+  margin-bottom: 24px;
+}
+
+.footer-nav a {
+  font-size: 0.88rem;
+  font-weight: 500;
+  color: var(--text-muted);
+  transition: color var(--transition);
+  position: relative;
+}
+
+.footer-nav a::after {
+  content: '';
+  position: absolute;
+  bottom: -3px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: var(--accent);
+  transition: width var(--transition);
+}
+
+.footer-nav a:hover {
+  color: var(--primary);
+}
+
+.footer-nav a:hover::after {
+  width: 100%;
+}
+
+.footer-social {
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+  margin-bottom: 32px;
+}
+
+.footer-social a {
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--text-muted);
+  transition: color var(--transition);
+}
+
+.footer-social a:hover {
+  color: var(--accent-dark);
+}
+
+.footer-copy {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  opacity: 0.7;
+}
+
+/* ============================================================
+   RESPONSIVE BREAKPOINTS
+   ============================================================ */
+
+/* 1280px */
+@media (max-width: 1280px) {
+  .container {
+    max-width: 1040px;
+  }
+}
+
+/* 1024px */
+@media (max-width: 1024px) {
+  .timeline {
+    flex-direction: column;
+    gap: 48px;
+  }
+
+  .timeline-line {
+    top: 0;
+    bottom: 0;
+    left: 28px;
+    right: auto;
+    width: 2px;
+    height: 100%;
+  }
+
+  .timeline-line::after {
+    width: 100%;
+    height: 33%;
+  }
+
+  .timeline-phase {
+    display: flex;
+    gap: 24px;
+    padding-left: 0;
+  }
+
+  .phase-number {
+    flex-shrink: 0;
+    margin-bottom: 0;
+  }
+
+  .caso-wrapper {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .servicios-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+}
+
+/* 768px */
+@media (max-width: 768px) {
+  .menu-toggle {
+    display: flex;
+  }
+
+  .nav-links {
+    display: none;
+    position: absolute;
+    top: 72px;
+    left: 0;
+    right: 0;
+    background: rgba(250, 250, 250, 0.98);
+    backdrop-filter: blur(16px);
+    flex-direction: column;
+    padding: 28px 24px;
+    gap: 16px;
+    border-bottom: 1px solid var(--border);
+    box-shadow: 0 16px 32px rgba(0, 0, 0, 0.06);
+  }
+
+  .nav-links.active {
+    display: flex;
+  }
+
+  .nav-links a::after {
+    display: none;
+  }
+
+  #hero {
+    min-height: auto;
+    padding: 140px 24px 80px;
+  }
+
+  #hero h1 {
+    font-size: clamp(2rem, 6vw, 3rem);
+  }
+
+  .sintoma-card {
+    flex: 0 0 85%;
+  }
+
+  .comparativa {
+    grid-template-columns: 1fr auto 1fr;
+    gap: 0;
+  }
+
+  .bloques-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .para-quien-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .para-quien-col {
+    padding: 36px 28px;
+  }
+
+  #sintomas,
+  #diferenciacion,
+  #metodologia,
+  #que-instalamos,
+  #caso-destacado,
+  #servicios,
+  #para-quien,
+  #recursos,
+  #contacto {
+    padding: 80px 0;
+  }
+
+  .section-title {
+    margin-bottom: 40px;
+  }
+
+  .footer-nav {
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+}
+
+/* 640px */
+@media (max-width: 640px) {
+  .container {
+    padding: 0 20px;
+  }
+
+  #hero h1 {
+    font-size: 2rem;
+  }
+
+  .hero-subtitle {
+    font-size: 0.88rem;
+  }
+
+  .sintoma-card {
+    flex: 0 0 90%;
+    padding: 32px 24px;
+  }
+
+  .comparativa-cell {
+    font-size: 0.9rem;
+  }
+
+  .comparativa-arrow {
+    padding: 20px 12px;
+  }
+
+  .cta-final {
+    padding: 48px 20px;
+  }
+
+  .cta-final h2 {
+    font-size: 1.8rem;
+  }
+}
