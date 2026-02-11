@@ -3,42 +3,50 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>TuMarca | Transforma Tu Negocio</title>
+  <title>Travel Advantage | Ahorra Hasta el 60% en Cada Viaje</title>
+  <meta name="description" content="Accede a precios de mayorista en hoteles, vuelos y cruceros. El club de viajes privado que transforma tu forma de viajar.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
   <style>
-    /* ===== RESET ===== */
+    /* ===== RESET & BASE ===== */
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
     :root {
-      --bg: #050510;
-      --bg-2: #0a0a1a;
-      --bg-3: #0f0f24;
-      --surface: rgba(255, 255, 255, 0.04);
-      --surface-2: rgba(255, 255, 255, 0.07);
-      --border: rgba(255, 255, 255, 0.08);
-      --border-hover: rgba(255, 255, 255, 0.15);
-      --text: #e2e8f0;
-      --text-muted: #8892a4;
-      --text-dim: #5a6478;
+      --navy: #1a365d;
+      --navy-dark: #122649;
+      --navy-light: #2a4a7f;
+      --gold: #f59e0b;
+      --gold-light: #fbbf24;
+      --gold-dark: #d97706;
+      --coral: #ff6b6b;
       --white: #ffffff;
-      --accent: #6366f1;
-      --accent-2: #818cf8;
-      --accent-glow: rgba(99, 102, 241, 0.25);
-      --cyan: #22d3ee;
-      --pink: #ec4899;
-      --green: #34d399;
-      --amber: #fbbf24;
+      --cream: #faf8f5;
+      --gray-50: #f8fafc;
+      --gray-100: #f1f5f9;
+      --gray-200: #e2e8f0;
+      --gray-300: #cbd5e1;
+      --gray-600: #475569;
+      --gray-700: #334155;
+      --gray-800: #1e293b;
+      --gray-900: #0f172a;
       --radius: 16px;
       --radius-sm: 10px;
-      --transition: 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      --radius-lg: 24px;
+      --shadow-sm: 0 1px 3px rgba(0,0,0,0.08);
+      --shadow-md: 0 4px 16px rgba(0,0,0,0.1);
+      --shadow-lg: 0 12px 40px rgba(0,0,0,0.12);
+      --shadow-xl: 0 20px 60px rgba(0,0,0,0.15);
+      --transition: 0.3s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
     html { scroll-behavior: smooth; }
 
     body {
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Inter', Roboto, sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      line-height: 1.6;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: var(--white);
+      color: var(--gray-700);
+      line-height: 1.7;
       overflow-x: hidden;
       -webkit-font-smoothing: antialiased;
     }
@@ -46,1392 +54,1579 @@
     img { max-width: 100%; display: block; }
     a { text-decoration: none; color: inherit; }
 
+    h1, h2, h3, h4 {
+      font-family: 'Montserrat', sans-serif;
+      color: var(--navy);
+      line-height: 1.2;
+    }
+
     /* ===== SCROLL ANIMATIONS ===== */
     .reveal {
       opacity: 0;
-      transform: translateY(40px);
-      transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+      transform: translateY(30px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
     }
     .reveal.visible {
       opacity: 1;
       transform: translateY(0);
     }
-    .reveal-delay-1 { transition-delay: 0.1s; }
-    .reveal-delay-2 { transition-delay: 0.2s; }
-    .reveal-delay-3 { transition-delay: 0.3s; }
-    .reveal-delay-4 { transition-delay: 0.4s; }
-    .reveal-delay-5 { transition-delay: 0.5s; }
 
-    /* ===== UTILITIES ===== */
-    .container { width: 100%; max-width: 1200px; margin: 0 auto; padding: 0 28px; }
-    .section { padding: 120px 0; position: relative; }
-    .text-center { text-align: center; }
-
-    .section-label {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      font-size: 0.75rem;
-      font-weight: 600;
-      letter-spacing: 3px;
-      text-transform: uppercase;
-      color: var(--accent-2);
-      border: 1px solid var(--border);
-      padding: 8px 20px;
-      border-radius: 100px;
-      margin-bottom: 20px;
-      background: var(--surface);
-      backdrop-filter: blur(10px);
-    }
-
-    .section-label::before {
-      content: '';
-      width: 6px; height: 6px;
-      border-radius: 50%;
-      background: var(--accent);
-      box-shadow: 0 0 10px var(--accent);
-    }
-
-    .section-title {
-      font-size: clamp(2rem, 5vw, 3.2rem);
-      font-weight: 800;
-      color: var(--white);
-      line-height: 1.1;
-      margin-bottom: 18px;
-      letter-spacing: -0.02em;
-    }
-
-    .section-subtitle {
-      font-size: 1.1rem;
-      color: var(--text-muted);
-      max-width: 560px;
-      margin-bottom: 56px;
-      line-height: 1.7;
-    }
-
-    .mx-auto { margin-left: auto; margin-right: auto; }
-
-    /* ===== GRADIENT MESH BG ===== */
-    .gradient-mesh {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      top: 0; left: 0;
-      overflow: hidden;
-      pointer-events: none;
-      z-index: 0;
-    }
-    .gradient-mesh .orb {
-      position: absolute;
-      border-radius: 50%;
-      filter: blur(100px);
-      opacity: 0.3;
-      animation: float 20s ease-in-out infinite;
-    }
-    .gradient-mesh .orb-1 {
-      width: 600px; height: 600px;
-      background: var(--accent);
-      top: -15%; right: -10%;
-      animation-delay: 0s;
-    }
-    .gradient-mesh .orb-2 {
-      width: 500px; height: 500px;
-      background: var(--pink);
-      bottom: -10%; left: -10%;
-      animation-delay: -7s;
-    }
-    .gradient-mesh .orb-3 {
-      width: 400px; height: 400px;
-      background: var(--cyan);
-      top: 40%; left: 50%;
-      animation-delay: -14s;
-    }
-
-    @keyframes float {
-      0%, 100% { transform: translate(0, 0) scale(1); }
-      25% { transform: translate(30px, -40px) scale(1.05); }
-      50% { transform: translate(-20px, 20px) scale(0.95); }
-      75% { transform: translate(15px, 30px) scale(1.02); }
-    }
-
-    /* ===== NOISE OVERLAY ===== */
-    body::after {
-      content: '';
+    /* ===== NAVBAR ===== */
+    .navbar {
       position: fixed;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
-      pointer-events: none;
-      z-index: 9999;
-      opacity: 0.4;
-    }
-
-    /* ===== BUTTONS ===== */
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 14px 32px;
-      font-size: 0.95rem;
-      font-weight: 600;
-      border-radius: 12px;
-      border: none;
-      cursor: pointer;
-      transition: all var(--transition);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .btn-glow {
-      background: linear-gradient(135deg, var(--accent), #8b5cf6);
-      color: var(--white);
-      box-shadow: 0 0 30px var(--accent-glow), inset 0 1px 0 rgba(255,255,255,0.15);
-    }
-    .btn-glow:hover {
-      transform: translateY(-3px) scale(1.02);
-      box-shadow: 0 0 50px var(--accent-glow), 0 20px 40px rgba(99,102,241,0.2), inset 0 1px 0 rgba(255,255,255,0.15);
-    }
-    .btn-glow::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(135deg, transparent 40%, rgba(255,255,255,0.15) 50%, transparent 60%);
-      transform: translateX(-100%);
-      transition: transform 0.6s;
-    }
-    .btn-glow:hover::after { transform: translateX(100%); }
-
-    .btn-ghost {
-      background: var(--surface);
-      color: var(--text);
-      border: 1px solid var(--border);
-      backdrop-filter: blur(10px);
-    }
-    .btn-ghost:hover {
-      border-color: var(--border-hover);
-      background: var(--surface-2);
-      transform: translateY(-2px);
-    }
-
-    /* ===== HEADER ===== */
-    .header {
-      position: fixed;
-      top: 0; left: 0;
-      width: 100%;
+      top: 0;
+      left: 0;
+      right: 0;
       z-index: 1000;
-      padding: 0 28px;
-      transition: all var(--transition);
+      background: rgba(255, 255, 255, 0.92);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(26, 54, 93, 0.08);
+      transition: var(--transition);
     }
-    .header.scrolled {
-      background: rgba(5, 5, 16, 0.8);
-      backdrop-filter: blur(20px) saturate(1.5);
-      border-bottom: 1px solid var(--border);
+    .navbar.scrolled {
+      box-shadow: 0 2px 20px rgba(0,0,0,0.08);
     }
-    .header-inner {
+    .navbar-inner {
       max-width: 1200px;
       margin: 0 auto;
+      padding: 0 24px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      height: 76px;
+      height: 72px;
     }
     .logo {
-      font-size: 1.4rem;
-      font-weight: 800;
-      color: var(--white);
-      letter-spacing: -0.02em;
-    }
-    .logo span {
-      background: linear-gradient(135deg, var(--accent), var(--cyan));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-    .nav-links {
       display: flex;
       align-items: center;
-      gap: 36px;
-      list-style: none;
+      gap: 10px;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 800;
+      font-size: 1.3rem;
+      color: var(--navy);
     }
-    .nav-links a {
-      font-size: 0.88rem;
-      font-weight: 500;
-      color: var(--text-muted);
-      transition: color var(--transition);
-      position: relative;
-    }
-    .nav-links a::after {
-      content: '';
-      position: absolute;
-      bottom: -4px; left: 0;
-      width: 0; height: 2px;
-      background: var(--accent);
-      transition: width var(--transition);
-      border-radius: 2px;
-    }
-    .nav-links a:hover { color: var(--white); }
-    .nav-links a:hover::after { width: 100%; }
-
-    .nav-cta {
-      padding: 9px 22px !important;
+    .logo-icon {
+      width: 40px;
+      height: 40px;
+      background: linear-gradient(135deg, var(--navy), var(--navy-light));
       border-radius: 10px;
-      background: linear-gradient(135deg, var(--accent), #8b5cf6) !important;
-      color: var(--white) !important;
-      font-weight: 600 !important;
-      box-shadow: 0 0 20px var(--accent-glow);
-      transition: all var(--transition) !important;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
-    .nav-cta::after { display: none !important; }
-    .nav-cta:hover { transform: translateY(-2px); box-shadow: 0 0 30px var(--accent-glow); }
-
-    .menu-toggle {
-      display: none;
-      flex-direction: column;
-      gap: 5px;
-      cursor: pointer;
-      background: none;
-      border: none;
-      padding: 4px;
-    }
-    .menu-toggle span {
-      display: block;
+    .logo-icon svg {
       width: 22px;
-      height: 2px;
-      background: var(--text);
-      border-radius: 2px;
+      height: 22px;
+      color: var(--gold);
+    }
+    .nav-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 24px;
+      background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+      color: var(--white);
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      font-size: 0.85rem;
+      border-radius: 50px;
+      letter-spacing: 0.02em;
       transition: var(--transition);
+      box-shadow: 0 4px 15px rgba(245, 158, 11, 0.3);
+    }
+    .nav-cta:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 25px rgba(245, 158, 11, 0.4);
     }
 
     /* ===== HERO ===== */
     .hero {
-      padding: 180px 0 120px;
       position: relative;
       min-height: 100vh;
       display: flex;
       align-items: center;
+      padding: 120px 24px 80px;
       overflow: hidden;
     }
-
-    .hero-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 80px;
-      align-items: center;
-      position: relative;
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(135deg, rgba(26, 54, 93, 0.92) 0%, rgba(18, 38, 73, 0.85) 50%, rgba(42, 74, 127, 0.80) 100%),
+        url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=1920&q=80') center/cover no-repeat;
+      z-index: 0;
+    }
+    .hero-bg::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 120px;
+      background: linear-gradient(to top, var(--white), transparent);
+    }
+    .hero-particles {
+      position: absolute;
+      inset: 0;
       z-index: 1;
+      overflow: hidden;
+    }
+    .particle {
+      position: absolute;
+      width: 4px;
+      height: 4px;
+      background: rgba(245, 158, 11, 0.3);
+      border-radius: 50%;
+      animation: float-particle 15s infinite ease-in-out;
+    }
+    .particle:nth-child(1) { left: 10%; top: 20%; animation-delay: 0s; animation-duration: 18s; }
+    .particle:nth-child(2) { left: 25%; top: 60%; animation-delay: 2s; animation-duration: 14s; }
+    .particle:nth-child(3) { left: 50%; top: 30%; animation-delay: 4s; animation-duration: 20s; }
+    .particle:nth-child(4) { left: 70%; top: 70%; animation-delay: 1s; animation-duration: 16s; }
+    .particle:nth-child(5) { left: 85%; top: 40%; animation-delay: 3s; animation-duration: 12s; }
+    .particle:nth-child(6) { left: 40%; top: 80%; animation-delay: 5s; animation-duration: 22s; }
+
+    @keyframes float-particle {
+      0%, 100% { transform: translate(0, 0) scale(1); opacity: 0; }
+      10% { opacity: 1; }
+      50% { transform: translate(40px, -60px) scale(1.5); opacity: 0.6; }
+      90% { opacity: 1; }
     }
 
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 1200px;
+      margin: 0 auto;
+      width: 100%;
+      text-align: center;
+    }
     .hero-badge {
       display: inline-flex;
       align-items: center;
-      gap: 10px;
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 100px;
+      gap: 8px;
       padding: 8px 20px;
-      font-size: 0.82rem;
+      background: rgba(245, 158, 11, 0.15);
+      border: 1px solid rgba(245, 158, 11, 0.3);
+      border-radius: 50px;
+      color: var(--gold-light);
+      font-family: 'Montserrat', sans-serif;
       font-weight: 600;
-      color: var(--text-muted);
+      font-size: 0.8rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
       margin-bottom: 28px;
       backdrop-filter: blur(10px);
     }
-    .hero-badge .dot {
-      width: 8px; height: 8px;
-      background: var(--green);
-      border-radius: 50%;
-      box-shadow: 0 0 10px var(--green);
-      animation: pulse 2s infinite;
+    .hero-badge svg {
+      width: 16px;
+      height: 16px;
     }
-    @keyframes pulse {
-      0%, 100% { opacity: 1; box-shadow: 0 0 10px var(--green); }
-      50% { opacity: 0.5; box-shadow: 0 0 20px var(--green); }
-    }
-
     .hero h1 {
-      font-size: clamp(2.5rem, 5.5vw, 4rem);
-      font-weight: 800;
+      font-size: clamp(2.2rem, 6vw, 4rem);
+      font-weight: 900;
       color: var(--white);
-      line-height: 1.05;
-      margin-bottom: 24px;
-      letter-spacing: -0.03em;
+      margin-bottom: 20px;
+      letter-spacing: -0.02em;
     }
     .hero h1 .highlight {
-      background: linear-gradient(135deg, var(--accent-2), var(--cyan), var(--pink));
-      background-size: 200% 200%;
+      background: linear-gradient(135deg, var(--gold-light), var(--gold));
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
-      animation: gradient-shift 5s ease infinite;
     }
-    @keyframes gradient-shift {
-      0%, 100% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-    }
-
-    .hero p {
-      font-size: 1.15rem;
-      color: var(--text-muted);
-      margin-bottom: 40px;
-      max-width: 460px;
-      line-height: 1.75;
+    .hero-subtitle {
+      font-size: clamp(1rem, 2.5vw, 1.25rem);
+      color: rgba(255, 255, 255, 0.8);
+      max-width: 640px;
+      margin: 0 auto 40px;
+      font-weight: 300;
+      line-height: 1.8;
     }
 
-    .hero-actions {
+    /* ===== VIDEO CONTAINER ===== */
+    .video-wrapper {
+      max-width: 800px;
+      margin: 0 auto 40px;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      box-shadow: 0 25px 80px rgba(0, 0, 0, 0.4);
+      position: relative;
+      background: var(--navy-dark);
+    }
+    .video-container {
+      position: relative;
+      padding-bottom: 56.25%;
+      height: 0;
+      overflow: hidden;
+    }
+    .video-container iframe,
+    .video-container .video-placeholder {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+    .video-placeholder {
       display: flex;
-      gap: 14px;
+      flex-direction: column;
       align-items: center;
-      flex-wrap: wrap;
+      justify-content: center;
+      background: linear-gradient(135deg, var(--navy-dark), var(--navy));
+      cursor: pointer;
+      transition: var(--transition);
     }
-
-    .hero-stats {
+    .video-placeholder:hover .play-btn {
+      transform: scale(1.1);
+      box-shadow: 0 0 0 20px rgba(245, 158, 11, 0.15);
+    }
+    .play-btn {
+      width: 80px;
+      height: 80px;
+      background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+      border-radius: 50%;
       display: flex;
-      gap: 44px;
-      margin-top: 56px;
-      padding-top: 36px;
-      border-top: 1px solid var(--border);
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 0 0 12px rgba(245, 158, 11, 0.2), 0 8px 30px rgba(0,0,0,0.3);
+      transition: var(--transition);
+      margin-bottom: 16px;
     }
-    .hero-stat strong {
-      display: block;
-      font-size: 1.8rem;
-      font-weight: 800;
+    .play-btn svg {
+      width: 32px;
+      height: 32px;
       color: var(--white);
-      letter-spacing: -0.02em;
+      margin-left: 4px;
     }
-    .hero-stat span {
-      font-size: 0.82rem;
-      color: var(--text-dim);
+    .video-placeholder span {
+      color: rgba(255, 255, 255, 0.7);
+      font-size: 0.9rem;
       font-weight: 500;
     }
+    .video-glow {
+      position: absolute;
+      inset: -2px;
+      border-radius: var(--radius-lg);
+      background: linear-gradient(135deg, var(--gold), var(--navy-light), var(--gold));
+      z-index: -1;
+      opacity: 0.5;
+      filter: blur(8px);
+    }
 
-    /* Hero 3D card */
-    .hero-visual {
-      perspective: 1200px;
+    /* ===== HERO CTA ===== */
+    .hero-cta-group {
       display: flex;
-      justify-content: center;
-    }
-    .hero-card-3d {
-      transform-style: preserve-3d;
-      transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
-      will-change: transform;
-    }
-    .hero-card {
-      background: var(--surface);
-      backdrop-filter: blur(24px) saturate(1.4);
-      border: 1px solid var(--border);
-      border-radius: 24px;
-      padding: 36px;
-      width: 100%;
-      max-width: 460px;
-      position: relative;
-      overflow: hidden;
-    }
-    .hero-card::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 0;
-      width: 100%; height: 1px;
-      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.12), transparent);
-    }
-    .hero-card::after {
-      content: '';
-      position: absolute;
-      top: -50%; left: -50%;
-      width: 200%; height: 200%;
-      background: radial-gradient(circle at 30% 30%, rgba(99,102,241,0.08), transparent 60%);
-      pointer-events: none;
-    }
-    .hero-card-header {
-      display: flex;
+      flex-direction: column;
       align-items: center;
-      gap: 14px;
-      margin-bottom: 28px;
-      position: relative;
-      z-index: 1;
+      gap: 16px;
     }
-    .hero-card-icon {
-      width: 48px; height: 48px;
-      border-radius: 14px;
-      background: linear-gradient(135deg, var(--accent), #8b5cf6);
-      display: flex;
+    .btn-primary {
+      display: inline-flex;
       align-items: center;
-      justify-content: center;
-      font-size: 1.3rem;
-      box-shadow: 0 0 20px var(--accent-glow);
-    }
-    .hero-card-title {
+      gap: 10px;
+      padding: 18px 44px;
+      background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+      color: var(--white);
+      font-family: 'Montserrat', sans-serif;
       font-weight: 700;
-      color: var(--white);
-      font-size: 1rem;
+      font-size: 1.05rem;
+      border-radius: 50px;
+      border: none;
+      cursor: pointer;
+      transition: var(--transition);
+      box-shadow: 0 8px 30px rgba(245, 158, 11, 0.35);
+      letter-spacing: 0.02em;
     }
-    .hero-card-sub {
-      font-size: 0.8rem;
-      color: var(--text-dim);
+    .btn-primary:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 40px rgba(245, 158, 11, 0.45);
     }
-    .hero-card-bar {
-      height: 6px;
-      background: rgba(255,255,255,0.06);
-      border-radius: 100px;
-      margin-bottom: 10px;
-      overflow: hidden;
-      position: relative;
-      z-index: 1;
+    .btn-primary svg {
+      width: 20px;
+      height: 20px;
+      transition: var(--transition);
     }
-    .hero-card-bar-fill {
-      height: 100%;
-      border-radius: 100px;
-      background: linear-gradient(90deg, var(--accent), var(--cyan));
-      box-shadow: 0 0 12px var(--accent-glow);
-      transition: width 1.5s cubic-bezier(0.16, 1, 0.3, 1);
+    .btn-primary:hover svg {
+      transform: translateX(3px);
     }
-    .bar-label {
-      font-size: 0.78rem;
-      color: var(--text-dim);
-      margin-bottom: 6px;
-      position: relative;
-      z-index: 1;
+    .hero-trust {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: rgba(255, 255, 255, 0.6);
+      font-size: 0.85rem;
     }
-    .hero-card-metrics {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 14px;
-      margin-top: 24px;
-      position: relative;
-      z-index: 1;
-    }
-    .metric-box {
-      background: rgba(255,255,255,0.03);
-      border: 1px solid var(--border);
-      border-radius: 14px;
-      padding: 18px;
-      text-align: center;
-      transition: all var(--transition);
-    }
-    .metric-box:hover {
-      border-color: var(--accent);
-      background: rgba(99,102,241,0.05);
-      box-shadow: 0 0 20px rgba(99,102,241,0.1);
-    }
-    .metric-box strong {
-      display: block;
-      font-size: 1.5rem;
-      font-weight: 800;
-      color: var(--white);
-      letter-spacing: -0.02em;
-    }
-    .metric-box span {
-      font-size: 0.75rem;
-      color: var(--text-dim);
+    .hero-trust svg {
+      width: 16px;
+      height: 16px;
+      color: var(--gold-light);
     }
 
-    /* ===== GRID LINE DECORATION ===== */
-    .grid-bg {
-      position: absolute;
-      inset: 0;
-      background-image:
-        linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
-      background-size: 60px 60px;
-      mask-image: radial-gradient(ellipse 60% 50% at 50% 50%, black, transparent);
-      pointer-events: none;
+    /* ===== STATS BAR ===== */
+    .stats-bar {
+      background: var(--white);
+      padding: 0 24px;
+      position: relative;
+      z-index: 5;
+      margin-top: -40px;
     }
-
-    /* ===== BENEFITS ===== */
-    .benefits { background: var(--bg); }
-    .benefits-grid {
+    .stats-inner {
+      max-width: 900px;
+      margin: 0 auto;
+      background: var(--white);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-xl);
+      padding: 36px 20px;
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 20px;
+      border: 1px solid var(--gray-100);
+    }
+    .stat-item {
+      text-align: center;
+      padding: 0 16px;
+    }
+    .stat-item:not(:last-child) {
+      border-right: 1px solid var(--gray-200);
+    }
+    .stat-number {
+      font-family: 'Montserrat', sans-serif;
+      font-size: clamp(1.8rem, 4vw, 2.5rem);
+      font-weight: 900;
+      background: linear-gradient(135deg, var(--navy), var(--navy-light));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      line-height: 1.1;
+      margin-bottom: 4px;
+    }
+    .stat-label {
+      font-size: 0.85rem;
+      color: var(--gray-600);
+      font-weight: 500;
+    }
+
+    /* ===== SECTION SHARED ===== */
+    .section {
+      padding: 100px 24px;
+    }
+    .section-alt {
+      background: var(--gray-50);
+    }
+    .section-header {
+      text-align: center;
+      max-width: 600px;
+      margin: 0 auto 60px;
+    }
+    .section-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 16px;
+      background: rgba(26, 54, 93, 0.06);
+      border-radius: 50px;
+      color: var(--navy);
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 600;
+      font-size: 0.75rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+    .section-tag svg {
+      width: 14px;
+      height: 14px;
+    }
+    .section-header h2 {
+      font-size: clamp(1.8rem, 4vw, 2.6rem);
+      font-weight: 800;
+      margin-bottom: 16px;
+      letter-spacing: -0.02em;
+    }
+    .section-header p {
+      font-size: 1.05rem;
+      color: var(--gray-600);
+      line-height: 1.8;
+    }
+
+    /* ===== BENEFITS CARDS ===== */
+    .benefits-grid {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 24px;
     }
     .benefit-card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 20px;
+      background: var(--white);
+      border-radius: var(--radius);
       padding: 36px 28px;
-      transition: all var(--transition);
+      border: 1px solid var(--gray-200);
+      transition: var(--transition);
       position: relative;
       overflow: hidden;
-      cursor: default;
     }
     .benefit-card::before {
       content: '';
       position: absolute;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      background: radial-gradient(circle at 50% 0%, rgba(99,102,241,0.08), transparent 60%);
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--gold), var(--gold-light));
       opacity: 0;
-      transition: opacity var(--transition);
+      transition: var(--transition);
     }
-    .benefit-card:hover::before { opacity: 1; }
     .benefit-card:hover {
-      border-color: var(--border-hover);
       transform: translateY(-6px);
-      box-shadow: 0 24px 48px rgba(0,0,0,0.3);
+      box-shadow: var(--shadow-lg);
+      border-color: rgba(245, 158, 11, 0.2);
+    }
+    .benefit-card:hover::before {
+      opacity: 1;
     }
     .benefit-icon {
-      width: 52px; height: 52px;
+      width: 56px;
+      height: 56px;
       border-radius: 14px;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 1.4rem;
       margin-bottom: 20px;
-      position: relative;
-      z-index: 1;
     }
-    .benefit-icon.i1 { background: rgba(99,102,241,0.12); }
-    .benefit-icon.i2 { background: rgba(34,211,238,0.12); }
-    .benefit-icon.i3 { background: rgba(236,72,153,0.12); }
-    .benefit-icon.i4 { background: rgba(251,191,36,0.12); }
-    .benefit-icon.i5 { background: rgba(52,211,153,0.12); }
-    .benefit-icon.i6 { background: rgba(168,85,247,0.12); }
+    .benefit-icon svg {
+      width: 28px;
+      height: 28px;
+    }
+    .benefit-icon.blue {
+      background: rgba(26, 54, 93, 0.08);
+      color: var(--navy);
+    }
+    .benefit-icon.gold {
+      background: rgba(245, 158, 11, 0.1);
+      color: var(--gold-dark);
+    }
+    .benefit-icon.green {
+      background: rgba(16, 185, 129, 0.1);
+      color: #059669;
+    }
+    .benefit-icon.coral {
+      background: rgba(255, 107, 107, 0.1);
+      color: var(--coral);
+    }
     .benefit-card h3 {
-      font-size: 1.1rem;
+      font-size: 1.15rem;
       font-weight: 700;
-      color: var(--white);
       margin-bottom: 10px;
-      position: relative;
-      z-index: 1;
+      color: var(--navy);
     }
     .benefit-card p {
-      font-size: 0.9rem;
-      color: var(--text-muted);
-      line-height: 1.65;
-      position: relative;
-      z-index: 1;
+      font-size: 0.95rem;
+      color: var(--gray-600);
+      line-height: 1.7;
     }
 
-    /* ===== SOCIAL PROOF ===== */
-    .social-proof {
-      background: var(--bg-2);
-      border-top: 1px solid var(--border);
-      border-bottom: 1px solid var(--border);
-    }
-    .testimonials-grid {
+    /* ===== HOW IT WORKS ===== */
+    .steps-grid {
+      max-width: 900px;
+      margin: 0 auto;
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 20px;
-    }
-    .testimonial-card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 20px;
-      padding: 32px;
-      transition: all var(--transition);
+      gap: 40px;
       position: relative;
     }
-    .testimonial-card::before {
+    .steps-grid::before {
       content: '';
       position: absolute;
-      top: 0; left: 0;
-      width: 100%; height: 1px;
-      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.08), transparent);
+      top: 45px;
+      left: 15%;
+      right: 15%;
+      height: 2px;
+      background: linear-gradient(90deg, var(--gold-light), var(--navy-light), var(--gold-light));
+      opacity: 0.2;
+    }
+    .step-item {
+      text-align: center;
+      position: relative;
+    }
+    .step-number {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 20px;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 800;
+      font-size: 1.3rem;
+      position: relative;
+      z-index: 2;
+    }
+    .step-item:nth-child(1) .step-number {
+      background: linear-gradient(135deg, var(--navy), var(--navy-light));
+      color: var(--white);
+    }
+    .step-item:nth-child(2) .step-number {
+      background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+      color: var(--white);
+    }
+    .step-item:nth-child(3) .step-number {
+      background: linear-gradient(135deg, #059669, #10b981);
+      color: var(--white);
+    }
+    .step-item h3 {
+      font-size: 1.05rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+    .step-item p {
+      font-size: 0.9rem;
+      color: var(--gray-600);
+      line-height: 1.7;
+    }
+
+    /* ===== MEMBERSHIPS ===== */
+    .membership-grid {
+      max-width: 800px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 28px;
+    }
+    .membership-card {
+      background: var(--white);
+      border-radius: var(--radius);
+      padding: 36px 28px;
+      border: 1px solid var(--gray-200);
+      transition: var(--transition);
+      position: relative;
+      text-align: center;
+    }
+    .membership-card.popular {
+      border-color: var(--gold);
+      box-shadow: 0 8px 30px rgba(245, 158, 11, 0.15);
+    }
+    .membership-card.popular::before {
+      content: 'Más Popular';
+      position: absolute;
+      top: -12px;
+      left: 50%;
+      transform: translateX(-50%);
+      padding: 4px 20px;
+      background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+      color: var(--white);
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      font-size: 0.7rem;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      border-radius: 50px;
+    }
+    .membership-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-lg);
+    }
+    .membership-name {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 800;
+      font-size: 1.4rem;
+      color: var(--navy);
+      margin-bottom: 16px;
+    }
+    .membership-points {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-bottom: 24px;
+    }
+    .membership-points .point-row {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      font-size: 0.9rem;
+      color: var(--gray-600);
+    }
+    .point-row svg {
+      width: 18px;
+      height: 18px;
+      color: var(--gold);
+    }
+    .point-row strong {
+      color: var(--navy);
+      font-weight: 700;
+    }
+    .membership-card .btn-outline {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 28px;
+      border: 2px solid var(--navy);
+      color: var(--navy);
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 600;
+      font-size: 0.85rem;
+      border-radius: 50px;
+      transition: var(--transition);
+      cursor: pointer;
+      background: transparent;
+    }
+    .membership-card .btn-outline:hover {
+      background: var(--navy);
+      color: var(--white);
+    }
+    .membership-card.popular .btn-outline {
+      border-color: var(--gold);
+      color: var(--gold-dark);
+    }
+    .membership-card.popular .btn-outline:hover {
+      background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+      color: var(--white);
+      border-color: transparent;
+    }
+
+    /* ===== TESTIMONIAL / SOCIAL PROOF ===== */
+    .social-proof {
+      background: linear-gradient(135deg, var(--navy-dark), var(--navy));
+      padding: 80px 24px;
+      color: var(--white);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .social-proof::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      right: -20%;
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(245, 158, 11, 0.08) 0%, transparent 70%);
+      border-radius: 50%;
+    }
+    .social-proof .section-header h2 {
+      color: var(--white);
+    }
+    .social-proof .section-header p {
+      color: rgba(255, 255, 255, 0.7);
+    }
+    .social-proof .section-tag {
+      background: rgba(245, 158, 11, 0.15);
+      color: var(--gold-light);
+    }
+    .testimonials-grid {
+      max-width: 1000px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px;
+    }
+    .testimonial-card {
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: var(--radius);
+      padding: 32px 24px;
+      text-align: left;
+      backdrop-filter: blur(10px);
+      transition: var(--transition);
     }
     .testimonial-card:hover {
-      border-color: var(--border-hover);
+      background: rgba(255, 255, 255, 0.1);
       transform: translateY(-4px);
-      box-shadow: 0 20px 40px rgba(0,0,0,0.25);
     }
     .testimonial-stars {
-      font-size: 0.95rem;
-      margin-bottom: 18px;
-      letter-spacing: 3px;
-      color: var(--amber);
+      display: flex;
+      gap: 2px;
+      margin-bottom: 16px;
+    }
+    .testimonial-stars svg {
+      width: 18px;
+      height: 18px;
+      color: var(--gold);
+      fill: var(--gold);
     }
     .testimonial-card blockquote {
-      font-size: 0.92rem;
-      color: var(--text);
-      line-height: 1.75;
-      margin-bottom: 24px;
-      font-style: normal;
+      font-size: 0.95rem;
+      color: rgba(255, 255, 255, 0.85);
+      line-height: 1.7;
+      margin-bottom: 20px;
+      font-style: italic;
     }
     .testimonial-author {
       display: flex;
       align-items: center;
       gap: 12px;
     }
-    .testimonial-avatar {
-      width: 40px; height: 40px;
-      border-radius: 12px;
+    .author-avatar {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--gold), var(--gold-dark));
       display: flex;
       align-items: center;
       justify-content: center;
+      font-family: 'Montserrat', sans-serif;
       font-weight: 700;
-      font-size: 0.82rem;
+      font-size: 1rem;
       color: var(--white);
     }
-    .testimonial-avatar.av1 { background: linear-gradient(135deg, var(--accent), #8b5cf6); }
-    .testimonial-avatar.av2 { background: linear-gradient(135deg, var(--cyan), #06b6d4); }
-    .testimonial-avatar.av3 { background: linear-gradient(135deg, var(--pink), #db2777); }
-    .testimonial-name {
-      font-weight: 700;
-      color: var(--white);
-      font-size: 0.88rem;
-    }
-    .testimonial-role {
-      font-size: 0.78rem;
-      color: var(--text-dim);
-    }
-
-    .trust-bar {
+    .author-info {
       display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 56px;
-      margin-top: 64px;
-      padding-top: 48px;
-      border-top: 1px solid var(--border);
-      flex-wrap: wrap;
+      flex-direction: column;
     }
-    .trust-item { text-align: center; }
-    .trust-item strong {
-      display: block;
-      font-size: 2.2rem;
-      font-weight: 800;
-      letter-spacing: -0.02em;
-      background: linear-gradient(135deg, var(--white), var(--text-muted));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
+    .author-name {
+      font-weight: 600;
+      font-size: 0.9rem;
+      color: var(--white);
     }
-    .trust-item span {
-      font-size: 0.82rem;
-      color: var(--text-dim);
+    .author-role {
+      font-size: 0.8rem;
+      color: rgba(255, 255, 255, 0.5);
     }
 
-    /* ===== HOW IT WORKS ===== */
-    .how-it-works { background: var(--bg); }
-    .steps-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 24px;
+    /* ===== CONTACT FORM SECTION ===== */
+    .form-section {
+      padding: 100px 24px;
+      background: var(--gray-50);
       position: relative;
     }
-    .steps-grid::before {
+    .form-section::before {
       content: '';
       position: absolute;
-      top: 56px;
-      left: 16%;
-      right: 16%;
-      height: 2px;
-      background: linear-gradient(90deg, transparent, var(--accent), transparent);
-      opacity: 0.3;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--navy), var(--gold), var(--navy));
     }
-    .step-card {
-      text-align: center;
+    .form-wrapper {
+      max-width: 560px;
+      margin: 0 auto;
+      background: var(--white);
+      border-radius: var(--radius-lg);
+      padding: 48px 40px;
+      box-shadow: var(--shadow-xl);
+      border: 1px solid var(--gray-100);
       position: relative;
-      padding: 0 16px;
     }
-    .step-number {
-      width: 72px; height: 72px;
-      border-radius: 22px;
-      background: var(--surface);
-      border: 1px solid var(--border);
-      color: var(--accent-2);
-      display: flex;
-      align-items: center;
-      justify-content: center;
+    .form-wrapper::after {
+      content: '';
+      position: absolute;
+      inset: -1px;
+      border-radius: var(--radius-lg);
+      background: linear-gradient(135deg, rgba(245, 158, 11, 0.1), transparent, rgba(26, 54, 93, 0.1));
+      z-index: -1;
+      filter: blur(20px);
+    }
+    .form-header {
+      text-align: center;
+      margin-bottom: 36px;
+    }
+    .form-header h2 {
       font-size: 1.6rem;
       font-weight: 800;
-      margin: 0 auto 28px;
-      position: relative;
-      z-index: 1;
-      transition: all var(--transition);
+      margin-bottom: 8px;
     }
-    .step-card:hover .step-number {
-      background: linear-gradient(135deg, var(--accent), #8b5cf6);
+    .form-header p {
+      font-size: 0.95rem;
+      color: var(--gray-600);
+    }
+    .form-group {
+      margin-bottom: 20px;
+    }
+    .form-group label {
+      display: block;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 600;
+      font-size: 0.8rem;
+      color: var(--navy);
+      margin-bottom: 6px;
+      letter-spacing: 0.02em;
+    }
+    .form-group input,
+    .form-group textarea {
+      width: 100%;
+      padding: 14px 18px;
+      border: 1.5px solid var(--gray-200);
+      border-radius: var(--radius-sm);
+      font-family: 'Inter', sans-serif;
+      font-size: 0.95rem;
+      color: var(--gray-800);
+      transition: var(--transition);
+      background: var(--white);
+      outline: none;
+    }
+    .form-group input::placeholder,
+    .form-group textarea::placeholder {
+      color: var(--gray-300);
+    }
+    .form-group input:focus,
+    .form-group textarea:focus {
+      border-color: var(--navy-light);
+      box-shadow: 0 0 0 4px rgba(26, 54, 93, 0.08);
+    }
+    .form-group input.error,
+    .form-group textarea.error {
+      border-color: var(--coral);
+      box-shadow: 0 0 0 4px rgba(255, 107, 107, 0.1);
+    }
+    .form-group .error-msg {
+      display: none;
+      color: var(--coral);
+      font-size: 0.8rem;
+      margin-top: 4px;
+      font-weight: 500;
+    }
+    .form-group input.error ~ .error-msg,
+    .form-group textarea.error ~ .error-msg {
+      display: block;
+    }
+    .form-group textarea {
+      resize: vertical;
+      min-height: 100px;
+    }
+    .form-submit {
+      width: 100%;
+      padding: 16px;
+      background: linear-gradient(135deg, var(--navy), var(--navy-light));
       color: var(--white);
-      border-color: transparent;
-      box-shadow: 0 0 40px var(--accent-glow);
-      transform: scale(1.08) rotate(-3deg);
-    }
-    .step-card h3 {
-      font-size: 1.1rem;
+      font-family: 'Montserrat', sans-serif;
       font-weight: 700;
-      color: var(--white);
-      margin-bottom: 10px;
-    }
-    .step-card p {
-      font-size: 0.9rem;
-      color: var(--text-muted);
-      line-height: 1.65;
-      max-width: 280px;
-      margin: 0 auto;
-    }
-
-    /* ===== CTA / FORM ===== */
-    .cta-section {
-      background: var(--bg-2);
-      border-top: 1px solid var(--border);
-      position: relative;
-      overflow: hidden;
-    }
-    .cta-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 72px;
-      align-items: center;
-      position: relative;
-      z-index: 1;
-    }
-    .cta-content h2 {
-      font-size: clamp(2rem, 4vw, 2.8rem);
-      font-weight: 800;
-      color: var(--white);
-      line-height: 1.1;
-      margin-bottom: 18px;
-      letter-spacing: -0.02em;
-    }
-    .cta-content p {
-      font-size: 1.05rem;
-      color: var(--text-muted);
-      margin-bottom: 36px;
-      line-height: 1.7;
-    }
-    .cta-features { list-style: none; }
-    .cta-features li {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      color: var(--text-muted);
-      font-size: 0.92rem;
-      margin-bottom: 14px;
-    }
-    .cta-features li::before {
-      content: '';
-      width: 28px; height: 28px;
-      border-radius: 8px;
-      background: rgba(52,211,153,0.1);
-      border: 1px solid rgba(52,211,153,0.2);
+      font-size: 1rem;
+      border: none;
+      border-radius: var(--radius-sm);
+      cursor: pointer;
+      transition: var(--transition);
       display: flex;
       align-items: center;
       justify-content: center;
-      flex-shrink: 0;
-      background-image: url("data:image/svg+xml,%3Csvg width='14' height='14' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M20 6L9 17L4 12' stroke='%2334d399' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
-      background-repeat: no-repeat;
-      background-position: center;
+      gap: 10px;
+      letter-spacing: 0.02em;
     }
-
-    /* GHL Form */
-    .ghl-form-wrapper {
-      background: var(--surface);
-      backdrop-filter: blur(24px);
-      border: 1px solid var(--border);
-      border-radius: 24px;
-      padding: 40px;
-      position: relative;
-      overflow: hidden;
-    }
-    .ghl-form-wrapper::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 0;
-      width: 100%; height: 1px;
-      background: linear-gradient(90deg, transparent, var(--accent), transparent);
-    }
-    .ghl-form-wrapper h3 {
-      font-size: 1.3rem;
-      font-weight: 700;
-      color: var(--white);
-      margin-bottom: 6px;
-      text-align: center;
-    }
-    .ghl-form-wrapper .form-sub {
-      font-size: 0.88rem;
-      color: var(--text-dim);
-      text-align: center;
-      margin-bottom: 28px;
-    }
-    .ghl-form-wrapper .form-group { margin-bottom: 16px; }
-    .ghl-form-wrapper label {
-      display: block;
-      font-size: 0.82rem;
-      font-weight: 600;
-      color: var(--text-muted);
-      margin-bottom: 6px;
-    }
-    .ghl-form-wrapper input,
-    .ghl-form-wrapper select,
-    .ghl-form-wrapper textarea {
-      width: 100%;
-      padding: 13px 16px;
-      border: 1px solid var(--border);
-      border-radius: var(--radius-sm);
-      font-size: 0.92rem;
-      font-family: inherit;
-      color: var(--white);
-      background: rgba(255,255,255,0.03);
-      transition: all var(--transition);
-    }
-    .ghl-form-wrapper input::placeholder,
-    .ghl-form-wrapper textarea::placeholder {
-      color: var(--text-dim);
-    }
-    .ghl-form-wrapper input:focus,
-    .ghl-form-wrapper select:focus,
-    .ghl-form-wrapper textarea:focus {
-      outline: none;
-      border-color: var(--accent);
-      box-shadow: 0 0 0 3px var(--accent-glow);
-      background: rgba(99,102,241,0.04);
-    }
-    .ghl-form-wrapper textarea {
-      resize: vertical;
-      min-height: 80px;
-    }
-    .ghl-form-wrapper .btn-submit {
-      width: 100%;
-      padding: 14px;
-      font-size: 1rem;
-      font-weight: 700;
-      border: none;
-      border-radius: var(--radius-sm);
-      background: linear-gradient(135deg, var(--accent), #8b5cf6);
-      color: var(--white);
-      cursor: pointer;
-      transition: all var(--transition);
-      margin-top: 8px;
-      box-shadow: 0 0 30px var(--accent-glow);
-      position: relative;
-      overflow: hidden;
-    }
-    .ghl-form-wrapper .btn-submit:hover {
+    .form-submit:hover {
       transform: translateY(-2px);
-      box-shadow: 0 0 50px var(--accent-glow), 0 16px 32px rgba(99,102,241,0.25);
+      box-shadow: 0 8px 30px rgba(26, 54, 93, 0.3);
     }
-    .form-note {
-      font-size: 0.76rem;
-      color: var(--text-dim);
+    .form-submit:disabled {
+      opacity: 0.7;
+      cursor: not-allowed;
+      transform: none;
+    }
+    .form-submit svg {
+      width: 20px;
+      height: 20px;
+    }
+    .form-privacy {
       text-align: center;
       margin-top: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      font-size: 0.8rem;
+      color: var(--gray-600);
+    }
+    .form-privacy svg {
+      width: 14px;
+      height: 14px;
+      color: #059669;
+    }
+    .form-success {
+      display: none;
+      text-align: center;
+      padding: 40px 20px;
+    }
+    .form-success.active {
+      display: block;
+    }
+    .form-success .success-icon {
+      width: 72px;
+      height: 72px;
+      border-radius: 50%;
+      background: rgba(16, 185, 129, 0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 20px;
+    }
+    .form-success .success-icon svg {
+      width: 36px;
+      height: 36px;
+      color: #059669;
+    }
+    .form-success h3 {
+      font-size: 1.4rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+    .form-success p {
+      color: var(--gray-600);
+      font-size: 0.95rem;
     }
 
-    /* ===== TEAM / ASI SOMOS ===== */
-    .team-section {
-      background: var(--bg);
-      border-top: 1px solid var(--border);
-      padding: 120px 0;
-      position: relative;
-      overflow: hidden;
-    }
-    .team-section .gradient-mesh .orb-1 {
-      background: var(--pink);
-      width: 500px; height: 500px;
-      top: -20%; left: -10%;
-    }
-    .team-section .gradient-mesh .orb-2 {
-      background: var(--accent);
-      width: 400px; height: 400px;
-      bottom: -20%; right: -10%;
-    }
-    .team-title {
-      font-size: clamp(2.5rem, 6vw, 5rem);
-      font-weight: 900;
+    /* ===== FINAL CTA ===== */
+    .final-cta {
+      padding: 100px 24px;
       text-align: center;
-      letter-spacing: -0.03em;
+      background: var(--white);
+      position: relative;
+    }
+    .final-cta h2 {
+      font-size: clamp(1.8rem, 4vw, 2.4rem);
+      font-weight: 800;
       margin-bottom: 16px;
-      background: linear-gradient(135deg, var(--white), var(--accent-2), var(--cyan));
-      background-size: 200% 200%;
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      animation: gradient-shift 5s ease infinite;
-      position: relative;
-      z-index: 1;
+      letter-spacing: -0.02em;
     }
-    .team-subtitle {
-      text-align: center;
-      font-size: 1.1rem;
-      color: var(--text-muted);
-      margin-bottom: 56px;
-      position: relative;
-      z-index: 1;
-    }
-    .team-image-wrapper {
-      position: relative;
-      z-index: 1;
-      max-width: 900px;
-      margin: 0 auto;
-      border-radius: 24px;
-      overflow: hidden;
-      border: 1px solid var(--border);
-      box-shadow: 0 32px 64px rgba(0,0,0,0.4), 0 0 80px rgba(99,102,241,0.1);
-      transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-    .team-image-wrapper:hover {
-      transform: scale(1.02) translateY(-4px);
-      box-shadow: 0 40px 80px rgba(0,0,0,0.5), 0 0 120px rgba(99,102,241,0.15);
-    }
-    .team-image-wrapper img {
-      width: 100%;
-      display: block;
+    .final-cta p {
+      font-size: 1.05rem;
+      color: var(--gray-600);
+      max-width: 520px;
+      margin: 0 auto 32px;
+      line-height: 1.8;
     }
 
     /* ===== FOOTER ===== */
     .footer {
-      background: var(--bg);
-      border-top: 1px solid var(--border);
-      padding: 48px 0;
+      background: var(--gray-900);
+      color: rgba(255, 255, 255, 0.5);
+      padding: 40px 24px;
       text-align: center;
     }
+    .footer-inner {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    .footer-logo {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 800;
+      font-size: 1.2rem;
+      color: var(--white);
+      margin-bottom: 16px;
+    }
+    .footer-logo svg {
+      width: 24px;
+      height: 24px;
+      color: var(--gold);
+    }
     .footer p {
-      color: var(--text-dim);
-      font-size: 0.82rem;
+      font-size: 0.85rem;
+      line-height: 1.7;
+      margin-bottom: 8px;
     }
     .footer-links {
       display: flex;
+      align-items: center;
       justify-content: center;
-      gap: 28px;
+      gap: 24px;
       margin-top: 16px;
-      list-style: none;
+      font-size: 0.8rem;
     }
     .footer-links a {
-      color: var(--text-dim);
-      font-size: 0.82rem;
-      transition: color var(--transition);
+      color: rgba(255, 255, 255, 0.5);
+      transition: var(--transition);
     }
-    .footer-links a:hover { color: var(--accent-2); }
+    .footer-links a:hover {
+      color: var(--gold-light);
+    }
 
     /* ===== RESPONSIVE ===== */
-    @media (max-width: 1024px) {
-      .hero h1 { font-size: 2.8rem; }
-      .section-title { font-size: 2.2rem; }
-      .cta-content h2 { font-size: 2.2rem; }
-    }
-
     @media (max-width: 768px) {
-      .menu-toggle { display: flex; }
-      .nav-links {
-        display: none;
-        position: absolute;
-        top: 76px; left: 0; right: 0;
-        background: rgba(5,5,16,0.95);
-        backdrop-filter: blur(20px);
-        flex-direction: column;
-        padding: 28px;
-        gap: 18px;
-        border-bottom: 1px solid var(--border);
-      }
-      .nav-links.active { display: flex; }
-      .nav-links a::after { display: none; }
+      .navbar-inner { height: 64px; }
+      .nav-cta span { display: none; }
+      .nav-cta { padding: 10px 16px; }
 
-      .hero { padding: 140px 0 80px; min-height: auto; }
-      .hero-grid {
-        grid-template-columns: 1fr;
-        gap: 48px;
-      }
-      .hero h1 { font-size: 2.4rem; }
-      .hero-stats { gap: 28px; }
-      .hero-visual { order: -1; }
-      .hero-card { max-width: 100%; }
+      .hero { padding: 100px 20px 60px; min-height: auto; }
+      .hero h1 { font-size: 2rem; }
+      .hero-subtitle { font-size: 0.95rem; margin-bottom: 30px; }
+      .video-wrapper { margin-bottom: 30px; border-radius: var(--radius); }
+      .play-btn { width: 60px; height: 60px; }
+      .play-btn svg { width: 24px; height: 24px; }
 
-      .benefits-grid,
-      .testimonials-grid,
-      .steps-grid {
+      .stats-inner {
         grid-template-columns: 1fr;
         gap: 16px;
+        padding: 28px 20px;
+      }
+      .stat-item:not(:last-child) {
+        border-right: none;
+        border-bottom: 1px solid var(--gray-200);
+        padding-bottom: 16px;
+      }
+
+      .section { padding: 60px 20px; }
+      .section-header { margin-bottom: 40px; }
+
+      .benefits-grid { grid-template-columns: 1fr; gap: 16px; }
+      .benefit-card { padding: 28px 24px; }
+
+      .steps-grid {
+        grid-template-columns: 1fr;
+        gap: 32px;
       }
       .steps-grid::before { display: none; }
 
-      .cta-grid {
-        grid-template-columns: 1fr;
-        gap: 48px;
-      }
+      .membership-grid { grid-template-columns: 1fr; gap: 20px; }
 
-      .trust-bar { gap: 28px; }
-      .team-title { font-size: 2.5rem; }
+      .testimonials-grid { grid-template-columns: 1fr; }
+
+      .form-wrapper { padding: 32px 24px; }
+      .form-section { padding: 60px 20px; }
     }
 
     @media (max-width: 480px) {
-      .section { padding: 80px 0; }
-      .hero h1 { font-size: 2rem; }
-      .hero p { font-size: 1rem; }
-      .hero-actions { flex-direction: column; align-items: stretch; }
-      .hero-stats { flex-direction: column; gap: 20px; }
-      .ghl-form-wrapper { padding: 28px 20px; }
-      .team-section { padding: 80px 0; }
-      .team-title { font-size: 2rem; }
+      .hero h1 { font-size: 1.7rem; }
+      .btn-primary { padding: 16px 32px; font-size: 0.95rem; }
+      .section-header h2 { font-size: 1.5rem; }
     }
+
+    /* ===== SPINNER ===== */
+    .spinner {
+      display: none;
+      width: 20px;
+      height: 20px;
+      border: 2.5px solid rgba(255,255,255,0.3);
+      border-top-color: var(--white);
+      border-radius: 50%;
+      animation: spin 0.6s linear infinite;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
   </style>
 </head>
 <body>
 
-  <!-- ===== HEADER ===== -->
-  <header class="header" id="header">
-    <div class="header-inner">
-      <a href="#" class="logo">Tu<span>Marca</span></a>
-      <nav>
-        <button class="menu-toggle" onclick="document.querySelector('.nav-links').classList.toggle('active')" aria-label="Menu">
-          <span></span><span></span><span></span>
-        </button>
-        <ul class="nav-links">
-          <li><a href="#beneficios">Beneficios</a></li>
-          <li><a href="#testimonios">Testimonios</a></li>
-          <li><a href="#como-funciona">Proceso</a></li>
-          <li><a href="#contacto" class="nav-cta">Empezar Ahora</a></li>
-        </ul>
-      </nav>
+  <!-- ===== NAVBAR ===== -->
+  <nav class="navbar" id="navbar">
+    <div class="navbar-inner">
+      <a href="#" class="logo">
+        <div class="logo-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17.8 19.2 16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.2c.4-.3.6-.7.5-1.2z"/></svg>
+        </div>
+        Travel Advantage
+      </a>
+      <a href="#contacto" class="nav-cta">
+        <span>Quiero Ahorrar</span>
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+      </a>
     </div>
-  </header>
+  </nav>
 
   <!-- ===== HERO ===== -->
-  <section class="hero">
-    <div class="gradient-mesh">
-      <div class="orb orb-1"></div>
-      <div class="orb orb-2"></div>
-      <div class="orb orb-3"></div>
+  <section class="hero" id="inicio">
+    <div class="hero-bg"></div>
+    <div class="hero-particles">
+      <div class="particle"></div>
+      <div class="particle"></div>
+      <div class="particle"></div>
+      <div class="particle"></div>
+      <div class="particle"></div>
+      <div class="particle"></div>
     </div>
-    <div class="grid-bg"></div>
-    <div class="container">
-      <div class="hero-grid">
-        <div class="hero-content">
-          <div class="hero-badge reveal">
-            <span class="dot"></span>
-            Plazas limitadas disponibles
-          </div>
-          <h1 class="reveal reveal-delay-1">Impulsa tu negocio con <span class="highlight">resultados reales</span></h1>
-          <p class="reveal reveal-delay-2">Automatiza procesos, capta mas clientes y escala tu empresa con la plataforma todo-en-uno que ya usan miles de negocios.</p>
-          <div class="hero-actions reveal reveal-delay-3">
-            <a href="#contacto" class="btn btn-glow">Solicitar Demo Gratis</a>
-            <a href="#como-funciona" class="btn btn-ghost">Ver como funciona &rarr;</a>
-          </div>
-          <div class="hero-stats reveal reveal-delay-4">
-            <div class="hero-stat">
-              <strong>+2,500</strong>
-              <span>Clientes activos</span>
+    <div class="hero-content">
+      <div class="hero-badge">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        Club de Viajes Exclusivo
+      </div>
+      <h1>Ahorra Hasta el <span class="highlight">60%</span><br>en Cada Viaje</h1>
+      <p class="hero-subtitle">
+        Accede a precios de mayorista en hoteles, vuelos y cruceros.
+        El club de viajes privado que transforma tu forma de viajar.
+      </p>
+
+      <!-- VIDEO -->
+      <div class="video-wrapper reveal">
+        <div class="video-glow"></div>
+        <div class="video-container">
+          <!-- Replace src with your Vimeo/YouTube embed URL -->
+          <div class="video-placeholder" id="videoPlaceholder" role="button" tabindex="0" aria-label="Reproducir video">
+            <div class="play-btn">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
             </div>
-            <div class="hero-stat">
-              <strong>98%</strong>
-              <span>Satisfaccion</span>
-            </div>
-            <div class="hero-stat">
-              <strong>3x</strong>
-              <span>Mas conversiones</span>
-            </div>
+            <span>Descubre cómo funciona</span>
           </div>
         </div>
-        <div class="hero-visual reveal reveal-delay-2">
-          <div class="hero-card-3d" id="heroCard">
-            <div class="hero-card">
-              <div class="hero-card-header">
-                <div class="hero-card-icon">&#9889;</div>
-                <div>
-                  <div class="hero-card-title">Panel de Rendimiento</div>
-                  <div class="hero-card-sub">Actualizado en tiempo real</div>
-                </div>
-              </div>
-              <div class="bar-label">Tasa de conversion &mdash; 78%</div>
-              <div class="hero-card-bar">
-                <div class="hero-card-bar-fill" style="width: 78%"></div>
-              </div>
-              <div class="bar-label">Retencion de clientes &mdash; 92%</div>
-              <div class="hero-card-bar">
-                <div class="hero-card-bar-fill" style="width: 92%; background: linear-gradient(90deg, var(--green), var(--cyan));"></div>
-              </div>
-              <div class="hero-card-metrics">
-                <div class="metric-box">
-                  <strong>$48K</strong>
-                  <span>Ingresos / mes</span>
-                </div>
-                <div class="metric-box">
-                  <strong>1,247</strong>
-                  <span>Leads captados</span>
-                </div>
-              </div>
-            </div>
-          </div>
+      </div>
+
+      <div class="hero-cta-group">
+        <a href="#contacto" class="btn-primary">
+          Quiero Más Información
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+        </a>
+        <div class="hero-trust">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          Sin compromiso. Información 100% gratuita.
         </div>
       </div>
     </div>
   </section>
+
+  <!-- ===== STATS BAR ===== -->
+  <div class="stats-bar reveal">
+    <div class="stats-inner">
+      <div class="stat-item">
+        <div class="stat-number">60%</div>
+        <div class="stat-label">Ahorro en reservas</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">900K+</div>
+        <div class="stat-label">Hoteles disponibles</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">1 pto = 1$</div>
+        <div class="stat-label">Sistema de fidelidad</div>
+      </div>
+    </div>
+  </div>
 
   <!-- ===== BENEFITS ===== -->
-  <section class="section benefits" id="beneficios">
-    <div class="grid-bg"></div>
-    <div class="container">
-      <div class="text-center">
-        <span class="section-label reveal">Beneficios</span>
-        <h2 class="section-title reveal reveal-delay-1">Todo lo que necesitas<br>para crecer</h2>
-        <p class="section-subtitle mx-auto reveal reveal-delay-2">Herramientas integradas que trabajan juntas para que tu negocio funcione de forma automatica.</p>
+  <section class="section" id="beneficios">
+    <div class="section-header reveal">
+      <div class="section-tag">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.42 4.58a5.4 5.4 0 0 0-7.65 0l-.77.78-.77-.78a5.4 5.4 0 0 0-7.65 0C1.46 6.7 1.33 10.28 4 13l8 8 8-8c2.67-2.72 2.54-6.3.42-8.42z"/></svg>
+        Beneficios
       </div>
-      <div class="benefits-grid">
-        <div class="benefit-card reveal">
-          <div class="benefit-icon i1">&#128640;</div>
-          <h3>Captacion Automatica</h3>
-          <p>Embudos de venta, landing pages y formularios que convierten visitantes en clientes las 24 horas.</p>
-        </div>
-        <div class="benefit-card reveal reveal-delay-1">
-          <div class="benefit-icon i2">&#128172;</div>
-          <h3>CRM Inteligente</h3>
-          <p>Gestiona todos tus contactos, oportunidades y seguimientos desde un solo lugar centralizado.</p>
-        </div>
-        <div class="benefit-card reveal reveal-delay-2">
-          <div class="benefit-icon i3">&#128197;</div>
-          <h3>Agenda y Citas</h3>
-          <p>Sistema de reservas automatizado que elimina las idas y venidas para programar reuniones.</p>
-        </div>
-        <div class="benefit-card reveal reveal-delay-1">
-          <div class="benefit-icon i4">&#128231;</div>
-          <h3>Email y SMS Marketing</h3>
-          <p>Campanas personalizadas con automatizaciones que nutren a tus leads hasta la conversion.</p>
-        </div>
-        <div class="benefit-card reveal reveal-delay-2">
-          <div class="benefit-icon i5">&#128202;</div>
-          <h3>Reportes Detallados</h3>
-          <p>Metricas claras y dashboards en tiempo real para tomar decisiones basadas en datos.</p>
-        </div>
-        <div class="benefit-card reveal reveal-delay-3">
-          <div class="benefit-icon i6">&#9889;</div>
-          <h3>Automatizaciones</h3>
-          <p>Flujos de trabajo que eliminan tareas repetitivas y liberan tu tiempo para lo importante.</p>
-        </div>
-      </div>
+      <h2>Todo lo que Obtienes con tu Membresía</h2>
+      <p>Un club diseñado para que cada viaje sea más accesible, más premium y más inteligente.</p>
     </div>
-  </section>
 
-  <!-- ===== SOCIAL PROOF ===== -->
-  <section class="section social-proof" id="testimonios">
-    <div class="container">
-      <div class="text-center">
-        <span class="section-label reveal">Testimonios</span>
-        <h2 class="section-title reveal reveal-delay-1">Lo que dicen nuestros<br>clientes</h2>
-        <p class="section-subtitle mx-auto reveal reveal-delay-2">Historias reales de negocios que transformaron sus resultados con nuestra plataforma.</p>
+    <div class="benefits-grid">
+      <div class="benefit-card reveal">
+        <div class="benefit-icon blue">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+        </div>
+        <h3>Ahorro Real Garantizado</h3>
+        <p>Accede a la misma plataforma que usan las agencias de viajes profesionales. Precios de mayorista que no encontrarás en ningún buscador público.</p>
       </div>
-      <div class="testimonials-grid">
-        <div class="testimonial-card reveal">
-          <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-          <blockquote>&ldquo;En 3 meses triplicamos nuestros leads. La automatizacion del seguimiento fue un cambio total para nuestro equipo de ventas.&rdquo;</blockquote>
-          <div class="testimonial-author">
-            <div class="testimonial-avatar av1">MG</div>
-            <div>
-              <div class="testimonial-name">Maria Garcia</div>
-              <div class="testimonial-role">CEO, Digital Agency</div>
-            </div>
-          </div>
+
+      <div class="benefit-card reveal">
+        <div class="benefit-icon gold">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
         </div>
-        <div class="testimonial-card reveal reveal-delay-1">
-          <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-          <blockquote>&ldquo;Dejamos de perder clientes por falta de seguimiento. Ahora todo se gestiona automaticamente y los resultados hablan solos.&rdquo;</blockquote>
-          <div class="testimonial-author">
-            <div class="testimonial-avatar av2">CR</div>
-            <div>
-              <div class="testimonial-name">Carlos Rodriguez</div>
-              <div class="testimonial-role">Director, Consultora CR</div>
-            </div>
-          </div>
-        </div>
-        <div class="testimonial-card reveal reveal-delay-2">
-          <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-          <blockquote>&ldquo;La mejor inversion para mi negocio. Reducimos un 60% el tiempo en tareas administrativas y aumentamos la facturacion.&rdquo;</blockquote>
-          <div class="testimonial-author">
-            <div class="testimonial-avatar av3">AL</div>
-            <div>
-              <div class="testimonial-name">Ana Lopez</div>
-              <div class="testimonial-role">Fundadora, Estudio AL</div>
-            </div>
-          </div>
-        </div>
+        <h3>Puntos que Valen Dinero</h3>
+        <p>Cada punto equivale a 1 dólar. Acumula puntos con cada pago mensual y úsalos directamente para pagar tus próximas reservas.</p>
       </div>
-      <div class="trust-bar reveal">
-        <div class="trust-item">
-          <strong>+2,500</strong>
-          <span>Negocios confian en nosotros</span>
+
+      <div class="benefit-card reveal">
+        <div class="benefit-icon green">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17.8 19.2 16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.2c.4-.3.6-.7.5-1.2z"/></svg>
         </div>
-        <div class="trust-item">
-          <strong>+1M</strong>
-          <span>Leads generados</span>
+        <h3>Tu Viaje Anual Gratis</h3>
+        <p>Después de 12 meses como miembro, acumulas suficientes puntos para disfrutar un viaje completamente financiado con tus puntos de fidelidad.</p>
+      </div>
+
+      <div class="benefit-card reveal">
+        <div class="benefit-icon coral">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg>
         </div>
-        <div class="trust-item">
-          <strong>4.9/5</strong>
-          <span>Valoracion promedio</span>
-        </div>
-        <div class="trust-item">
-          <strong>15+</strong>
-          <span>Paises</span>
-        </div>
+        <h3>Variedad Sin Límites</h3>
+        <p>Hoteles, vuelos, cruceros, alquiler de coches y experiencias exclusivas en más de 100 países. Todo en una sola plataforma privada.</p>
       </div>
     </div>
   </section>
 
   <!-- ===== HOW IT WORKS ===== -->
-  <section class="section how-it-works" id="como-funciona">
-    <div class="grid-bg"></div>
-    <div class="container">
-      <div class="text-center">
-        <span class="section-label reveal">Proceso</span>
-        <h2 class="section-title reveal reveal-delay-1">Como funciona</h2>
-        <p class="section-subtitle mx-auto reveal reveal-delay-2">Tres pasos simples para transformar tu negocio y empezar a ver resultados.</p>
+  <section class="section section-alt" id="como-funciona">
+    <div class="section-header reveal">
+      <div class="section-tag">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        Cómo Funciona
       </div>
-      <div class="steps-grid">
-        <div class="step-card reveal">
-          <div class="step-number">1</div>
-          <h3>Agenda tu Demo</h3>
-          <p>Rellena el formulario y reserva una llamada gratuita con nuestro equipo de estrategia.</p>
+      <h2>Empieza a Ahorrar en 3 Simples Pasos</h2>
+      <p>Un proceso sencillo para que comiences a disfrutar de viajes premium a precios que nadie más puede ofrecerte.</p>
+    </div>
+
+    <div class="steps-grid">
+      <div class="step-item reveal">
+        <div class="step-number">1</div>
+        <h3>Solicita Información</h3>
+        <p>Completa el formulario y un asesor de viajes te contactará para explicarte todo sin compromiso.</p>
+      </div>
+      <div class="step-item reveal">
+        <div class="step-number">2</div>
+        <h3>Elige tu Membresía</h3>
+        <p>Selecciona el plan que mejor se adapte a tus necesidades de viaje y comienza a acumular puntos desde el día uno.</p>
+      </div>
+      <div class="step-item reveal">
+        <div class="step-number">3</div>
+        <h3>Viaja y Ahorra</h3>
+        <p>Accede a la plataforma exclusiva, reserva a precios de mayorista y disfruta de ahorros reales en cada viaje.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== MEMBERSHIPS ===== -->
+  <section class="section" id="membresias">
+    <div class="section-header reveal">
+      <div class="section-tag">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
+        Opciones de Membresía
+      </div>
+      <h2>Elige el Plan Perfecto para Ti</h2>
+      <p>Dos opciones diseñadas para que empieces a viajar más por menos, sea cual sea tu presupuesto.</p>
+    </div>
+
+    <div class="membership-grid">
+      <!-- ELITE -->
+      <div class="membership-card reveal">
+        <div class="membership-name">Elite</div>
+        <div class="membership-points">
+          <div class="point-row">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <strong>120 puntos</strong> cada mes
+          </div>
+          <div class="point-row">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+            Acceso completo a la plataforma
+          </div>
+          <div class="point-row">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+            Precios de mayorista
+          </div>
         </div>
-        <div class="step-card reveal reveal-delay-1">
-          <div class="step-number">2</div>
-          <h3>Disenamos tu Plan</h3>
-          <p>Creamos una estrategia personalizada con los embudos y automatizaciones que tu negocio necesita.</p>
+        <a href="#contacto" class="btn-outline">Saber Más</a>
+      </div>
+
+      <!-- TURBO -->
+      <div class="membership-card popular reveal">
+        <div class="membership-name">Turbo</div>
+        <div class="membership-points">
+          <div class="point-row">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <strong>490 puntos</strong> de bienvenida
+          </div>
+          <div class="point-row">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <strong>240 puntos</strong> cada mes
+          </div>
+          <div class="point-row">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+            Todo lo de Elite + beneficios premium
+          </div>
         </div>
-        <div class="step-card reveal reveal-delay-2">
-          <div class="step-number">3</div>
-          <h3>Escala tus Resultados</h3>
-          <p>Lanzamos, optimizamos y escalamos. Tu solo te enfocas en cerrar ventas y crecer.</p>
+        <a href="#contacto" class="btn-outline">Saber Más</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SOCIAL PROOF ===== -->
+  <section class="social-proof">
+    <div class="section-header reveal">
+      <div class="section-tag">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        Lo que Dicen Nuestros Miembros
+      </div>
+      <h2>Historias Reales de Ahorro</h2>
+      <p>Miles de viajeros ya están disfrutando de vacaciones premium a una fracción del precio.</p>
+    </div>
+
+    <div class="testimonials-grid">
+      <div class="testimonial-card reveal">
+        <div class="testimonial-stars">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        </div>
+        <blockquote>"Reservé un hotel 5 estrellas en Cancún por casi la mitad de lo que costaba en Booking. No podía creerlo hasta que lo vi con mis propios ojos."</blockquote>
+        <div class="testimonial-author">
+          <div class="author-avatar">MG</div>
+          <div class="author-info">
+            <span class="author-name">María García</span>
+            <span class="author-role">Miembro desde 2024</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonial-card reveal">
+        <div class="testimonial-stars">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        </div>
+        <blockquote>"Los puntos de fidelidad son increíbles. Después de un año acumulé suficientes para cubrir un vuelo completo a Europa para dos personas."</blockquote>
+        <div class="testimonial-author">
+          <div class="author-avatar">CR</div>
+          <div class="author-info">
+            <span class="author-name">Carlos Rodríguez</span>
+            <span class="author-role">Miembro Turbo</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonial-card reveal">
+        <div class="testimonial-stars">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        </div>
+        <blockquote>"Como familia de 4, cada viaje nos costaba una fortuna. Ahora viajamos el doble pagando mucho menos. Es un cambio total."</blockquote>
+        <div class="testimonial-author">
+          <div class="author-avatar">AL</div>
+          <div class="author-info">
+            <span class="author-name">Ana López</span>
+            <span class="author-role">Miembro desde 2023</span>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ===== FORM / CTA ===== -->
-  <section class="section cta-section" id="contacto">
-    <div class="gradient-mesh">
-      <div class="orb orb-1" style="width:400px;height:400px;top:-20%;right:0;background:var(--accent);"></div>
-      <div class="orb orb-2" style="width:350px;height:350px;bottom:-15%;left:10%;background:var(--pink);"></div>
+  <!-- ===== CONTACT FORM ===== -->
+  <section class="form-section" id="contacto">
+    <div class="section-header reveal">
+      <div class="section-tag">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+        Contacto
+      </div>
+      <h2>Empieza a Ahorrar Hoy</h2>
+      <p>Déjanos tus datos y un asesor de viajes te contactará para explicarte cómo funciona el club, sin compromiso.</p>
     </div>
-    <div class="container">
-      <div class="cta-grid">
-        <div class="cta-content reveal">
-          <span class="section-label">Empieza Hoy</span>
-          <h2>Lleva tu negocio al<br>siguiente nivel</h2>
-          <p>Solicita tu demo gratuita y descubre como podemos ayudarte a automatizar, captar y convertir mas clientes.</p>
-          <ul class="cta-features">
-            <li>Demo personalizada sin compromiso</li>
-            <li>Configuracion inicial incluida</li>
-            <li>Soporte dedicado en espanol</li>
-            <li>Resultados desde la primera semana</li>
-          </ul>
+
+    <div class="form-wrapper reveal">
+      <div id="formContent">
+        <form id="contactForm" novalidate>
+          <div class="form-group">
+            <label for="nombre">Nombre Completo</label>
+            <input type="text" id="nombre" name="nombre" placeholder="Tu nombre y apellido" required>
+            <span class="error-msg">Por favor ingresa tu nombre</span>
+          </div>
+          <div class="form-group">
+            <label for="email">Correo Electrónico</label>
+            <input type="email" id="email" name="email" placeholder="tu@email.com" required>
+            <span class="error-msg">Por favor ingresa un email válido</span>
+          </div>
+          <div class="form-group">
+            <label for="telefono">Teléfono</label>
+            <input type="tel" id="telefono" name="telefono" placeholder="+1 (555) 123-4567" required>
+            <span class="error-msg">Por favor ingresa tu teléfono</span>
+          </div>
+          <div class="form-group">
+            <label for="mensaje">Mensaje / Interés <span style="font-weight:400;color:var(--gray-300)">(opcional)</span></label>
+            <textarea id="mensaje" name="mensaje" placeholder="Cuéntanos qué destinos te interesan o cualquier pregunta que tengas..."></textarea>
+          </div>
+          <button type="submit" class="form-submit" id="submitBtn">
+            <span>Quiero Más Información</span>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+            <div class="spinner" id="spinner"></div>
+          </button>
+          <div class="form-privacy">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+            Tu información está segura. No compartimos tus datos.
+          </div>
+        </form>
+      </div>
+
+      <div class="form-success" id="formSuccess">
+        <div class="success-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
         </div>
-
-        <!-- GHL FORM CONTAINER -->
-        <!--
-          ==========================================================
-          INSTRUCCIONES PARA GOHIGHLEVEL:
-
-          Opcion 1 - Formulario nativo GHL:
-          Reemplaza el formulario HTML de abajo con el snippet
-          de formulario generado en GoHighLevel:
-          <iframe src="https://link.tudominio.com/widget/form/TU_FORM_ID"
-            style="width:100%;height:100%;border:none;"></iframe>
-
-          Opcion 2 - Mantener el formulario HTML:
-          Si prefieres usar este formulario, configura la accion
-          del form apuntando a tu webhook de GHL:
-          action="https://services.leadconnectorhq.com/hooks/TU_WEBHOOK_ID"
-
-          Los campos name= deben coincidir con los campos
-          personalizados de tu cuenta GHL:
-          - full_name  -> Nombre completo
-          - email      -> Correo electronico
-          - phone      -> Telefono
-          - message    -> Mensaje (campo personalizado)
-          ==========================================================
-        -->
-        <div class="ghl-form-wrapper reveal reveal-delay-2">
-          <h3>Solicita tu Demo Gratis</h3>
-          <p class="form-sub">Completa el formulario y te contactamos en menos de 24h.</p>
-          <form method="POST" action="#">
-            <div class="form-group">
-              <label for="full_name">Nombre completo</label>
-              <input type="text" id="full_name" name="full_name" placeholder="Ej: Juan Perez" required>
-            </div>
-            <div class="form-group">
-              <label for="email">Correo electronico</label>
-              <input type="email" id="email" name="email" placeholder="juan@tuempresa.com" required>
-            </div>
-            <div class="form-group">
-              <label for="phone">Telefono</label>
-              <input type="tel" id="phone" name="phone" placeholder="+34 600 000 000">
-            </div>
-            <div class="form-group">
-              <label for="message">&iquest;En que podemos ayudarte?</label>
-              <textarea id="message" name="message" placeholder="Cuentanos brevemente sobre tu negocio y objetivos..."></textarea>
-            </div>
-            <button type="submit" class="btn-submit">Solicitar Demo Gratuita</button>
-          </form>
-          <p class="form-note">&#128274; Tus datos estan seguros. No compartimos tu informacion con terceros.</p>
-        </div>
+        <h3>Solicitud Enviada</h3>
+        <p>Gracias por tu interés. Un asesor de viajes te contactará en las próximas 24 horas para explicarte todo sobre el club.</p>
       </div>
     </div>
   </section>
 
-  <!-- ===== ASI SOMOS ===== -->
-  <section class="team-section">
-    <div class="gradient-mesh">
-      <div class="orb orb-1"></div>
-      <div class="orb orb-2"></div>
-    </div>
-    <div class="grid-bg"></div>
-    <div class="container">
-      <h2 class="team-title reveal">ASI SOMOS</h2>
-      <p class="team-subtitle reveal reveal-delay-1">Las personas detras de tu crecimiento</p>
-      <div class="team-image-wrapper reveal reveal-delay-2">
-        <img src="https://storage.googleapis.com/msgsndr/MIpKkQyIlHX14E5YDjLW/media/697c72081fd827bbe0d6452f.png" alt="Nuestro equipo - Asi Somos">
-      </div>
-    </div>
+  <!-- ===== FINAL CTA ===== -->
+  <section class="final-cta reveal">
+    <h2>Tu Próximo Viaje Puede Costar Hasta un 60% Menos</h2>
+    <p>No sigas pagando precios de turista. Únete al club de viajes que te da acceso a precios de profesional.</p>
+    <a href="#contacto" class="btn-primary">
+      Solicitar Información Gratis
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+    </a>
   </section>
 
   <!-- ===== FOOTER ===== -->
   <footer class="footer">
-    <div class="container">
-      <p>&copy; 2026 TuMarca. Todos los derechos reservados.</p>
-      <ul class="footer-links">
-        <li><a href="#">Politica de Privacidad</a></li>
-        <li><a href="#">Terminos de Uso</a></li>
-        <li><a href="#">Contacto</a></li>
-      </ul>
+    <div class="footer-inner">
+      <div class="footer-logo">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17.8 19.2 16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.2c.4-.3.6-.7.5-1.2z"/></svg>
+        Travel Advantage
+      </div>
+      <p>El club de viajes privado que te conecta con precios exclusivos de mayorista en hoteles, vuelos, cruceros y más.</p>
+      <p>&copy; 2025 Travel Advantage. Todos los derechos reservados.</p>
+      <div class="footer-links">
+        <a href="#">Política de Privacidad</a>
+        <a href="#">Términos y Condiciones</a>
+        <a href="#">Contacto</a>
+      </div>
     </div>
   </footer>
 
-  <!-- ===== SCRIPTS (inline, no external libs) ===== -->
+  <!-- ===== JAVASCRIPT ===== -->
   <script>
-    // Scroll reveal
-    const revealEls = document.querySelectorAll('.reveal');
-    const revealObserver = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
+    // ===== Scroll Reveal =====
+    function initReveal() {
+      const reveals = document.querySelectorAll('.reveal');
+      const observer = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+      reveals.forEach(function(el) { observer.observe(el); });
+    }
+
+    // ===== Navbar scroll effect =====
+    function initNavbar() {
+      var navbar = document.getElementById('navbar');
+      window.addEventListener('scroll', function() {
+        if (window.scrollY > 50) {
+          navbar.classList.add('scrolled');
+        } else {
+          navbar.classList.remove('scrolled');
         }
-      });
-    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
-    revealEls.forEach(el => revealObserver.observe(el));
-
-    // Header scroll effect
-    const header = document.getElementById('header');
-    window.addEventListener('scroll', () => {
-      header.classList.toggle('scrolled', window.scrollY > 40);
-    }, { passive: true });
-
-    // 3D tilt on hero card
-    const heroCard = document.getElementById('heroCard');
-    if (heroCard) {
-      const card = heroCard.closest('.hero-visual');
-      card.addEventListener('mousemove', (e) => {
-        const rect = card.getBoundingClientRect();
-        const x = (e.clientX - rect.left) / rect.width - 0.5;
-        const y = (e.clientY - rect.top) / rect.height - 0.5;
-        heroCard.style.transform =
-          `rotateY(${x * 16}deg) rotateX(${-y * 16}deg) scale3d(1.02,1.02,1.02)`;
-      });
-      card.addEventListener('mouseleave', () => {
-        heroCard.style.transform = 'rotateY(0deg) rotateX(0deg) scale3d(1,1,1)';
       });
     }
 
-    // Animate bars on scroll
-    const bars = document.querySelectorAll('.hero-card-bar-fill');
-    const barObserver = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          const w = entry.target.style.width;
-          entry.target.style.width = '0%';
-          requestAnimationFrame(() => {
-            requestAnimationFrame(() => {
-              entry.target.style.width = w;
-            });
-          });
-        }
+    // ===== Smooth scroll for anchors =====
+    function initSmoothScroll() {
+      document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
+        anchor.addEventListener('click', function(e) {
+          e.preventDefault();
+          var target = document.querySelector(this.getAttribute('href'));
+          if (target) {
+            var offset = 80;
+            var top = target.getBoundingClientRect().top + window.pageYOffset - offset;
+            window.scrollTo({ top: top, behavior: 'smooth' });
+          }
+        });
       });
-    }, { threshold: 0.5 });
-    bars.forEach(b => barObserver.observe(b));
+    }
+
+    // ===== Video placeholder click =====
+    function initVideo() {
+      var placeholder = document.getElementById('videoPlaceholder');
+      if (placeholder) {
+        placeholder.addEventListener('click', function() {
+          // Replace with your actual video embed URL
+          var container = placeholder.parentElement;
+          container.innerHTML = '<iframe src="https://www.youtube.com/embed/YOUR_VIDEO_ID?autoplay=1&rel=0" title="Travel Advantage Video" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>';
+        });
+        placeholder.addEventListener('keydown', function(e) {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            placeholder.click();
+          }
+        });
+      }
+    }
+
+    // ===== Form validation & submission =====
+    function initForm() {
+      var form = document.getElementById('contactForm');
+      var submitBtn = document.getElementById('submitBtn');
+      var spinner = document.getElementById('spinner');
+      var formContent = document.getElementById('formContent');
+      var formSuccess = document.getElementById('formSuccess');
+
+      function validateEmail(email) {
+        return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+      }
+
+      function validateField(input) {
+        var isValid = true;
+        if (input.required && !input.value.trim()) {
+          isValid = false;
+        }
+        if (input.type === 'email' && input.value.trim() && !validateEmail(input.value.trim())) {
+          isValid = false;
+        }
+        if (isValid) {
+          input.classList.remove('error');
+        } else {
+          input.classList.add('error');
+        }
+        return isValid;
+      }
+
+      // Real-time validation
+      form.querySelectorAll('input, textarea').forEach(function(input) {
+        input.addEventListener('blur', function() { validateField(this); });
+        input.addEventListener('input', function() {
+          if (this.classList.contains('error')) { validateField(this); }
+        });
+      });
+
+      form.addEventListener('submit', function(e) {
+        e.preventDefault();
+
+        var inputs = form.querySelectorAll('input[required]');
+        var allValid = true;
+
+        inputs.forEach(function(input) {
+          if (!validateField(input)) { allValid = false; }
+        });
+
+        if (!allValid) return;
+
+        // Show loading state
+        submitBtn.disabled = true;
+        submitBtn.querySelector('span').textContent = 'Enviando...';
+        submitBtn.querySelector('svg').style.display = 'none';
+        spinner.style.display = 'block';
+
+        // Simulate form submission (replace with actual endpoint)
+        // For Formspree: change form action to https://formspree.io/f/YOUR_FORM_ID
+        // and remove this setTimeout simulation
+        var formData = {
+          nombre: document.getElementById('nombre').value.trim(),
+          email: document.getElementById('email').value.trim(),
+          telefono: document.getElementById('telefono').value.trim(),
+          mensaje: document.getElementById('mensaje').value.trim()
+        };
+
+        // Using Formspree (uncomment and add your form ID):
+        /*
+        fetch('https://formspree.io/f/YOUR_FORM_ID', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+          body: JSON.stringify(formData)
+        })
+        .then(function(response) {
+          if (response.ok) {
+            formContent.style.display = 'none';
+            formSuccess.classList.add('active');
+          }
+        })
+        .catch(function() {
+          submitBtn.disabled = false;
+          submitBtn.querySelector('span').textContent = 'Quiero Más Información';
+          submitBtn.querySelector('svg').style.display = 'block';
+          spinner.style.display = 'none';
+        });
+        */
+
+        // Simulated submission (remove when using real endpoint)
+        setTimeout(function() {
+          formContent.style.display = 'none';
+          formSuccess.classList.add('active');
+        }, 1500);
+      });
+    }
+
+    // ===== Initialize all =====
+    document.addEventListener('DOMContentLoaded', function() {
+      initReveal();
+      initNavbar();
+      initSmoothScroll();
+      initVideo();
+      initForm();
+    });
   </script>
 
 </body>
