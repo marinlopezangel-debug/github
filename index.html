@@ -30,6 +30,10 @@
     html {
       scroll-behavior: smooth;
       -webkit-text-size-adjust: 100%;
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      overflow-x: hidden;
     }
 
     body {
@@ -40,10 +44,20 @@
       background: var(--white);
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      min-width: 100%;
+      overflow-x: hidden;
     }
 
     img { max-width: 100%; height: auto; display: block; }
     a { text-decoration: none; color: inherit; }
+
+    section, footer {
+      width: 100%;
+      max-width: 100%;
+    }
 
     .container {
       max-width: 1140px;
@@ -132,6 +146,7 @@
       color: var(--white);
       padding: 80px 0 96px;
       overflow: hidden;
+      width: 100%;
     }
 
     .hero::before {
