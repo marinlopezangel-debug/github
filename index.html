@@ -704,107 +704,8 @@
       background: var(--white);
       border: 1px solid var(--border-gray);
       border-radius: 8px;
-      padding: 36px;
-    }
-
-    .form-group {
-      margin-bottom: 20px;
-    }
-
-    .form-group label {
-      display: block;
-      font-size: 14px;
-      font-weight: 500;
-      margin-bottom: 6px;
-      color: var(--text-dark);
-    }
-
-    .form-group label .required {
-      color: var(--danger-red);
-    }
-
-    .form-input,
-    .form-select {
-      width: 100%;
-      border: 1px solid #D1D5DB;
-      border-radius: 6px;
-      padding: 12px 16px;
-      font-size: 16px;
-      font-family: var(--font-primary);
-      color: var(--text-dark);
-      background: var(--white);
-      transition: border-color 0.2s ease;
-      -webkit-appearance: none;
-      appearance: none;
-    }
-
-    .form-select {
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='7' viewBox='0 0 12 7'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%236B7280' stroke-width='1.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
-      background-repeat: no-repeat;
-      background-position: right 16px center;
-      padding-right: 40px;
-    }
-
-    .form-input:focus,
-    .form-select:focus {
-      outline: none;
-      border-color: var(--primary-blue);
-    }
-
-    .form-input::placeholder {
-      color: #9CA3AF;
-    }
-
-    .form-checkbox {
-      display: flex;
-      align-items: flex-start;
-      gap: 10px;
-      margin-top: 4px;
-    }
-
-    .form-checkbox input[type="checkbox"] {
-      margin-top: 3px;
-      width: 18px;
-      height: 18px;
-      flex-shrink: 0;
-      accent-color: var(--primary-blue);
-    }
-
-    .form-checkbox label {
-      font-size: 13px;
-      color: var(--text-gray);
-      line-height: 1.5;
-      margin-bottom: 0;
-    }
-
-    .form-submit {
-      margin-top: 24px;
-    }
-
-    .form-submit .btn-primary {
-      width: 100%;
-      padding: 16px;
-      font-size: 16px;
-    }
-
-    .form-message {
-      margin-top: 16px;
-      padding: 12px 16px;
-      border-radius: 6px;
-      font-size: 14px;
-      display: none;
-    }
-
-    .form-message--success {
-      background: #ECFDF5;
-      color: #065F46;
-      border: 1px solid #A7F3D0;
-    }
-
-    .form-message--error {
-      background: #FEF2F2;
-      color: #991B1B;
-      border: 1px solid #FECACA;
+      padding: 24px;
+      min-height: 622px;
     }
 
     /* ========================================
@@ -972,31 +873,6 @@
       .stats-row { grid-template-columns: 1fr; gap: 20px; }
     }
 
-    /* ===== LOADING STATE ===== */
-    .btn-loading {
-      position: relative;
-      pointer-events: none;
-      opacity: 0.8;
-    }
-
-    .btn-loading::after {
-      content: '';
-      position: absolute;
-      width: 18px;
-      height: 18px;
-      top: 50%;
-      left: 50%;
-      margin-top: -9px;
-      margin-left: -9px;
-      border: 2px solid rgba(255, 255, 255, 0.3);
-      border-top-color: var(--white);
-      border-radius: 50%;
-      animation: spin 0.6s linear infinite;
-    }
-
-    @keyframes spin {
-      to { transform: rotate(360deg); }
-    }
   </style>
 </head>
 <body>
@@ -1289,77 +1165,26 @@
             </ul>
           </div>
         </div>
-        <!-- Right: form -->
+        <!-- Right: GoHighLevel form -->
         <div class="contact-form-wrapper">
-          <form id="contactForm" novalidate>
-            <div class="form-group">
-              <label for="name">Nombre completo <span class="required">*</span></label>
-              <input type="text" id="name" class="form-input" placeholder="Tu nombre completo" required>
-            </div>
-            <div class="form-group">
-              <label for="email">Email <span class="required">*</span></label>
-              <input type="email" id="email" class="form-input" placeholder="tu@email.com" required>
-            </div>
-            <div class="form-group">
-              <label for="phone">Teléfono (WhatsApp) <span class="required">*</span></label>
-              <input type="tel" id="phone" class="form-input" placeholder="+1 234 567 8900" required>
-            </div>
-            <div class="form-group">
-              <label for="country">País <span class="required">*</span></label>
-              <select id="country" class="form-select" required>
-                <option value="">Selecciona tu país</option>
-                <option value="MX">México</option>
-                <option value="CO">Colombia</option>
-                <option value="AR">Argentina</option>
-                <option value="CL">Chile</option>
-                <option value="PE">Perú</option>
-                <option value="EC">Ecuador</option>
-                <option value="VE">Venezuela</option>
-                <option value="GT">Guatemala</option>
-                <option value="CU">Cuba</option>
-                <option value="DO">República Dominicana</option>
-                <option value="HN">Honduras</option>
-                <option value="SV">El Salvador</option>
-                <option value="NI">Nicaragua</option>
-                <option value="CR">Costa Rica</option>
-                <option value="PA">Panamá</option>
-                <option value="PY">Paraguay</option>
-                <option value="UY">Uruguay</option>
-                <option value="BO">Bolivia</option>
-                <option value="PR">Puerto Rico</option>
-                <option value="ES">España</option>
-                <option value="US">Estados Unidos</option>
-                <option value="CA">Canadá</option>
-                <option value="BR">Brasil</option>
-                <option value="OTHER">Otro</option>
-              </select>
-            </div>
-            <div class="form-group">
-              <label for="frequency">¿Con qué frecuencia viajas? <span class="required">*</span></label>
-              <select id="frequency" class="form-select" required>
-                <option value="">Selecciona una opción</option>
-                <option value="1-2">1-2 veces al año</option>
-                <option value="3-4">3-4 veces al año</option>
-                <option value="5+">5 o más veces al año</option>
-                <option value="rarely">Raramente</option>
-              </select>
-            </div>
-            <div class="form-group">
-              <div class="form-checkbox">
-                <input type="checkbox" id="consent" required>
-                <label for="consent">Acepto recibir información sobre Travel Advantage y sus servicios. Puedo cancelar en cualquier momento.</label>
-              </div>
-            </div>
-            <div class="form-submit">
-              <button type="submit" class="btn-primary" id="submitBtn">HABLAR CON UN AGENTE AHORA</button>
-            </div>
-            <div class="form-message form-message--success" id="formSuccess">
-              &#10003; ¡Gracias! Hemos recibido tu información. Un agente se pondrá en contacto contigo en breve.
-            </div>
-            <div class="form-message form-message--error" id="formError">
-              Hubo un error al enviar el formulario. Por favor, inténtalo de nuevo.
-            </div>
-          </form>
+          <iframe
+            src="https://api.leadconnectorhq.com/widget/form/S2ZEcN4AUci1PS58pO5c"
+            style="width:100%;height:100%;min-height:622px;border:none;border-radius:3px"
+            id="inline-S2ZEcN4AUci1PS58pO5c"
+            data-layout="{'id':'INLINE'}"
+            data-trigger-type="alwaysShow"
+            data-trigger-value=""
+            data-activation-type="alwaysActivated"
+            data-activation-value=""
+            data-deactivation-type="neverDeactivate"
+            data-deactivation-value=""
+            data-form-name="Form Travel Advantage"
+            data-height="622"
+            data-layout-iframe-id="inline-S2ZEcN4AUci1PS58pO5c"
+            data-form-id="S2ZEcN4AUci1PS58pO5c"
+            title="Form Travel Advantage"
+          ></iframe>
+          <script src="https://link.msgsndr.com/js/form_embed.js"></script>
         </div>
       </div>
     </div>
@@ -1455,94 +1280,6 @@
       });
     });
 
-    /* --- Form Validation & Submission --- */
-    (function() {
-      var form = document.getElementById('contactForm');
-      var submitBtn = document.getElementById('submitBtn');
-      var successMsg = document.getElementById('formSuccess');
-      var errorMsg = document.getElementById('formError');
-
-      // CONFIGURE: Replace with your webhook URL
-      var WEBHOOK_URL = 'YOUR_WEBHOOK_URL_HERE';
-
-      form.addEventListener('submit', function(e) {
-        e.preventDefault();
-
-        // Hide previous messages
-        successMsg.style.display = 'none';
-        errorMsg.style.display = 'none';
-
-        // Validate required fields
-        var name = document.getElementById('name').value.trim();
-        var email = document.getElementById('email').value.trim();
-        var phone = document.getElementById('phone').value.trim();
-        var country = document.getElementById('country').value;
-        var frequency = document.getElementById('frequency').value;
-        var consent = document.getElementById('consent').checked;
-
-        if (!name || !email || !phone || !country || !frequency || !consent) {
-          errorMsg.textContent = 'Por favor, completa todos los campos obligatorios.';
-          errorMsg.style.display = 'block';
-          return;
-        }
-
-        // Basic email validation
-        var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        if (!emailRegex.test(email)) {
-          errorMsg.textContent = 'Por favor, ingresa un email válido.';
-          errorMsg.style.display = 'block';
-          return;
-        }
-
-        // Loading state
-        var originalText = submitBtn.textContent;
-        submitBtn.textContent = '';
-        submitBtn.classList.add('btn-loading');
-
-        var formData = {
-          name: name,
-          email: email,
-          phone: phone,
-          country: country,
-          frequency: frequency,
-          timestamp: new Date().toISOString()
-        };
-
-        // If webhook URL is not configured, show success anyway (for demo)
-        if (WEBHOOK_URL === 'YOUR_WEBHOOK_URL_HERE') {
-          setTimeout(function() {
-            submitBtn.classList.remove('btn-loading');
-            submitBtn.textContent = originalText;
-            successMsg.style.display = 'block';
-            form.reset();
-          }, 800);
-          return;
-        }
-
-        fetch(WEBHOOK_URL, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(formData)
-        })
-        .then(function(response) {
-          submitBtn.classList.remove('btn-loading');
-          submitBtn.textContent = originalText;
-          if (response.ok) {
-            successMsg.style.display = 'block';
-            form.reset();
-          } else {
-            errorMsg.textContent = 'Error al enviar. Por favor, inténtalo de nuevo.';
-            errorMsg.style.display = 'block';
-          }
-        })
-        .catch(function() {
-          submitBtn.classList.remove('btn-loading');
-          submitBtn.textContent = originalText;
-          errorMsg.textContent = 'Error de conexión. Por favor, inténtalo de nuevo.';
-          errorMsg.style.display = 'block';
-        });
-      });
-    })();
   </script>
 
 </body>
