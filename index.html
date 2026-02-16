@@ -3,1435 +3,1535 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>TuMarca | Transforma Tu Negocio</title>
+  <title>Travel Advantage | Viaja Por Menos</title>
+  <meta name="description" content="Accede a precios mayoristas en más de 1,000,000 de hoteles, vuelos y experiencias. Ahorra 30-60% en cada reserva.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
-    /* ===== RESET ===== */
+    /* ===== RESET & BASE ===== */
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
     :root {
-      --bg: #050510;
-      --bg-2: #0a0a1a;
-      --bg-3: #0f0f24;
-      --surface: rgba(255, 255, 255, 0.04);
-      --surface-2: rgba(255, 255, 255, 0.07);
-      --border: rgba(255, 255, 255, 0.08);
-      --border-hover: rgba(255, 255, 255, 0.15);
-      --text: #e2e8f0;
-      --text-muted: #8892a4;
-      --text-dim: #5a6478;
-      --white: #ffffff;
-      --accent: #6366f1;
-      --accent-2: #818cf8;
-      --accent-glow: rgba(99, 102, 241, 0.25);
-      --cyan: #22d3ee;
-      --pink: #ec4899;
-      --green: #34d399;
-      --amber: #fbbf24;
-      --radius: 16px;
-      --radius-sm: 10px;
-      --transition: 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      --primary-blue: #0071C2;
+      --primary-orange: #FF8C42;
+      --orange-hover: #E67A35;
+      --dark-navy: #1E2235;
+      --light-gray: #F5F7FA;
+      --white: #FFFFFF;
+      --text-dark: #2C3E50;
+      --text-gray: #6B7280;
+      --success-green: #10B981;
+      --border-gray: #E5E7EB;
+      --danger-red: #EF4444;
+      --font-primary: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
     }
 
-    html { scroll-behavior: smooth; }
+    html {
+      scroll-behavior: smooth;
+      -webkit-text-size-adjust: 100%;
+    }
 
     body {
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Inter', Roboto, sans-serif;
-      background: var(--bg);
-      color: var(--text);
+      font-family: var(--font-primary);
+      color: var(--text-dark);
       line-height: 1.6;
-      overflow-x: hidden;
+      font-size: 16px;
+      background: var(--white);
       -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
     }
 
-    img { max-width: 100%; display: block; }
+    img { max-width: 100%; height: auto; display: block; }
     a { text-decoration: none; color: inherit; }
 
-    /* ===== SCROLL ANIMATIONS ===== */
-    .reveal {
-      opacity: 0;
-      transform: translateY(40px);
-      transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    .container {
+      max-width: 1140px;
+      margin: 0 auto;
+      padding: 0 24px;
     }
-    .reveal.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-    .reveal-delay-1 { transition-delay: 0.1s; }
-    .reveal-delay-2 { transition-delay: 0.2s; }
-    .reveal-delay-3 { transition-delay: 0.3s; }
-    .reveal-delay-4 { transition-delay: 0.4s; }
-    .reveal-delay-5 { transition-delay: 0.5s; }
 
-    /* ===== UTILITIES ===== */
-    .container { width: 100%; max-width: 1200px; margin: 0 auto; padding: 0 28px; }
-    .section { padding: 120px 0; position: relative; }
-    .text-center { text-align: center; }
-
-    .section-label {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      font-size: 0.75rem;
+    /* ===== TYPOGRAPHY ===== */
+    h1, h2, h3, h4 {
+      line-height: 1.3;
       font-weight: 600;
-      letter-spacing: 3px;
-      text-transform: uppercase;
-      color: var(--accent-2);
-      border: 1px solid var(--border);
-      padding: 8px 20px;
-      border-radius: 100px;
-      margin-bottom: 20px;
-      background: var(--surface);
-      backdrop-filter: blur(10px);
     }
 
-    .section-label::before {
-      content: '';
-      width: 6px; height: 6px;
-      border-radius: 50%;
-      background: var(--accent);
-      box-shadow: 0 0 10px var(--accent);
-    }
-
-    .section-title {
-      font-size: clamp(2rem, 5vw, 3.2rem);
-      font-weight: 800;
-      color: var(--white);
-      line-height: 1.1;
-      margin-bottom: 18px;
-      letter-spacing: -0.02em;
-    }
+    h1 { font-size: 48px; }
+    h2 { font-size: 36px; margin-bottom: 16px; }
+    h3 { font-size: 24px; }
 
     .section-subtitle {
-      font-size: 1.1rem;
-      color: var(--text-muted);
-      max-width: 560px;
-      margin-bottom: 56px;
-      line-height: 1.7;
+      color: var(--text-gray);
+      font-size: 18px;
+      line-height: 1.6;
+      max-width: 680px;
+      margin: 0 auto 48px;
     }
 
-    .mx-auto { margin-left: auto; margin-right: auto; }
-
-    /* ===== GRADIENT MESH BG ===== */
-    .gradient-mesh {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      top: 0; left: 0;
-      overflow: hidden;
-      pointer-events: none;
-      z-index: 0;
-    }
-    .gradient-mesh .orb {
-      position: absolute;
-      border-radius: 50%;
-      filter: blur(100px);
-      opacity: 0.3;
-      animation: float 20s ease-in-out infinite;
-    }
-    .gradient-mesh .orb-1 {
-      width: 600px; height: 600px;
-      background: var(--accent);
-      top: -15%; right: -10%;
-      animation-delay: 0s;
-    }
-    .gradient-mesh .orb-2 {
-      width: 500px; height: 500px;
-      background: var(--pink);
-      bottom: -10%; left: -10%;
-      animation-delay: -7s;
-    }
-    .gradient-mesh .orb-3 {
-      width: 400px; height: 400px;
-      background: var(--cyan);
-      top: 40%; left: 50%;
-      animation-delay: -14s;
-    }
-
-    @keyframes float {
-      0%, 100% { transform: translate(0, 0) scale(1); }
-      25% { transform: translate(30px, -40px) scale(1.05); }
-      50% { transform: translate(-20px, 20px) scale(0.95); }
-      75% { transform: translate(15px, 30px) scale(1.02); }
-    }
-
-    /* ===== NOISE OVERLAY ===== */
-    body::after {
-      content: '';
-      position: fixed;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
-      pointer-events: none;
-      z-index: 9999;
-      opacity: 0.4;
-    }
+    .text-center { text-align: center; }
 
     /* ===== BUTTONS ===== */
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
+    .btn-primary {
+      display: inline-block;
+      background: var(--primary-orange);
+      color: var(--white);
       padding: 14px 32px;
-      font-size: 0.95rem;
-      font-weight: 600;
-      border-radius: 12px;
+      border-radius: 6px;
       border: none;
+      font-weight: 600;
+      font-size: 16px;
+      font-family: var(--font-primary);
       cursor: pointer;
-      transition: all var(--transition);
+      transition: background 0.2s ease;
+      letter-spacing: 0.3px;
+    }
+
+    .btn-primary:hover {
+      background: var(--orange-hover);
+    }
+
+    .btn-secondary {
+      display: inline-block;
+      background: var(--primary-blue);
+      color: var(--white);
+      padding: 14px 32px;
+      border-radius: 6px;
+      border: none;
+      font-weight: 600;
+      font-size: 16px;
+      font-family: var(--font-primary);
+      cursor: pointer;
+      transition: background 0.2s ease;
+    }
+
+    .btn-secondary:hover {
+      background: #005FA3;
+    }
+
+    /* ===== SECTION SPACING ===== */
+    .section {
+      padding: 96px 0;
+    }
+
+    .section--gray {
+      background: var(--light-gray);
+    }
+
+    .section--dark {
+      background: var(--dark-navy);
+      color: var(--white);
+    }
+
+    /* ========================================
+       1. HERO SECTION
+    ======================================== */
+    .hero {
       position: relative;
+      background: linear-gradient(180deg, #0C1A2E 0%, #162A46 100%);
+      color: var(--white);
+      padding: 80px 0 96px;
       overflow: hidden;
     }
 
-    .btn-glow {
-      background: linear-gradient(135deg, var(--accent), #8b5cf6);
-      color: var(--white);
-      box-shadow: 0 0 30px var(--accent-glow), inset 0 1px 0 rgba(255,255,255,0.15);
-    }
-    .btn-glow:hover {
-      transform: translateY(-3px) scale(1.02);
-      box-shadow: 0 0 50px var(--accent-glow), 0 20px 40px rgba(99,102,241,0.2), inset 0 1px 0 rgba(255,255,255,0.15);
-    }
-    .btn-glow::after {
+    .hero::before {
       content: '';
       position: absolute;
       inset: 0;
-      background: linear-gradient(135deg, transparent 40%, rgba(255,255,255,0.15) 50%, transparent 60%);
-      transform: translateX(-100%);
-      transition: transform 0.6s;
-    }
-    .btn-glow:hover::after { transform: translateX(100%); }
-
-    .btn-ghost {
-      background: var(--surface);
-      color: var(--text);
-      border: 1px solid var(--border);
-      backdrop-filter: blur(10px);
-    }
-    .btn-ghost:hover {
-      border-color: var(--border-hover);
-      background: var(--surface-2);
-      transform: translateY(-2px);
+      background: url('https://images.unsplash.com/photo-1530789253388-582c481c54b0?w=1600&q=80') center/cover no-repeat;
+      opacity: 0.15;
     }
 
-    /* ===== HEADER ===== */
-    .header {
-      position: fixed;
-      top: 0; left: 0;
-      width: 100%;
-      z-index: 1000;
-      padding: 0 28px;
-      transition: all var(--transition);
-    }
-    .header.scrolled {
-      background: rgba(5, 5, 16, 0.8);
-      backdrop-filter: blur(20px) saturate(1.5);
-      border-bottom: 1px solid var(--border);
-    }
-    .header-inner {
-      max-width: 1200px;
-      margin: 0 auto;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      height: 76px;
-    }
-    .logo {
-      font-size: 1.4rem;
-      font-weight: 800;
-      color: var(--white);
-      letter-spacing: -0.02em;
-    }
-    .logo span {
-      background: linear-gradient(135deg, var(--accent), var(--cyan));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 36px;
-      list-style: none;
-    }
-    .nav-links a {
-      font-size: 0.88rem;
-      font-weight: 500;
-      color: var(--text-muted);
-      transition: color var(--transition);
-      position: relative;
-    }
-    .nav-links a::after {
-      content: '';
-      position: absolute;
-      bottom: -4px; left: 0;
-      width: 0; height: 2px;
-      background: var(--accent);
-      transition: width var(--transition);
-      border-radius: 2px;
-    }
-    .nav-links a:hover { color: var(--white); }
-    .nav-links a:hover::after { width: 100%; }
-
-    .nav-cta {
-      padding: 9px 22px !important;
-      border-radius: 10px;
-      background: linear-gradient(135deg, var(--accent), #8b5cf6) !important;
-      color: var(--white) !important;
-      font-weight: 600 !important;
-      box-shadow: 0 0 20px var(--accent-glow);
-      transition: all var(--transition) !important;
-    }
-    .nav-cta::after { display: none !important; }
-    .nav-cta:hover { transform: translateY(-2px); box-shadow: 0 0 30px var(--accent-glow); }
-
-    .menu-toggle {
-      display: none;
-      flex-direction: column;
-      gap: 5px;
-      cursor: pointer;
-      background: none;
-      border: none;
-      padding: 4px;
-    }
-    .menu-toggle span {
-      display: block;
-      width: 22px;
-      height: 2px;
-      background: var(--text);
-      border-radius: 2px;
-      transition: var(--transition);
-    }
-
-    /* ===== HERO ===== */
-    .hero {
-      padding: 180px 0 120px;
-      position: relative;
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      overflow: hidden;
-    }
-
-    .hero-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 80px;
-      align-items: center;
+    .hero .container {
       position: relative;
       z-index: 1;
     }
 
-    .hero-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 100px;
-      padding: 8px 20px;
-      font-size: 0.82rem;
-      font-weight: 600;
-      color: var(--text-muted);
-      margin-bottom: 28px;
-      backdrop-filter: blur(10px);
+    .hero__content {
+      text-align: center;
+      max-width: 800px;
+      margin: 0 auto;
     }
-    .hero-badge .dot {
-      width: 8px; height: 8px;
-      background: var(--green);
-      border-radius: 50%;
-      box-shadow: 0 0 10px var(--green);
-      animation: pulse 2s infinite;
-    }
-    @keyframes pulse {
-      0%, 100% { opacity: 1; box-shadow: 0 0 10px var(--green); }
-      50% { opacity: 0.5; box-shadow: 0 0 20px var(--green); }
+
+    .hero__badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 4px;
+      padding: 6px 16px;
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      margin-bottom: 32px;
+      color: rgba(255, 255, 255, 0.9);
     }
 
     .hero h1 {
-      font-size: clamp(2.5rem, 5.5vw, 4rem);
-      font-weight: 800;
-      color: var(--white);
-      line-height: 1.05;
-      margin-bottom: 24px;
-      letter-spacing: -0.03em;
-    }
-    .hero h1 .highlight {
-      background: linear-gradient(135deg, var(--accent-2), var(--cyan), var(--pink));
-      background-size: 200% 200%;
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      animation: gradient-shift 5s ease infinite;
-    }
-    @keyframes gradient-shift {
-      0%, 100% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
+      font-size: 48px;
+      font-weight: 700;
+      margin-bottom: 20px;
+      line-height: 1.15;
     }
 
-    .hero p {
-      font-size: 1.15rem;
-      color: var(--text-muted);
+    .hero__subtitle {
+      font-size: 18px;
+      line-height: 1.7;
+      color: rgba(255, 255, 255, 0.8);
+      margin-bottom: 36px;
+      max-width: 640px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .hero__cta-group {
       margin-bottom: 40px;
-      max-width: 460px;
-      line-height: 1.75;
     }
 
-    .hero-actions {
+    .hero__cta-subtext {
+      font-size: 14px;
+      color: rgba(255, 255, 255, 0.6);
+      margin-top: 12px;
+    }
+
+    .hero__video-wrapper {
+      max-width: 760px;
+      margin: 0 auto;
+      border-radius: 8px;
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .hero__video-wrapper video {
+      display: block;
+      width: 100%;
+      aspect-ratio: 16/9;
+      background: #000;
+    }
+
+    .hero__trust {
       display: flex;
-      gap: 14px;
-      align-items: center;
+      justify-content: center;
+      gap: 32px;
+      margin-top: 36px;
       flex-wrap: wrap;
     }
 
-    .hero-stats {
+    .hero__trust-item {
+      font-size: 14px;
+      color: rgba(255, 255, 255, 0.7);
       display: flex;
-      gap: 44px;
-      margin-top: 56px;
-      padding-top: 36px;
-      border-top: 1px solid var(--border);
+      align-items: center;
+      gap: 6px;
     }
-    .hero-stat strong {
-      display: block;
-      font-size: 1.8rem;
-      font-weight: 800;
+
+    /* ========================================
+       2. CREDIBILIDAD
+    ======================================== */
+    .credibility {
+      padding: 80px 0;
+      border-bottom: 1px solid var(--border-gray);
+    }
+
+    .credibility h2 {
+      font-size: 28px;
+      font-weight: 600;
+      margin-bottom: 40px;
+    }
+
+    .logos-row {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 40px;
+      flex-wrap: wrap;
+      margin-bottom: 56px;
+    }
+
+    .logo-badge {
+      font-size: 14px;
+      font-weight: 600;
+      color: #9CA3AF;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      padding: 12px 24px;
+      border: 1px solid var(--border-gray);
+      border-radius: 4px;
+      transition: color 0.2s ease, border-color 0.2s ease;
+    }
+
+    .logo-badge:hover {
+      color: var(--text-dark);
+      border-color: #D1D5DB;
+    }
+
+    .stats-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 32px;
+      max-width: 720px;
+      margin: 0 auto;
+    }
+
+    .stat-item {
+      text-align: center;
+    }
+
+    .stat-item__number {
+      font-size: 40px;
+      font-weight: 700;
+      color: var(--primary-blue);
+      line-height: 1.2;
+    }
+
+    .stat-item__label {
+      font-size: 15px;
+      color: var(--text-gray);
+      margin-top: 4px;
+    }
+
+    /* ========================================
+       3. COMPARACION DE PRECIOS
+    ======================================== */
+    .comparison {
+      padding: 96px 0;
+      background: var(--light-gray);
+    }
+
+    .comparison h2 {
+      font-size: 36px;
+    }
+
+    .comparison-cards {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      max-width: 800px;
+      margin: 0 auto 56px;
+    }
+
+    .comparison-card {
+      background: var(--white);
+      border: 1px solid var(--border-gray);
+      border-radius: 8px;
+      padding: 32px;
+      position: relative;
+    }
+
+    .comparison-card--competitor {
+      opacity: 0.85;
+    }
+
+    .comparison-card--advantage {
+      border-color: var(--success-green);
+      border-width: 2px;
+    }
+
+    .comparison-card__source {
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: var(--text-gray);
+      margin-bottom: 16px;
+    }
+
+    .comparison-card--advantage .comparison-card__source {
+      color: var(--primary-blue);
+    }
+
+    .comparison-card__hotel {
+      font-size: 18px;
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+
+    .comparison-card__details {
+      font-size: 14px;
+      color: var(--text-gray);
+      margin-bottom: 20px;
+    }
+
+    .comparison-card__price {
+      font-size: 36px;
+      font-weight: 700;
+    }
+
+    .comparison-card--competitor .comparison-card__price {
+      color: var(--text-dark);
+    }
+
+    .comparison-card--advantage .comparison-card__price {
+      color: var(--success-green);
+    }
+
+    .comparison-card__price-label {
+      font-size: 13px;
+      color: var(--text-gray);
+      margin-top: 2px;
+    }
+
+    .savings-badge {
+      display: inline-block;
+      background: var(--success-green);
       color: var(--white);
-      letter-spacing: -0.02em;
+      padding: 6px 14px;
+      border-radius: 4px;
+      font-size: 14px;
+      font-weight: 600;
+      margin-top: 12px;
     }
-    .hero-stat span {
-      font-size: 0.82rem;
-      color: var(--text-dim);
+
+    /* Comparison table */
+    .comparison-table {
+      max-width: 800px;
+      margin: 0 auto;
+      border: 1px solid var(--border-gray);
+      border-radius: 8px;
+      overflow: hidden;
+      background: var(--white);
+    }
+
+    .comparison-table__header {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      background: var(--dark-navy);
+      color: var(--white);
+      padding: 14px 24px;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+    }
+
+    .comparison-table__row {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      padding: 16px 24px;
+      border-bottom: 1px solid var(--border-gray);
+      align-items: center;
+      font-size: 15px;
+    }
+
+    .comparison-table__row:last-child {
+      border-bottom: none;
+    }
+
+    .comparison-table__destination {
       font-weight: 500;
     }
 
-    /* Hero 3D card */
-    .hero-visual {
-      perspective: 1200px;
-      display: flex;
-      justify-content: center;
-    }
-    .hero-card-3d {
-      transform-style: preserve-3d;
-      transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
-      will-change: transform;
-    }
-    .hero-card {
-      background: var(--surface);
-      backdrop-filter: blur(24px) saturate(1.4);
-      border: 1px solid var(--border);
-      border-radius: 24px;
-      padding: 36px;
-      width: 100%;
-      max-width: 460px;
-      position: relative;
-      overflow: hidden;
-    }
-    .hero-card::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 0;
-      width: 100%; height: 1px;
-      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.12), transparent);
-    }
-    .hero-card::after {
-      content: '';
-      position: absolute;
-      top: -50%; left: -50%;
-      width: 200%; height: 200%;
-      background: radial-gradient(circle at 30% 30%, rgba(99,102,241,0.08), transparent 60%);
-      pointer-events: none;
-    }
-    .hero-card-header {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      margin-bottom: 28px;
-      position: relative;
-      z-index: 1;
-    }
-    .hero-card-icon {
-      width: 48px; height: 48px;
-      border-radius: 14px;
-      background: linear-gradient(135deg, var(--accent), #8b5cf6);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.3rem;
-      box-shadow: 0 0 20px var(--accent-glow);
-    }
-    .hero-card-title {
-      font-weight: 700;
-      color: var(--white);
-      font-size: 1rem;
-    }
-    .hero-card-sub {
-      font-size: 0.8rem;
-      color: var(--text-dim);
-    }
-    .hero-card-bar {
-      height: 6px;
-      background: rgba(255,255,255,0.06);
-      border-radius: 100px;
-      margin-bottom: 10px;
-      overflow: hidden;
-      position: relative;
-      z-index: 1;
-    }
-    .hero-card-bar-fill {
-      height: 100%;
-      border-radius: 100px;
-      background: linear-gradient(90deg, var(--accent), var(--cyan));
-      box-shadow: 0 0 12px var(--accent-glow);
-      transition: width 1.5s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-    .bar-label {
-      font-size: 0.78rem;
-      color: var(--text-dim);
-      margin-bottom: 6px;
-      position: relative;
-      z-index: 1;
-    }
-    .hero-card-metrics {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 14px;
-      margin-top: 24px;
-      position: relative;
-      z-index: 1;
-    }
-    .metric-box {
-      background: rgba(255,255,255,0.03);
-      border: 1px solid var(--border);
-      border-radius: 14px;
-      padding: 18px;
-      text-align: center;
-      transition: all var(--transition);
-    }
-    .metric-box:hover {
-      border-color: var(--accent);
-      background: rgba(99,102,241,0.05);
-      box-shadow: 0 0 20px rgba(99,102,241,0.1);
-    }
-    .metric-box strong {
-      display: block;
-      font-size: 1.5rem;
-      font-weight: 800;
-      color: var(--white);
-      letter-spacing: -0.02em;
-    }
-    .metric-box span {
-      font-size: 0.75rem;
-      color: var(--text-dim);
+    .comparison-table__competitor-price {
+      color: var(--text-gray);
+      text-decoration: line-through;
     }
 
-    /* ===== GRID LINE DECORATION ===== */
-    .grid-bg {
-      position: absolute;
-      inset: 0;
-      background-image:
-        linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
-      background-size: 60px 60px;
-      mask-image: radial-gradient(ellipse 60% 50% at 50% 50%, black, transparent);
-      pointer-events: none;
+    .comparison-table__our-price {
+      font-weight: 600;
+      color: var(--primary-blue);
     }
 
-    /* ===== BENEFITS ===== */
-    .benefits { background: var(--bg); }
+    .comparison-table__savings {
+      font-weight: 600;
+      color: var(--success-green);
+    }
+
+    /* ========================================
+       4. BENEFICIOS
+    ======================================== */
+    .benefits {
+      padding: 96px 0;
+    }
+
+    .benefits h2 {
+      font-size: 36px;
+    }
+
     .benefits-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 20px;
-    }
-    .benefit-card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 20px;
-      padding: 36px 28px;
-      transition: all var(--transition);
-      position: relative;
-      overflow: hidden;
-      cursor: default;
-    }
-    .benefit-card::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      background: radial-gradient(circle at 50% 0%, rgba(99,102,241,0.08), transparent 60%);
-      opacity: 0;
-      transition: opacity var(--transition);
-    }
-    .benefit-card:hover::before { opacity: 1; }
-    .benefit-card:hover {
-      border-color: var(--border-hover);
-      transform: translateY(-6px);
-      box-shadow: 0 24px 48px rgba(0,0,0,0.3);
-    }
-    .benefit-icon {
-      width: 52px; height: 52px;
-      border-radius: 14px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.4rem;
-      margin-bottom: 20px;
-      position: relative;
-      z-index: 1;
-    }
-    .benefit-icon.i1 { background: rgba(99,102,241,0.12); }
-    .benefit-icon.i2 { background: rgba(34,211,238,0.12); }
-    .benefit-icon.i3 { background: rgba(236,72,153,0.12); }
-    .benefit-icon.i4 { background: rgba(251,191,36,0.12); }
-    .benefit-icon.i5 { background: rgba(52,211,153,0.12); }
-    .benefit-icon.i6 { background: rgba(168,85,247,0.12); }
-    .benefit-card h3 {
-      font-size: 1.1rem;
-      font-weight: 700;
-      color: var(--white);
-      margin-bottom: 10px;
-      position: relative;
-      z-index: 1;
-    }
-    .benefit-card p {
-      font-size: 0.9rem;
-      color: var(--text-muted);
-      line-height: 1.65;
-      position: relative;
-      z-index: 1;
+      gap: 40px 32px;
     }
 
-    /* ===== SOCIAL PROOF ===== */
-    .social-proof {
-      background: var(--bg-2);
-      border-top: 1px solid var(--border);
-      border-bottom: 1px solid var(--border);
-    }
-    .testimonials-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 20px;
-    }
-    .testimonial-card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 20px;
-      padding: 32px;
-      transition: all var(--transition);
-      position: relative;
-    }
-    .testimonial-card::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 0;
-      width: 100%; height: 1px;
-      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.08), transparent);
-    }
-    .testimonial-card:hover {
-      border-color: var(--border-hover);
-      transform: translateY(-4px);
-      box-shadow: 0 20px 40px rgba(0,0,0,0.25);
-    }
-    .testimonial-stars {
-      font-size: 0.95rem;
-      margin-bottom: 18px;
-      letter-spacing: 3px;
-      color: var(--amber);
-    }
-    .testimonial-card blockquote {
-      font-size: 0.92rem;
-      color: var(--text);
-      line-height: 1.75;
-      margin-bottom: 24px;
-      font-style: normal;
-    }
-    .testimonial-author {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-    .testimonial-avatar {
-      width: 40px; height: 40px;
-      border-radius: 12px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: 700;
-      font-size: 0.82rem;
-      color: var(--white);
-    }
-    .testimonial-avatar.av1 { background: linear-gradient(135deg, var(--accent), #8b5cf6); }
-    .testimonial-avatar.av2 { background: linear-gradient(135deg, var(--cyan), #06b6d4); }
-    .testimonial-avatar.av3 { background: linear-gradient(135deg, var(--pink), #db2777); }
-    .testimonial-name {
-      font-weight: 700;
-      color: var(--white);
-      font-size: 0.88rem;
-    }
-    .testimonial-role {
-      font-size: 0.78rem;
-      color: var(--text-dim);
+    .benefit-item {
+      padding: 8px 0;
     }
 
-    .trust-bar {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 56px;
-      margin-top: 64px;
-      padding-top: 48px;
-      border-top: 1px solid var(--border);
-      flex-wrap: wrap;
-    }
-    .trust-item { text-align: center; }
-    .trust-item strong {
-      display: block;
-      font-size: 2.2rem;
-      font-weight: 800;
-      letter-spacing: -0.02em;
-      background: linear-gradient(135deg, var(--white), var(--text-muted));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-    .trust-item span {
-      font-size: 0.82rem;
-      color: var(--text-dim);
-    }
-
-    /* ===== HOW IT WORKS ===== */
-    .how-it-works { background: var(--bg); }
-    .steps-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 24px;
-      position: relative;
-    }
-    .steps-grid::before {
-      content: '';
-      position: absolute;
-      top: 56px;
-      left: 16%;
-      right: 16%;
-      height: 2px;
-      background: linear-gradient(90deg, transparent, var(--accent), transparent);
-      opacity: 0.3;
-    }
-    .step-card {
-      text-align: center;
-      position: relative;
-      padding: 0 16px;
-    }
-    .step-number {
-      width: 72px; height: 72px;
-      border-radius: 22px;
-      background: var(--surface);
-      border: 1px solid var(--border);
-      color: var(--accent-2);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.6rem;
-      font-weight: 800;
-      margin: 0 auto 28px;
-      position: relative;
-      z-index: 1;
-      transition: all var(--transition);
-    }
-    .step-card:hover .step-number {
-      background: linear-gradient(135deg, var(--accent), #8b5cf6);
-      color: var(--white);
-      border-color: transparent;
-      box-shadow: 0 0 40px var(--accent-glow);
-      transform: scale(1.08) rotate(-3deg);
-    }
-    .step-card h3 {
-      font-size: 1.1rem;
-      font-weight: 700;
-      color: var(--white);
-      margin-bottom: 10px;
-    }
-    .step-card p {
-      font-size: 0.9rem;
-      color: var(--text-muted);
-      line-height: 1.65;
-      max-width: 280px;
-      margin: 0 auto;
-    }
-
-    /* ===== CTA / FORM ===== */
-    .cta-section {
-      background: var(--bg-2);
-      border-top: 1px solid var(--border);
-      position: relative;
-      overflow: hidden;
-    }
-    .cta-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 72px;
-      align-items: center;
-      position: relative;
-      z-index: 1;
-    }
-    .cta-content h2 {
-      font-size: clamp(2rem, 4vw, 2.8rem);
-      font-weight: 800;
-      color: var(--white);
-      line-height: 1.1;
-      margin-bottom: 18px;
-      letter-spacing: -0.02em;
-    }
-    .cta-content p {
-      font-size: 1.05rem;
-      color: var(--text-muted);
-      margin-bottom: 36px;
-      line-height: 1.7;
-    }
-    .cta-features { list-style: none; }
-    .cta-features li {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      color: var(--text-muted);
-      font-size: 0.92rem;
+    .benefit-item__icon {
+      font-size: 28px;
       margin-bottom: 14px;
     }
-    .cta-features li::before {
-      content: '';
-      width: 28px; height: 28px;
-      border-radius: 8px;
-      background: rgba(52,211,153,0.1);
-      border: 1px solid rgba(52,211,153,0.2);
+
+    .benefit-item h3 {
+      font-size: 18px;
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+
+    .benefit-item p {
+      font-size: 15px;
+      color: var(--text-gray);
+      line-height: 1.6;
+    }
+
+    /* ========================================
+       5. COMO FUNCIONA
+    ======================================== */
+    .how-it-works {
+      padding: 96px 0;
+      background: var(--light-gray);
+    }
+
+    .how-it-works h2 {
+      font-size: 36px;
+    }
+
+    .steps-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 48px;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .step-item {
+      text-align: center;
+    }
+
+    .step-item__number {
+      font-size: 56px;
+      font-weight: 700;
+      color: var(--border-gray);
+      line-height: 1;
+      margin-bottom: 16px;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .step-item h3 {
+      font-size: 20px;
+      font-weight: 600;
+      margin-bottom: 10px;
+    }
+
+    .step-item p {
+      font-size: 15px;
+      color: var(--text-gray);
+      line-height: 1.6;
+    }
+
+    /* ========================================
+       6. FAQ
+    ======================================== */
+    .faq {
+      padding: 96px 0;
+    }
+
+    .faq h2 {
+      font-size: 36px;
+      margin-bottom: 48px;
+    }
+
+    .faq-list {
+      max-width: 760px;
+      margin: 0 auto;
+    }
+
+    .faq-item {
+      border-bottom: 1px solid var(--border-gray);
+    }
+
+    .faq-item:first-child {
+      border-top: 1px solid var(--border-gray);
+    }
+
+    .faq-question {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 0;
+      cursor: pointer;
+      gap: 16px;
+      -webkit-user-select: none;
+      user-select: none;
+    }
+
+    .faq-question h3 {
+      font-size: 16px;
+      font-weight: 500;
+      line-height: 1.5;
+    }
+
+    .faq-question__icon {
+      flex-shrink: 0;
+      width: 24px;
+      height: 24px;
       display: flex;
       align-items: center;
       justify-content: center;
-      flex-shrink: 0;
-      background-image: url("data:image/svg+xml,%3Csvg width='14' height='14' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M20 6L9 17L4 12' stroke='%2334d399' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
-      background-repeat: no-repeat;
-      background-position: center;
+      color: var(--text-gray);
+      font-size: 20px;
+      transition: transform 0.2s ease;
     }
 
-    /* GHL Form */
-    .ghl-form-wrapper {
-      background: var(--surface);
-      backdrop-filter: blur(24px);
-      border: 1px solid var(--border);
-      border-radius: 24px;
-      padding: 40px;
-      position: relative;
-      overflow: hidden;
-    }
-    .ghl-form-wrapper::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 0;
-      width: 100%; height: 1px;
-      background: linear-gradient(90deg, transparent, var(--accent), transparent);
-    }
-    .ghl-form-wrapper h3 {
-      font-size: 1.3rem;
-      font-weight: 700;
-      color: var(--white);
-      margin-bottom: 6px;
-      text-align: center;
-    }
-    .ghl-form-wrapper .form-sub {
-      font-size: 0.88rem;
-      color: var(--text-dim);
-      text-align: center;
-      margin-bottom: 28px;
-    }
-    .ghl-form-wrapper .form-group { margin-bottom: 16px; }
-    .ghl-form-wrapper label {
-      display: block;
-      font-size: 0.82rem;
-      font-weight: 600;
-      color: var(--text-muted);
-      margin-bottom: 6px;
-    }
-    .ghl-form-wrapper input,
-    .ghl-form-wrapper select,
-    .ghl-form-wrapper textarea {
-      width: 100%;
-      padding: 13px 16px;
-      border: 1px solid var(--border);
-      border-radius: var(--radius-sm);
-      font-size: 0.92rem;
-      font-family: inherit;
-      color: var(--white);
-      background: rgba(255,255,255,0.03);
-      transition: all var(--transition);
-    }
-    .ghl-form-wrapper input::placeholder,
-    .ghl-form-wrapper textarea::placeholder {
-      color: var(--text-dim);
-    }
-    .ghl-form-wrapper input:focus,
-    .ghl-form-wrapper select:focus,
-    .ghl-form-wrapper textarea:focus {
-      outline: none;
-      border-color: var(--accent);
-      box-shadow: 0 0 0 3px var(--accent-glow);
-      background: rgba(99,102,241,0.04);
-    }
-    .ghl-form-wrapper textarea {
-      resize: vertical;
-      min-height: 80px;
-    }
-    .ghl-form-wrapper .btn-submit {
-      width: 100%;
-      padding: 14px;
-      font-size: 1rem;
-      font-weight: 700;
-      border: none;
-      border-radius: var(--radius-sm);
-      background: linear-gradient(135deg, var(--accent), #8b5cf6);
-      color: var(--white);
-      cursor: pointer;
-      transition: all var(--transition);
-      margin-top: 8px;
-      box-shadow: 0 0 30px var(--accent-glow);
-      position: relative;
-      overflow: hidden;
-    }
-    .ghl-form-wrapper .btn-submit:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 0 50px var(--accent-glow), 0 16px 32px rgba(99,102,241,0.25);
-    }
-    .form-note {
-      font-size: 0.76rem;
-      color: var(--text-dim);
-      text-align: center;
-      margin-top: 16px;
+    .faq-item.active .faq-question__icon {
+      transform: rotate(45deg);
     }
 
-    /* ===== TEAM / ASI SOMOS ===== */
-    .team-section {
-      background: var(--bg);
-      border-top: 1px solid var(--border);
-      padding: 120px 0;
-      position: relative;
+    .faq-answer {
+      max-height: 0;
       overflow: hidden;
+      transition: max-height 0.3s ease;
     }
-    .team-section .gradient-mesh .orb-1 {
-      background: var(--pink);
-      width: 500px; height: 500px;
-      top: -20%; left: -10%;
+
+    .faq-answer__inner {
+      padding: 0 0 20px;
+      font-size: 15px;
+      color: var(--text-gray);
+      line-height: 1.7;
     }
-    .team-section .gradient-mesh .orb-2 {
-      background: var(--accent);
-      width: 400px; height: 400px;
-      bottom: -20%; right: -10%;
+
+    /* ========================================
+       7. FORMULARIO
+    ======================================== */
+    .contact {
+      padding: 96px 0;
+      background: var(--light-gray);
     }
-    .team-title {
-      font-size: clamp(2.5rem, 6vw, 5rem);
-      font-weight: 900;
-      text-align: center;
-      letter-spacing: -0.03em;
-      margin-bottom: 16px;
-      background: linear-gradient(135deg, var(--white), var(--accent-2), var(--cyan));
-      background-size: 200% 200%;
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      animation: gradient-shift 5s ease infinite;
-      position: relative;
-      z-index: 1;
+
+    .contact h2 {
+      font-size: 36px;
     }
-    .team-subtitle {
-      text-align: center;
-      font-size: 1.1rem;
-      color: var(--text-muted);
-      margin-bottom: 56px;
-      position: relative;
-      z-index: 1;
-    }
-    .team-image-wrapper {
-      position: relative;
-      z-index: 1;
-      max-width: 900px;
+
+    .contact-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 56px;
+      max-width: 960px;
       margin: 0 auto;
-      border-radius: 24px;
-      overflow: hidden;
-      border: 1px solid var(--border);
-      box-shadow: 0 32px 64px rgba(0,0,0,0.4), 0 0 80px rgba(99,102,241,0.1);
-      transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-    .team-image-wrapper:hover {
-      transform: scale(1.02) translateY(-4px);
-      box-shadow: 0 40px 80px rgba(0,0,0,0.5), 0 0 120px rgba(99,102,241,0.15);
-    }
-    .team-image-wrapper img {
-      width: 100%;
-      display: block;
+      align-items: start;
     }
 
-    /* ===== FOOTER ===== */
-    .footer {
-      background: var(--bg);
-      border-top: 1px solid var(--border);
-      padding: 48px 0;
-      text-align: center;
+    .contact-info {
+      padding-top: 8px;
     }
-    .footer p {
-      color: var(--text-dim);
-      font-size: 0.82rem;
+
+    .contact-guarantee {
+      border: 1px solid var(--border-gray);
+      border-radius: 8px;
+      padding: 28px;
+      background: var(--white);
+      margin-bottom: 32px;
     }
-    .footer-links {
+
+    .contact-guarantee__title {
+      font-size: 16px;
+      font-weight: 600;
+      margin-bottom: 14px;
       display: flex;
-      justify-content: center;
-      gap: 28px;
-      margin-top: 16px;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .contact-guarantee ul {
       list-style: none;
     }
-    .footer-links a {
-      color: var(--text-dim);
-      font-size: 0.82rem;
-      transition: color var(--transition);
-    }
-    .footer-links a:hover { color: var(--accent-2); }
 
-    /* ===== RESPONSIVE ===== */
+    .contact-guarantee li {
+      font-size: 14px;
+      color: var(--text-gray);
+      padding: 5px 0;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .contact-guarantee li::before {
+      content: '✓';
+      color: var(--success-green);
+      font-weight: 700;
+      font-size: 13px;
+    }
+
+    .contact-bonus {
+      border: 1px solid var(--border-gray);
+      border-radius: 8px;
+      padding: 28px;
+      background: var(--white);
+    }
+
+    .contact-bonus__title {
+      font-size: 16px;
+      font-weight: 600;
+      margin-bottom: 14px;
+    }
+
+    .contact-bonus ul {
+      list-style: none;
+    }
+
+    .contact-bonus li {
+      font-size: 14px;
+      color: var(--text-gray);
+      padding: 5px 0;
+      padding-left: 22px;
+      position: relative;
+    }
+
+    .contact-bonus li::before {
+      content: '→';
+      position: absolute;
+      left: 0;
+      color: var(--primary-orange);
+      font-weight: 600;
+    }
+
+    .contact-form-wrapper {
+      background: var(--white);
+      border: 1px solid var(--border-gray);
+      border-radius: 8px;
+      padding: 36px;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 14px;
+      font-weight: 500;
+      margin-bottom: 6px;
+      color: var(--text-dark);
+    }
+
+    .form-group label .required {
+      color: var(--danger-red);
+    }
+
+    .form-input,
+    .form-select {
+      width: 100%;
+      border: 1px solid #D1D5DB;
+      border-radius: 6px;
+      padding: 12px 16px;
+      font-size: 16px;
+      font-family: var(--font-primary);
+      color: var(--text-dark);
+      background: var(--white);
+      transition: border-color 0.2s ease;
+      -webkit-appearance: none;
+      appearance: none;
+    }
+
+    .form-select {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='7' viewBox='0 0 12 7'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%236B7280' stroke-width='1.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 16px center;
+      padding-right: 40px;
+    }
+
+    .form-input:focus,
+    .form-select:focus {
+      outline: none;
+      border-color: var(--primary-blue);
+    }
+
+    .form-input::placeholder {
+      color: #9CA3AF;
+    }
+
+    .form-checkbox {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      margin-top: 4px;
+    }
+
+    .form-checkbox input[type="checkbox"] {
+      margin-top: 3px;
+      width: 18px;
+      height: 18px;
+      flex-shrink: 0;
+      accent-color: var(--primary-blue);
+    }
+
+    .form-checkbox label {
+      font-size: 13px;
+      color: var(--text-gray);
+      line-height: 1.5;
+      margin-bottom: 0;
+    }
+
+    .form-submit {
+      margin-top: 24px;
+    }
+
+    .form-submit .btn-primary {
+      width: 100%;
+      padding: 16px;
+      font-size: 16px;
+    }
+
+    .form-message {
+      margin-top: 16px;
+      padding: 12px 16px;
+      border-radius: 6px;
+      font-size: 14px;
+      display: none;
+    }
+
+    .form-message--success {
+      background: #ECFDF5;
+      color: #065F46;
+      border: 1px solid #A7F3D0;
+    }
+
+    .form-message--error {
+      background: #FEF2F2;
+      color: #991B1B;
+      border: 1px solid #FECACA;
+    }
+
+    /* ========================================
+       8. FOOTER
+    ======================================== */
+    .footer {
+      background: var(--dark-navy);
+      color: rgba(255, 255, 255, 0.7);
+      padding: 64px 0 32px;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 40px;
+      margin-bottom: 48px;
+    }
+
+    .footer-col h4 {
+      color: var(--white);
+      font-size: 15px;
+      font-weight: 600;
+      margin-bottom: 20px;
+    }
+
+    .footer-col p {
+      font-size: 14px;
+      line-height: 1.7;
+    }
+
+    .footer-col ul {
+      list-style: none;
+    }
+
+    .footer-col li {
+      margin-bottom: 10px;
+    }
+
+    .footer-col a {
+      font-size: 14px;
+      color: rgba(255, 255, 255, 0.6);
+      transition: color 0.2s ease;
+    }
+
+    .footer-col a:hover {
+      color: var(--white);
+    }
+
+    .footer-badges {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      margin-top: 16px;
+    }
+
+    .footer-badge {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.4);
+      padding: 6px 12px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 3px;
+    }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      padding-top: 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .footer-bottom p {
+      font-size: 13px;
+      color: rgba(255, 255, 255, 0.4);
+    }
+
+    .footer-social {
+      display: flex;
+      gap: 20px;
+    }
+
+    .footer-social a {
+      font-size: 14px;
+      color: rgba(255, 255, 255, 0.4);
+      transition: color 0.2s ease;
+    }
+
+    .footer-social a:hover {
+      color: var(--white);
+    }
+
+    /* ========================================
+       RESPONSIVE
+    ======================================== */
     @media (max-width: 1024px) {
-      .hero h1 { font-size: 2.8rem; }
-      .section-title { font-size: 2.2rem; }
-      .cta-content h2 { font-size: 2.2rem; }
+      .footer-grid {
+        grid-template-columns: 1fr 1fr;
+      }
     }
 
     @media (max-width: 768px) {
-      .menu-toggle { display: flex; }
-      .nav-links {
-        display: none;
-        position: absolute;
-        top: 76px; left: 0; right: 0;
-        background: rgba(5,5,16,0.95);
-        backdrop-filter: blur(20px);
-        flex-direction: column;
-        padding: 28px;
-        gap: 18px;
-        border-bottom: 1px solid var(--border);
-      }
-      .nav-links.active { display: flex; }
-      .nav-links a::after { display: none; }
+      h1, .hero h1 { font-size: 32px; }
+      h2 { font-size: 28px; }
+      .section { padding: 64px 0; }
 
-      .hero { padding: 140px 0 80px; min-height: auto; }
-      .hero-grid {
-        grid-template-columns: 1fr;
-        gap: 48px;
-      }
-      .hero h1 { font-size: 2.4rem; }
-      .hero-stats { gap: 28px; }
-      .hero-visual { order: -1; }
-      .hero-card { max-width: 100%; }
+      .hero { padding: 56px 0 64px; }
+      .hero__subtitle { font-size: 16px; }
+      .hero__trust { gap: 16px; }
+      .hero__trust-item { font-size: 13px; }
 
-      .benefits-grid,
-      .testimonials-grid,
-      .steps-grid {
-        grid-template-columns: 1fr;
-        gap: 16px;
-      }
-      .steps-grid::before { display: none; }
+      .credibility { padding: 56px 0; }
+      .credibility h2 { font-size: 24px; }
+      .logos-row { gap: 16px; }
+      .logo-badge { padding: 8px 16px; font-size: 12px; }
+      .stats-row { gap: 24px; }
+      .stat-item__number { font-size: 32px; }
 
-      .cta-grid {
-        grid-template-columns: 1fr;
-        gap: 48px;
+      .comparison { padding: 64px 0; }
+      .comparison h2 { font-size: 28px; }
+      .comparison-cards { grid-template-columns: 1fr; gap: 16px; }
+      .comparison-table__header,
+      .comparison-table__row {
+        grid-template-columns: 1.5fr 1fr 1fr 1fr;
+        padding: 12px 16px;
+        font-size: 13px;
       }
 
-      .trust-bar { gap: 28px; }
-      .team-title { font-size: 2.5rem; }
+      .benefits { padding: 64px 0; }
+      .benefits h2 { font-size: 28px; }
+      .benefits-grid { grid-template-columns: 1fr; gap: 32px; }
+
+      .how-it-works { padding: 64px 0; }
+      .how-it-works h2 { font-size: 28px; }
+      .steps-row { grid-template-columns: 1fr; gap: 40px; }
+
+      .faq { padding: 64px 0; }
+      .faq h2 { font-size: 28px; }
+
+      .contact { padding: 64px 0; }
+      .contact h2 { font-size: 28px; }
+      .contact-layout { grid-template-columns: 1fr; gap: 32px; }
+
+      .footer { padding: 48px 0 24px; }
+      .footer-grid { grid-template-columns: 1fr; gap: 32px; }
+      .footer-bottom { flex-direction: column; text-align: center; }
     }
 
     @media (max-width: 480px) {
-      .section { padding: 80px 0; }
-      .hero h1 { font-size: 2rem; }
-      .hero p { font-size: 1rem; }
-      .hero-actions { flex-direction: column; align-items: stretch; }
-      .hero-stats { flex-direction: column; gap: 20px; }
-      .ghl-form-wrapper { padding: 28px 20px; }
-      .team-section { padding: 80px 0; }
-      .team-title { font-size: 2rem; }
+      .container { padding: 0 16px; }
+      .hero h1 { font-size: 28px; }
+      .comparison-table__header,
+      .comparison-table__row {
+        grid-template-columns: 1fr 1fr;
+        gap: 4px;
+      }
+      .comparison-table__header > :nth-child(1),
+      .comparison-table__row > :nth-child(1) {
+        grid-column: 1 / -1;
+      }
+      .stats-row { grid-template-columns: 1fr; gap: 20px; }
+    }
+
+    /* ===== LOADING STATE ===== */
+    .btn-loading {
+      position: relative;
+      pointer-events: none;
+      opacity: 0.8;
+    }
+
+    .btn-loading::after {
+      content: '';
+      position: absolute;
+      width: 18px;
+      height: 18px;
+      top: 50%;
+      left: 50%;
+      margin-top: -9px;
+      margin-left: -9px;
+      border: 2px solid rgba(255, 255, 255, 0.3);
+      border-top-color: var(--white);
+      border-radius: 50%;
+      animation: spin 0.6s linear infinite;
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
     }
   </style>
 </head>
 <body>
 
-  <!-- ===== HEADER ===== -->
-  <header class="header" id="header">
-    <div class="header-inner">
-      <a href="#" class="logo">Tu<span>Marca</span></a>
-      <nav>
-        <button class="menu-toggle" onclick="document.querySelector('.nav-links').classList.toggle('active')" aria-label="Menu">
-          <span></span><span></span><span></span>
-        </button>
-        <ul class="nav-links">
-          <li><a href="#beneficios">Beneficios</a></li>
-          <li><a href="#testimonios">Testimonios</a></li>
-          <li><a href="#como-funciona">Proceso</a></li>
-          <li><a href="#contacto" class="nav-cta">Empezar Ahora</a></li>
-        </ul>
-      </nav>
-    </div>
-  </header>
-
-  <!-- ===== HERO ===== -->
-  <section class="hero">
-    <div class="gradient-mesh">
-      <div class="orb orb-1"></div>
-      <div class="orb orb-2"></div>
-      <div class="orb orb-3"></div>
-    </div>
-    <div class="grid-bg"></div>
+  <!-- ========================================
+       1. HERO SECTION
+  ======================================== -->
+  <section class="hero" id="hero">
     <div class="container">
-      <div class="hero-grid">
-        <div class="hero-content">
-          <div class="hero-badge reveal">
-            <span class="dot"></span>
-            Plazas limitadas disponibles
-          </div>
-          <h1 class="reveal reveal-delay-1">Impulsa tu negocio con <span class="highlight">resultados reales</span></h1>
-          <p class="reveal reveal-delay-2">Automatiza procesos, capta mas clientes y escala tu empresa con la plataforma todo-en-uno que ya usan miles de negocios.</p>
-          <div class="hero-actions reveal reveal-delay-3">
-            <a href="#contacto" class="btn btn-glow">Solicitar Demo Gratis</a>
-            <a href="#como-funciona" class="btn btn-ghost">Ver como funciona &rarr;</a>
-          </div>
-          <div class="hero-stats reveal reveal-delay-4">
-            <div class="hero-stat">
-              <strong>+2,500</strong>
-              <span>Clientes activos</span>
-            </div>
-            <div class="hero-stat">
-              <strong>98%</strong>
-              <span>Satisfaccion</span>
-            </div>
-            <div class="hero-stat">
-              <strong>3x</strong>
-              <span>Mas conversiones</span>
-            </div>
-          </div>
+      <div class="hero__content">
+        <span class="hero__badge">Club Exclusivo de Viajes</span>
+        <h1>Viaja Como Un Insider de la Industria Por Menos de la Mitad de Precio</h1>
+        <p class="hero__subtitle">Accede a precios mayoristas en más de 1,000,000 de hoteles, vuelos y experiencias que normalmente solo tienen las agencias de viajes. Sin trucos. Sin fechas blackout. Sin letra pequeña.</p>
+        <div class="hero__cta-group">
+          <a href="#contacto" class="btn-primary">HABLAR CON UN AGENTE AHORA</a>
+          <p class="hero__cta-subtext">Sin compromiso — Respuesta en minutos</p>
         </div>
-        <div class="hero-visual reveal reveal-delay-2">
-          <div class="hero-card-3d" id="heroCard">
-            <div class="hero-card">
-              <div class="hero-card-header">
-                <div class="hero-card-icon">&#9889;</div>
-                <div>
-                  <div class="hero-card-title">Panel de Rendimiento</div>
-                  <div class="hero-card-sub">Actualizado en tiempo real</div>
-                </div>
-              </div>
-              <div class="bar-label">Tasa de conversion &mdash; 78%</div>
-              <div class="hero-card-bar">
-                <div class="hero-card-bar-fill" style="width: 78%"></div>
-              </div>
-              <div class="bar-label">Retencion de clientes &mdash; 92%</div>
-              <div class="hero-card-bar">
-                <div class="hero-card-bar-fill" style="width: 92%; background: linear-gradient(90deg, var(--green), var(--cyan));"></div>
-              </div>
-              <div class="hero-card-metrics">
-                <div class="metric-box">
-                  <strong>$48K</strong>
-                  <span>Ingresos / mes</span>
-                </div>
-                <div class="metric-box">
-                  <strong>1,247</strong>
-                  <span>Leads captados</span>
-                </div>
-              </div>
-            </div>
-          </div>
+        <div class="hero__video-wrapper">
+          <video controls preload="metadata" playsinline poster="https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?w=800&q=80">
+            <source src="https://storage.googleapis.com/msgsndr/sqvnNMvrOKPBmlVoDNXz/media/6992d92a6bac24437abc5ff8.mp4" type="video/mp4">
+            Tu navegador no soporta video HTML5.
+          </video>
+        </div>
+        <div class="hero__trust">
+          <span class="hero__trust-item">&#128274; Plataforma Segura</span>
+          <span class="hero__trust-item">&#11088; 4.8/5 de 50,000+ opiniones</span>
+          <span class="hero__trust-item">&#10003; Garantía de ahorro</span>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ===== BENEFITS ===== -->
-  <section class="section benefits" id="beneficios">
-    <div class="grid-bg"></div>
+  <!-- ========================================
+       2. CREDIBILIDAD
+  ======================================== -->
+  <section class="credibility text-center" id="credibilidad">
     <div class="container">
-      <div class="text-center">
-        <span class="section-label reveal">Beneficios</span>
-        <h2 class="section-title reveal reveal-delay-1">Todo lo que necesitas<br>para crecer</h2>
-        <p class="section-subtitle mx-auto reveal reveal-delay-2">Herramientas integradas que trabajan juntas para que tu negocio funcione de forma automatica.</p>
+      <h2>Respaldados por las Principales Organizaciones de Viajes del Mundo</h2>
+      <div class="logos-row">
+        <span class="logo-badge">IATA</span>
+        <span class="logo-badge">ETOA</span>
+        <span class="logo-badge">Atout France</span>
+        <span class="logo-badge">THALYS</span>
+        <span class="logo-badge">Eurostar</span>
+        <span class="logo-badge">SNCF</span>
       </div>
+      <div class="stats-row">
+        <div class="stat-item">
+          <div class="stat-item__number">500,000+</div>
+          <div class="stat-item__label">Miembros activos</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-item__number">150+</div>
+          <div class="stat-item__label">Países</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-item__number">13</div>
+          <div class="stat-item__label">Años en el mercado</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================
+       3. COMPARACION DE PRECIOS
+  ======================================== -->
+  <section class="comparison text-center" id="comparacion">
+    <div class="container">
+      <h2>No Nos Creas. Compara Tú Mismo.</h2>
+      <p class="section-subtitle">Los mismos hoteles que encuentras en Booking, Expedia o cualquier otra plataforma. Pero sin el markup del 30-40% que ellos cobran.</p>
+
+      <div class="comparison-cards">
+        <!-- Competitor card -->
+        <div class="comparison-card comparison-card--competitor">
+          <div class="comparison-card__source">Booking.com</div>
+          <div class="comparison-card__hotel">Atlantis The Palm, Dubai</div>
+          <div class="comparison-card__details">7 noches · 2 adultos</div>
+          <div class="comparison-card__price">$1,600</div>
+          <div class="comparison-card__price-label">Precio público</div>
+        </div>
+        <!-- Advantage card -->
+        <div class="comparison-card comparison-card--advantage">
+          <div class="comparison-card__source">Travel Advantage</div>
+          <div class="comparison-card__hotel">Atlantis The Palm, Dubai</div>
+          <div class="comparison-card__details">7 noches · 2 adultos</div>
+          <div class="comparison-card__price">$910</div>
+          <div class="comparison-card__price-label">Precio de miembro</div>
+          <span class="savings-badge">AHORRAS $690</span>
+        </div>
+      </div>
+
+      <!-- Comparison table -->
+      <div class="comparison-table">
+        <div class="comparison-table__header">
+          <span>Destino</span>
+          <span>Booking.com</span>
+          <span>Travel Advantage</span>
+          <span>Ahorro</span>
+        </div>
+        <div class="comparison-table__row">
+          <span class="comparison-table__destination">París — Vuelo + Hotel</span>
+          <span class="comparison-table__competitor-price">$2,100</span>
+          <span class="comparison-table__our-price">$1,380</span>
+          <span class="comparison-table__savings">$720</span>
+        </div>
+        <div class="comparison-table__row">
+          <span class="comparison-table__destination">Cancún — Resort 5★</span>
+          <span class="comparison-table__competitor-price">$1,800</span>
+          <span class="comparison-table__our-price">$1,080</span>
+          <span class="comparison-table__savings">$720</span>
+        </div>
+        <div class="comparison-table__row">
+          <span class="comparison-table__destination">Roma — Hotel Boutique</span>
+          <span class="comparison-table__competitor-price">$1,200</span>
+          <span class="comparison-table__our-price">$780</span>
+          <span class="comparison-table__savings">$420</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================
+       4. BENEFICIOS
+  ======================================== -->
+  <section class="benefits text-center" id="beneficios">
+    <div class="container">
+      <h2>Por Qué Más de 500,000 Personas Eligieron Travel Advantage</h2>
+      <p class="section-subtitle">Beneficios reales que se traducen en ahorro desde tu primera reserva.</p>
       <div class="benefits-grid">
-        <div class="benefit-card reveal">
-          <div class="benefit-icon i1">&#128640;</div>
-          <h3>Captacion Automatica</h3>
-          <p>Embudos de venta, landing pages y formularios que convierten visitantes en clientes las 24 horas.</p>
+        <div class="benefit-item">
+          <div class="benefit-item__icon">&#128176;</div>
+          <h3>Ahorra 30-60% en Cada Reserva</h3>
+          <p>Accede a precios mayoristas que normalmente están reservados para agencias de viajes profesionales.</p>
         </div>
-        <div class="benefit-card reveal reveal-delay-1">
-          <div class="benefit-icon i2">&#128172;</div>
-          <h3>CRM Inteligente</h3>
-          <p>Gestiona todos tus contactos, oportunidades y seguimientos desde un solo lugar centralizado.</p>
+        <div class="benefit-item">
+          <div class="benefit-item__icon">&#127758;</div>
+          <h3>Más de 1 Millón de Opciones</h3>
+          <p>Hoteles, vuelos, cruceros, experiencias y más en todo el mundo. Todo en una sola plataforma.</p>
         </div>
-        <div class="benefit-card reveal reveal-delay-2">
-          <div class="benefit-icon i3">&#128197;</div>
-          <h3>Agenda y Citas</h3>
-          <p>Sistema de reservas automatizado que elimina las idas y venidas para programar reuniones.</p>
+        <div class="benefit-item">
+          <div class="benefit-item__icon">&#127873;</div>
+          <h3>Gana Puntos en Cada Reserva</h3>
+          <p>Acumula puntos de fidelidad que puedes canjear por noches gratis, upgrades y más beneficios.</p>
         </div>
-        <div class="benefit-card reveal reveal-delay-1">
-          <div class="benefit-icon i4">&#128231;</div>
-          <h3>Email y SMS Marketing</h3>
-          <p>Campanas personalizadas con automatizaciones que nutren a tus leads hasta la conversion.</p>
+        <div class="benefit-item">
+          <div class="benefit-item__icon">&#128241;</div>
+          <h3>Reserva 24/7 Desde Cualquier Lugar</h3>
+          <p>App móvil y plataforma web disponibles las 24 horas. Reserva desde donde estés.</p>
         </div>
-        <div class="benefit-card reveal reveal-delay-2">
-          <div class="benefit-icon i5">&#128202;</div>
-          <h3>Reportes Detallados</h3>
-          <p>Metricas claras y dashboards en tiempo real para tomar decisiones basadas en datos.</p>
+        <div class="benefit-item">
+          <div class="benefit-item__icon">&#128683;</div>
+          <h3>Sin Fechas Blackout Ni Restricciones</h3>
+          <p>Viaja cuando quieras. Temporada alta, feriados, fines de semana. Sin restricciones de ningún tipo.</p>
         </div>
-        <div class="benefit-card reveal reveal-delay-3">
-          <div class="benefit-icon i6">&#9889;</div>
-          <h3>Automatizaciones</h3>
-          <p>Flujos de trabajo que eliminan tareas repetitivas y liberan tu tiempo para lo importante.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== SOCIAL PROOF ===== -->
-  <section class="section social-proof" id="testimonios">
-    <div class="container">
-      <div class="text-center">
-        <span class="section-label reveal">Testimonios</span>
-        <h2 class="section-title reveal reveal-delay-1">Lo que dicen nuestros<br>clientes</h2>
-        <p class="section-subtitle mx-auto reveal reveal-delay-2">Historias reales de negocios que transformaron sus resultados con nuestra plataforma.</p>
-      </div>
-      <div class="testimonials-grid">
-        <div class="testimonial-card reveal">
-          <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-          <blockquote>&ldquo;En 3 meses triplicamos nuestros leads. La automatizacion del seguimiento fue un cambio total para nuestro equipo de ventas.&rdquo;</blockquote>
-          <div class="testimonial-author">
-            <div class="testimonial-avatar av1">MG</div>
-            <div>
-              <div class="testimonial-name">Maria Garcia</div>
-              <div class="testimonial-role">CEO, Digital Agency</div>
-            </div>
-          </div>
-        </div>
-        <div class="testimonial-card reveal reveal-delay-1">
-          <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-          <blockquote>&ldquo;Dejamos de perder clientes por falta de seguimiento. Ahora todo se gestiona automaticamente y los resultados hablan solos.&rdquo;</blockquote>
-          <div class="testimonial-author">
-            <div class="testimonial-avatar av2">CR</div>
-            <div>
-              <div class="testimonial-name">Carlos Rodriguez</div>
-              <div class="testimonial-role">Director, Consultora CR</div>
-            </div>
-          </div>
-        </div>
-        <div class="testimonial-card reveal reveal-delay-2">
-          <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-          <blockquote>&ldquo;La mejor inversion para mi negocio. Reducimos un 60% el tiempo en tareas administrativas y aumentamos la facturacion.&rdquo;</blockquote>
-          <div class="testimonial-author">
-            <div class="testimonial-avatar av3">AL</div>
-            <div>
-              <div class="testimonial-name">Ana Lopez</div>
-              <div class="testimonial-role">Fundadora, Estudio AL</div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="trust-bar reveal">
-        <div class="trust-item">
-          <strong>+2,500</strong>
-          <span>Negocios confian en nosotros</span>
-        </div>
-        <div class="trust-item">
-          <strong>+1M</strong>
-          <span>Leads generados</span>
-        </div>
-        <div class="trust-item">
-          <strong>4.9/5</strong>
-          <span>Valoracion promedio</span>
-        </div>
-        <div class="trust-item">
-          <strong>15+</strong>
-          <span>Paises</span>
+        <div class="benefit-item">
+          <div class="benefit-item__icon">&#128106;</div>
+          <h3>Comparte con Familia y Amigos</h3>
+          <p>Tu membresía cubre a tu familia directa. Todos pueden disfrutar los mismos beneficios y ahorros.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ===== HOW IT WORKS ===== -->
-  <section class="section how-it-works" id="como-funciona">
-    <div class="grid-bg"></div>
+  <!-- ========================================
+       5. COMO FUNCIONA
+  ======================================== -->
+  <section class="how-it-works text-center" id="como-funciona">
     <div class="container">
-      <div class="text-center">
-        <span class="section-label reveal">Proceso</span>
-        <h2 class="section-title reveal reveal-delay-1">Como funciona</h2>
-        <p class="section-subtitle mx-auto reveal reveal-delay-2">Tres pasos simples para transformar tu negocio y empezar a ver resultados.</p>
-      </div>
-      <div class="steps-grid">
-        <div class="step-card reveal">
-          <div class="step-number">1</div>
-          <h3>Agenda tu Demo</h3>
-          <p>Rellena el formulario y reserva una llamada gratuita con nuestro equipo de estrategia.</p>
+      <h2>Tan Fácil Como 1, 2, 3</h2>
+      <p class="section-subtitle">En menos de 5 minutos tendrás acceso a precios que antes solo tenían los profesionales de la industria.</p>
+      <div class="steps-row">
+        <div class="step-item">
+          <div class="step-item__number">01</div>
+          <h3>Elige Tu Membresía</h3>
+          <p>Proceso guiado con un agente especializado. Sin presión, sin compromiso. Te explicamos todo con claridad.</p>
         </div>
-        <div class="step-card reveal reveal-delay-1">
-          <div class="step-number">2</div>
-          <h3>Disenamos tu Plan</h3>
-          <p>Creamos una estrategia personalizada con los embudos y automatizaciones que tu negocio necesita.</p>
+        <div class="step-item">
+          <div class="step-item__number">02</div>
+          <h3>Accede a la Plataforma</h3>
+          <p>Acceso inmediato a la plataforma web y app móvil. Explora miles de destinos con precios exclusivos.</p>
         </div>
-        <div class="step-card reveal reveal-delay-2">
-          <div class="step-number">3</div>
-          <h3>Escala tus Resultados</h3>
-          <p>Lanzamos, optimizamos y escalamos. Tu solo te enfocas en cerrar ventas y crecer.</p>
+        <div class="step-item">
+          <div class="step-item__number">03</div>
+          <h3>Reserva y Ahorra</h3>
+          <p>Proceso de reserva simple e intuitivo. Compara, elige y reserva con ahorro garantizado en cada viaje.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ===== FORM / CTA ===== -->
-  <section class="section cta-section" id="contacto">
-    <div class="gradient-mesh">
-      <div class="orb orb-1" style="width:400px;height:400px;top:-20%;right:0;background:var(--accent);"></div>
-      <div class="orb orb-2" style="width:350px;height:350px;bottom:-15%;left:10%;background:var(--pink);"></div>
-    </div>
+  <!-- ========================================
+       6. FAQ
+  ======================================== -->
+  <section class="faq text-center" id="faq">
     <div class="container">
-      <div class="cta-grid">
-        <div class="cta-content reveal">
-          <span class="section-label">Empieza Hoy</span>
-          <h2>Lleva tu negocio al<br>siguiente nivel</h2>
-          <p>Solicita tu demo gratuita y descubre como podemos ayudarte a automatizar, captar y convertir mas clientes.</p>
-          <ul class="cta-features">
-            <li>Demo personalizada sin compromiso</li>
-            <li>Configuracion inicial incluida</li>
-            <li>Soporte dedicado en espanol</li>
-            <li>Resultados desde la primera semana</li>
-          </ul>
+      <h2>Preguntas Frecuentes</h2>
+      <div class="faq-list">
+        <div class="faq-item">
+          <div class="faq-question" onclick="toggleFaq(this)">
+            <h3>¿Cómo pueden ofrecer precios tan bajos?</h3>
+            <span class="faq-question__icon">+</span>
+          </div>
+          <div class="faq-answer">
+            <div class="faq-answer__inner">Trabajamos directamente con hoteles, aerolíneas y proveedores como mayoristas, igual que las grandes agencias de viajes. Eliminamos intermediarios como Booking y Expedia que agregan 15-30% al precio. Como plataforma privada de membresía, tampoco gastamos en publicidad masiva. Ese ahorro lo transferimos a nuestros miembros.</div>
+          </div>
         </div>
+        <div class="faq-item">
+          <div class="faq-question" onclick="toggleFaq(this)">
+            <h3>¿Son los mismos hoteles que en Booking o Expedia?</h3>
+            <span class="faq-question__icon">+</span>
+          </div>
+          <div class="faq-answer">
+            <div class="faq-answer__inner">Exactamente los mismos. Mismo hotel, misma habitación, mismas amenidades. La única diferencia es el precio que pagas. Puedes comprobarlo tú mismo buscando el mismo hotel en ambas plataformas.</div>
+          </div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question" onclick="toggleFaq(this)">
+            <h3>¿Hay fechas blackout o restricciones?</h3>
+            <span class="faq-question__icon">+</span>
+          </div>
+          <div class="faq-answer">
+            <div class="faq-answer__inner">No. A diferencia de los programas de puntos de aerolíneas o tarjetas de crédito, puedes viajar cuando quieras. Temporada alta, fines de semana, feriados. Sin restricciones.</div>
+          </div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question" onclick="toggleFaq(this)">
+            <h3>¿Qué pasa si viajo poco?</h3>
+            <span class="faq-question__icon">+</span>
+          </div>
+          <div class="faq-answer">
+            <div class="faq-answer__inner">Los puntos de fidelidad no expiran mientras tu membresía esté activa. Puedes acumularlos hasta tener suficientes para un viaje grande. Además, muchos miembros recuperan su inversión con solo 1-2 reservas al año.</div>
+          </div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question" onclick="toggleFaq(this)">
+            <h3>¿Puedo cancelar mi membresía?</h3>
+            <span class="faq-question__icon">+</span>
+          </div>
+          <div class="faq-answer">
+            <div class="faq-answer__inner">Sí, puedes cancelar en cualquier momento sin penalización. Si cancelas en los primeros 30 días y no estás satisfecho, te devolvemos tu dinero bajo nuestra garantía.</div>
+          </div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question" onclick="toggleFaq(this)">
+            <h3>¿Mi familia puede usar mi membresía?</h3>
+            <span class="faq-question__icon">+</span>
+          </div>
+          <div class="faq-answer">
+            <div class="faq-answer__inner">Sí. Tu membresía puede ser usada por familiares directos (cónyuge, hijos). Dependiendo de tu nivel de membresía, puedes tener múltiples viajeros modificables.</div>
+          </div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question" onclick="toggleFaq(this)">
+            <h3>¿Cómo funciona el pago mensual?</h3>
+            <span class="faq-question__icon">+</span>
+          </div>
+          <div class="faq-answer">
+            <div class="faq-answer__inner">Después del pago inicial, pagas una cuota mensual que te da acceso continuo a la plataforma y tus puntos de fidelidad mensuales. Nuestro agente te explicará las opciones disponibles según tu perfil.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-        <!-- GHL FORM CONTAINER -->
-        <!--
-          ==========================================================
-          INSTRUCCIONES PARA GOHIGHLEVEL:
-
-          Opcion 1 - Formulario nativo GHL:
-          Reemplaza el formulario HTML de abajo con el snippet
-          de formulario generado en GoHighLevel:
-          <iframe src="https://link.tudominio.com/widget/form/TU_FORM_ID"
-            style="width:100%;height:100%;border:none;"></iframe>
-
-          Opcion 2 - Mantener el formulario HTML:
-          Si prefieres usar este formulario, configura la accion
-          del form apuntando a tu webhook de GHL:
-          action="https://services.leadconnectorhq.com/hooks/TU_WEBHOOK_ID"
-
-          Los campos name= deben coincidir con los campos
-          personalizados de tu cuenta GHL:
-          - full_name  -> Nombre completo
-          - email      -> Correo electronico
-          - phone      -> Telefono
-          - message    -> Mensaje (campo personalizado)
-          ==========================================================
-        -->
-        <div class="ghl-form-wrapper reveal reveal-delay-2">
-          <h3>Solicita tu Demo Gratis</h3>
-          <p class="form-sub">Completa el formulario y te contactamos en menos de 24h.</p>
-          <form method="POST" action="#">
+  <!-- ========================================
+       7. FORMULARIO DE CONTACTO
+  ======================================== -->
+  <section class="contact" id="contacto">
+    <div class="container">
+      <div class="text-center" style="margin-bottom: 48px;">
+        <h2>¿Listo Para Empezar a Ahorrar en Tus Viajes?</h2>
+        <p class="section-subtitle">Habla con uno de nuestros agentes especializados. Te explicaremos todo sin compromiso y responderemos todas tus preguntas.</p>
+      </div>
+      <div class="contact-layout">
+        <!-- Left: info -->
+        <div class="contact-info">
+          <div class="contact-guarantee">
+            <div class="contact-guarantee__title">&#128737;&#65039; GARANTÍA DE SATISFACCIÓN 100%</div>
+            <ul>
+              <li>Consulta completamente GRATIS</li>
+              <li>Sin presión, sin compromiso</li>
+              <li>Información clara y transparente</li>
+              <li>Si te unes: 30 días de garantía</li>
+              <li>Respuesta en menos de 2 horas</li>
+            </ul>
+          </div>
+          <div class="contact-bonus">
+            <div class="contact-bonus__title">&#128161; AL CONTACTARNOS HOY RECIBES:</div>
+            <ul>
+              <li>Comparación personalizada de precios en TUS destinos favoritos</li>
+              <li>Guía gratuita "10 Secretos Para Viajar Más Barato"</li>
+              <li>Acceso prioritario a ofertas exclusivas</li>
+              <li>Asesoría personalizada sin costo</li>
+            </ul>
+          </div>
+        </div>
+        <!-- Right: form -->
+        <div class="contact-form-wrapper">
+          <form id="contactForm" novalidate>
             <div class="form-group">
-              <label for="full_name">Nombre completo</label>
-              <input type="text" id="full_name" name="full_name" placeholder="Ej: Juan Perez" required>
+              <label for="name">Nombre completo <span class="required">*</span></label>
+              <input type="text" id="name" class="form-input" placeholder="Tu nombre completo" required>
             </div>
             <div class="form-group">
-              <label for="email">Correo electronico</label>
-              <input type="email" id="email" name="email" placeholder="juan@tuempresa.com" required>
+              <label for="email">Email <span class="required">*</span></label>
+              <input type="email" id="email" class="form-input" placeholder="tu@email.com" required>
             </div>
             <div class="form-group">
-              <label for="phone">Telefono</label>
-              <input type="tel" id="phone" name="phone" placeholder="+34 600 000 000">
+              <label for="phone">Teléfono (WhatsApp) <span class="required">*</span></label>
+              <input type="tel" id="phone" class="form-input" placeholder="+1 234 567 8900" required>
             </div>
             <div class="form-group">
-              <label for="message">&iquest;En que podemos ayudarte?</label>
-              <textarea id="message" name="message" placeholder="Cuentanos brevemente sobre tu negocio y objetivos..."></textarea>
+              <label for="country">País <span class="required">*</span></label>
+              <select id="country" class="form-select" required>
+                <option value="">Selecciona tu país</option>
+                <option value="MX">México</option>
+                <option value="CO">Colombia</option>
+                <option value="AR">Argentina</option>
+                <option value="CL">Chile</option>
+                <option value="PE">Perú</option>
+                <option value="EC">Ecuador</option>
+                <option value="VE">Venezuela</option>
+                <option value="GT">Guatemala</option>
+                <option value="CU">Cuba</option>
+                <option value="DO">República Dominicana</option>
+                <option value="HN">Honduras</option>
+                <option value="SV">El Salvador</option>
+                <option value="NI">Nicaragua</option>
+                <option value="CR">Costa Rica</option>
+                <option value="PA">Panamá</option>
+                <option value="PY">Paraguay</option>
+                <option value="UY">Uruguay</option>
+                <option value="BO">Bolivia</option>
+                <option value="PR">Puerto Rico</option>
+                <option value="ES">España</option>
+                <option value="US">Estados Unidos</option>
+                <option value="CA">Canadá</option>
+                <option value="BR">Brasil</option>
+                <option value="OTHER">Otro</option>
+              </select>
             </div>
-            <button type="submit" class="btn-submit">Solicitar Demo Gratuita</button>
+            <div class="form-group">
+              <label for="frequency">¿Con qué frecuencia viajas? <span class="required">*</span></label>
+              <select id="frequency" class="form-select" required>
+                <option value="">Selecciona una opción</option>
+                <option value="1-2">1-2 veces al año</option>
+                <option value="3-4">3-4 veces al año</option>
+                <option value="5+">5 o más veces al año</option>
+                <option value="rarely">Raramente</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <div class="form-checkbox">
+                <input type="checkbox" id="consent" required>
+                <label for="consent">Acepto recibir información sobre Travel Advantage y sus servicios. Puedo cancelar en cualquier momento.</label>
+              </div>
+            </div>
+            <div class="form-submit">
+              <button type="submit" class="btn-primary" id="submitBtn">HABLAR CON UN AGENTE AHORA</button>
+            </div>
+            <div class="form-message form-message--success" id="formSuccess">
+              &#10003; ¡Gracias! Hemos recibido tu información. Un agente se pondrá en contacto contigo en breve.
+            </div>
+            <div class="form-message form-message--error" id="formError">
+              Hubo un error al enviar el formulario. Por favor, inténtalo de nuevo.
+            </div>
           </form>
-          <p class="form-note">&#128274; Tus datos estan seguros. No compartimos tu informacion con terceros.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ===== ASI SOMOS ===== -->
-  <section class="team-section">
-    <div class="gradient-mesh">
-      <div class="orb orb-1"></div>
-      <div class="orb orb-2"></div>
-    </div>
-    <div class="grid-bg"></div>
-    <div class="container">
-      <h2 class="team-title reveal">ASI SOMOS</h2>
-      <p class="team-subtitle reveal reveal-delay-1">Las personas detras de tu crecimiento</p>
-      <div class="team-image-wrapper reveal reveal-delay-2">
-        <img src="https://storage.googleapis.com/msgsndr/MIpKkQyIlHX14E5YDjLW/media/697c72081fd827bbe0d6452f.png" alt="Nuestro equipo - Asi Somos">
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== FOOTER ===== -->
+  <!-- ========================================
+       8. FOOTER
+  ======================================== -->
   <footer class="footer">
     <div class="container">
-      <p>&copy; 2026 TuMarca. Todos los derechos reservados.</p>
-      <ul class="footer-links">
-        <li><a href="#">Politica de Privacidad</a></li>
-        <li><a href="#">Terminos de Uso</a></li>
-        <li><a href="#">Contacto</a></li>
-      </ul>
+      <div class="footer-grid">
+        <div class="footer-col">
+          <h4>Travel Advantage</h4>
+          <p>Club exclusivo de viajes con más de 13 años en el mercado. Acceso a precios mayoristas en hoteles, vuelos y experiencias en todo el mundo.</p>
+          <div class="footer-badges">
+            <span class="footer-badge">IATA</span>
+            <span class="footer-badge">ETOA</span>
+            <span class="footer-badge">Atout France</span>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h4>Enlaces Rápidos</h4>
+          <ul>
+            <li><a href="#beneficios">Beneficios</a></li>
+            <li><a href="#comparacion">Comparar Precios</a></li>
+            <li><a href="#como-funciona">Cómo Funciona</a></li>
+            <li><a href="#faq">Preguntas Frecuentes</a></li>
+            <li><a href="#contacto">Contacto</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Legal</h4>
+          <ul>
+            <li><a href="#">Términos y Condiciones</a></li>
+            <li><a href="#">Política de Privacidad</a></li>
+            <li><a href="#">Política de Cookies</a></li>
+            <li><a href="#">Aviso Legal</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Síguenos</h4>
+          <ul>
+            <li><a href="#">Facebook</a></li>
+            <li><a href="#">Instagram</a></li>
+            <li><a href="#">YouTube</a></li>
+            <li><a href="#">LinkedIn</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 Travel Advantage. Todos los derechos reservados.</p>
+        <div class="footer-social">
+          <a href="#" aria-label="Facebook">FB</a>
+          <a href="#" aria-label="Instagram">IG</a>
+          <a href="#" aria-label="YouTube">YT</a>
+          <a href="#" aria-label="LinkedIn">LI</a>
+        </div>
+      </div>
     </div>
   </footer>
 
-  <!-- ===== SCRIPTS (inline, no external libs) ===== -->
+  <!-- ========================================
+       JAVASCRIPT
+  ======================================== -->
   <script>
-    // Scroll reveal
-    const revealEls = document.querySelectorAll('.reveal');
-    const revealObserver = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-        }
-      });
-    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
-    revealEls.forEach(el => revealObserver.observe(el));
+    /* --- FAQ Accordion --- */
+    function toggleFaq(el) {
+      var item = el.parentElement;
+      var answer = item.querySelector('.faq-answer');
+      var isActive = item.classList.contains('active');
 
-    // Header scroll effect
-    const header = document.getElementById('header');
-    window.addEventListener('scroll', () => {
-      header.classList.toggle('scrolled', window.scrollY > 40);
-    }, { passive: true });
+      // Close all
+      document.querySelectorAll('.faq-item').forEach(function(faqItem) {
+        faqItem.classList.remove('active');
+        faqItem.querySelector('.faq-answer').style.maxHeight = null;
+      });
 
-    // 3D tilt on hero card
-    const heroCard = document.getElementById('heroCard');
-    if (heroCard) {
-      const card = heroCard.closest('.hero-visual');
-      card.addEventListener('mousemove', (e) => {
-        const rect = card.getBoundingClientRect();
-        const x = (e.clientX - rect.left) / rect.width - 0.5;
-        const y = (e.clientY - rect.top) / rect.height - 0.5;
-        heroCard.style.transform =
-          `rotateY(${x * 16}deg) rotateX(${-y * 16}deg) scale3d(1.02,1.02,1.02)`;
-      });
-      card.addEventListener('mouseleave', () => {
-        heroCard.style.transform = 'rotateY(0deg) rotateX(0deg) scale3d(1,1,1)';
-      });
+      // Open clicked (if it was closed)
+      if (!isActive) {
+        item.classList.add('active');
+        answer.style.maxHeight = answer.scrollHeight + 'px';
+      }
     }
 
-    // Animate bars on scroll
-    const bars = document.querySelectorAll('.hero-card-bar-fill');
-    const barObserver = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          const w = entry.target.style.width;
-          entry.target.style.width = '0%';
-          requestAnimationFrame(() => {
-            requestAnimationFrame(() => {
-              entry.target.style.width = w;
-            });
-          });
+    /* --- Smooth scroll for CTA links --- */
+    document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
+      anchor.addEventListener('click', function(e) {
+        var target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          e.preventDefault();
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
         }
       });
-    }, { threshold: 0.5 });
-    bars.forEach(b => barObserver.observe(b));
+    });
+
+    /* --- Form Validation & Submission --- */
+    (function() {
+      var form = document.getElementById('contactForm');
+      var submitBtn = document.getElementById('submitBtn');
+      var successMsg = document.getElementById('formSuccess');
+      var errorMsg = document.getElementById('formError');
+
+      // CONFIGURE: Replace with your webhook URL
+      var WEBHOOK_URL = 'YOUR_WEBHOOK_URL_HERE';
+
+      form.addEventListener('submit', function(e) {
+        e.preventDefault();
+
+        // Hide previous messages
+        successMsg.style.display = 'none';
+        errorMsg.style.display = 'none';
+
+        // Validate required fields
+        var name = document.getElementById('name').value.trim();
+        var email = document.getElementById('email').value.trim();
+        var phone = document.getElementById('phone').value.trim();
+        var country = document.getElementById('country').value;
+        var frequency = document.getElementById('frequency').value;
+        var consent = document.getElementById('consent').checked;
+
+        if (!name || !email || !phone || !country || !frequency || !consent) {
+          errorMsg.textContent = 'Por favor, completa todos los campos obligatorios.';
+          errorMsg.style.display = 'block';
+          return;
+        }
+
+        // Basic email validation
+        var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(email)) {
+          errorMsg.textContent = 'Por favor, ingresa un email válido.';
+          errorMsg.style.display = 'block';
+          return;
+        }
+
+        // Loading state
+        var originalText = submitBtn.textContent;
+        submitBtn.textContent = '';
+        submitBtn.classList.add('btn-loading');
+
+        var formData = {
+          name: name,
+          email: email,
+          phone: phone,
+          country: country,
+          frequency: frequency,
+          timestamp: new Date().toISOString()
+        };
+
+        // If webhook URL is not configured, show success anyway (for demo)
+        if (WEBHOOK_URL === 'YOUR_WEBHOOK_URL_HERE') {
+          setTimeout(function() {
+            submitBtn.classList.remove('btn-loading');
+            submitBtn.textContent = originalText;
+            successMsg.style.display = 'block';
+            form.reset();
+          }, 800);
+          return;
+        }
+
+        fetch(WEBHOOK_URL, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(formData)
+        })
+        .then(function(response) {
+          submitBtn.classList.remove('btn-loading');
+          submitBtn.textContent = originalText;
+          if (response.ok) {
+            successMsg.style.display = 'block';
+            form.reset();
+          } else {
+            errorMsg.textContent = 'Error al enviar. Por favor, inténtalo de nuevo.';
+            errorMsg.style.display = 'block';
+          }
+        })
+        .catch(function() {
+          submitBtn.classList.remove('btn-loading');
+          submitBtn.textContent = originalText;
+          errorMsg.textContent = 'Error de conexión. Por favor, inténtalo de nuevo.';
+          errorMsg.style.display = 'block';
+        });
+      });
+    })();
   </script>
 
 </body>
